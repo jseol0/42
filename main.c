@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/07 12:03:17 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/08 12:57:49 by jseol            ###   ########.fr       */
+/*   Created: 2021/05/08 22:30:47 by jseol             #+#    #+#             */
+/*   Updated: 2021/05/08 22:35:32 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void				bzero(void *s, size_t n)
+#include "libft.h"
+#include <stdio.h>
+int main(void)
 {
-	unsigned char	*tmp;
-	int				i;
-
-	tmp = s;
-	i = 0;
-	while (i < n)
-	{
-		tmp[i] = 0;
-		i++;
-	}
+	int b[6] = { 1,2,3,4,5 };
+	ft_bzero(b, sizeof(int) * 6);
+	for (int i = 0; i < 6; ++i)
+		printf("%d\n", b[i]);
+	return (0);
 }
