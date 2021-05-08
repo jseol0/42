@@ -1,28 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/07 12:12:09 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/08 12:56:46 by jseol            ###   ########.fr       */
+/*   Created: 2021/05/08 09:24:09 by jseol             #+#    #+#             */
+/*   Updated: 2021/05/08 10:37:13 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void			*ft_memcpy(void *dst, const void *src, size_t n)
+#include <stdio.h>
+#include <string.h>
+
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char		*tmp;
-	const char	*s;
-	int			i;
+	char			*tmp;
+	const char		*s;
+	unsigned int	i;
 
 	tmp = dst;
 	s = src;
 	i = 0;
-	while (i < n)
+	if (dst <= src)
 	{
-		tmp[i] = s[i];
-		i++;
+		while (i < len)
+		{
+			tmp[i] = s[i];
+			i++;
+		}
+	}
+	else
+	{
+		while (i < len)
+		{
+			tmp[len - i - 1] = s[len - i - 1];
+			i++;
+		}
 	}
 	return (dst);
 }

@@ -6,14 +6,14 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 12:03:17 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/07 12:10:50 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/08 12:57:49 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	bzero(void *s, size_t n)
+void				bzero(void *s, size_t n)
 {
-	unsigned char* tmp;
-	int i;
+	unsigned char	*tmp;
+	int				i;
 
 	tmp = s;
 	i = 0;

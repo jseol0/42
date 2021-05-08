@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/07 12:12:09 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/08 12:56:46 by jseol            ###   ########.fr       */
+/*   Created: 2021/05/08 08:04:01 by jseol             #+#    #+#             */
+/*   Updated: 2021/05/08 10:14:00 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void			*ft_memcpy(void *dst, const void *src, size_t n)
+void				*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	char		*tmp;
-	const char	*s;
-	int			i;
+	char			*tmp;
+	const char		*s;
+	unsigned int	i;
 
 	tmp = dst;
 	s = src;
 	i = 0;
 	while (i < n)
 	{
+		if (s[i] == (unsigned char)c)
+		{
+			tmp[i] = s[i];
+			break ;
+		}
 		tmp[i] = s[i];
 		i++;
 	}
-	return (dst);
+	if (i == n)
+		return (0);
+	return (dst + i + 1);
 }
