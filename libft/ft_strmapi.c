@@ -1,37 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/08 08:04:01 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/09 16:17:38 by jseol            ###   ########.fr       */
+/*   Created: 2021/05/09 14:41:09 by jseol             #+#    #+#             */
+/*   Updated: 2021/05/09 16:17:48 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void				*ft_memccpy(void *dst, const void *src, int c, size_t n)
+char *ft_strmapi(char const *s, char (*f)(unsigned
+int, char))
 {
-	char			*tmp;
-	const char		*s;
-	size_t			i;
 
-	tmp = dst;
-	s = src;
-	i = 0;
-	while (i < n)
-	{
-		if (s[i] == (unsigned char)c)
-		{
-			tmp[i] = s[i];
-			break ;
-		}
-		tmp[i] = s[i];
-		i++;
-	}
-	if (i == n)
-		return (0);
-	return (dst + i + 1);
 }

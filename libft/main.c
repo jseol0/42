@@ -6,16 +6,17 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 22:30:47 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/09 08:32:08 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/09 16:17:55 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
-int main(void)
+
+int			main(void)
 {
-	char str[100] = "   -2147483638";
-	int c = ft_atoi(str);
+	char	str[100] = "   -2147483638";
+	int		c = ft_atoi(str);
 
 	printf("%d\n", c);
 	return (0);
