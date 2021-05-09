@@ -6,9 +6,11 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 13:03:06 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/08 14:33:29 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/09 07:56:16 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {

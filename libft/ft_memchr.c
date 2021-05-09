@@ -6,9 +6,11 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 10:37:49 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/08 11:40:07 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/09 07:55:16 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void				*ft_memchr(const void *s, int c, size_t n)
 {

@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 22:30:47 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/08 22:35:32 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/09 08:32:08 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include <stdio.h>
 int main(void)
 {
-	int b[6] = { 1,2,3,4,5 };
-	ft_bzero(b, sizeof(int) * 6);
-	for (int i = 0; i < 6; ++i)
-		printf("%d\n", b[i]);
+	char str[100] = "   -2147483638";
+	int c = ft_atoi(str);
+
+	printf("%d\n", c);
 	return (0);
 }

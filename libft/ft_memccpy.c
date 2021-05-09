@@ -6,9 +6,11 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 08:04:01 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/08 10:14:00 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/09 07:55:10 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {

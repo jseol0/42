@@ -6,9 +6,11 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 10:53:51 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/07 12:11:04 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/09 07:55:45 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void				*ft_memset(void *b, int c, size_t len)
 {

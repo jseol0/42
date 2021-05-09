@@ -6,19 +6,11 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 13:08:07 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/08 15:55:13 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/09 07:57:11 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t	ft_strlen(const char *s)
-{
-	size_t i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
+#include "libft.h"
 
 size_t	*ft_strlcpy(char *dst, char *src, size_t dstsize)
 {

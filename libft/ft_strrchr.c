@@ -6,26 +6,18 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 15:28:15 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/08 15:58:22 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/09 09:46:53 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t		ft_strlen(const char *s)
-{
-	size_t	i;
+#include "libft.h"
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
-char *strrchr(const char *s, int c)
+char		*strrchr(const char *s, int c)
 {
-	int i;
-	int slen;
-	char *tmp_s;
-	char tmp_c;
+	int		i;
+	int		slen;
+	char	*tmp_s;
+	char	tmp_c;
 
 	tmp_s = (char *)s;
 	tmp_c = c;
@@ -37,5 +29,5 @@ char *strrchr(const char *s, int c)
 			return (NULL);
 		i++;
 	}
-	return (&tmp_s[slen -1 -i]);
+	return (&tmp_s[slen - 1 - i]);
 }
