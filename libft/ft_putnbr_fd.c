@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/09 14:41:09 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/09 16:27:08 by jseol            ###   ########.fr       */
+/*   Created: 2021/05/09 16:37:43 by jseol             #+#    #+#             */
+/*   Updated: 2021/05/09 16:46:14 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char				*ft_strmapi(char const *s, char (*f)(unsigned
-int, char))
+void ft_putnbr_fd(int n, int fd)
 {
-	char			*ret;
-	unsigned int	i;
-	unsigned int	len;
-
-	if (s || f)
-		return (0);
-	len = ft_strlen(s);
-	ret = (char *)malloc(sizeof(char) * (len + 1));
-	if (ret == NULL)
-		return (NULL);
-	i = 0;
-	while (i < len)
+	if (n < 0)
 	{
-		ret[i] = f(i, s[i]);
-		i++;
+		if (n == -2147483648)
+		{
+			ft_putstr_fd("-2147483648", fd);
+			return ;
+		}
+		else
+		{
+			ft_putchar_fd('-', fd);
+			n = -n;
+		}
 	}
-	ret[i] = '\0';
-	return (ret);
+	if (n >= 10)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		n = n % 10;
+	}
+	ft_putchar_fd(n + 48, fd);
 }
