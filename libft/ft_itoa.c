@@ -6,13 +6,13 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 12:54:06 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/09 16:17:37 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/10 20:28:35 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*puteret(char *buf)
+char		*putret(char *buf)
 {
 	char	*ret;
 	int		i;
@@ -27,6 +27,7 @@ char		*puteret(char *buf)
 		i++;
 	}
 	ret[i] = '\0';
+	return (ret);
 }
 
 char		*ft_itoa(int n)

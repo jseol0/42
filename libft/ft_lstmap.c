@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/09 09:59:31 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/10 20:18:44 by jseol            ###   ########.fr       */
+/*   Created: 2021/05/10 18:04:09 by jseol             #+#    #+#             */
+/*   Updated: 2021/05/10 19:00:00 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_substr(char const *s, unsigned int start, size_t len)
+t_list		*ft_lstmap(t_list *lst, void *(*f)(void *),
+void (*del)(void *))
 {
-	char	*ret;
-	size_t	i;
-	size_t	s_len;
+	t_list	*new_head;
+	t_list	*new_lst;
+	t_list	*cur;
 
-	if (s == NULL)
+	if (lst == NULL || f == NULL)
 		return (NULL);
-	ret = (char *)malloc(sizeof(char) * (len + 1));
-	if (ret == NULL)
+	if ((new_head = ft_lstnew(f(lst->content))) == NULL)
 		return (NULL);
-	s_len = ft_strlen(s);
-	i = 0;
-	while (i < len && i + start < s_len)
+	cur = new_head;
+	lst = lst->next;
+	while (lst != NULL)
 	{
-		ret[i] = s[start + i];
-		i++;
+		if ((new_lst = ft_lstnew(f(lst->content))) == NULL)
+		{
+			ft_lstclear(&new_lst, del);
+			return (NULL);
+		}
+		cur->next = new_lst;
+		cur = new_lst;
+		lst = lst->next;
 	}
-	ret[i] = '\0';
-	return (ret);
+	return (new_head);
 }

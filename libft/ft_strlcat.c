@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 14:04:04 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/09 16:17:46 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/10 23:17:27 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ size_t		ft_strlcat(char *dst, const char *src, size_t dstsize)
 	while (src[j] != '\0' && (i + j + 1) < dstsize)
 	{
 		dst[i + j] = src[j];
+		j++;
 	}
 	if (i < dstsize)
 		dst[i + j] = '\0';

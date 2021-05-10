@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 12:13:23 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/09 16:17:42 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/10 20:26:38 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char		**putret(char **ret, char const *s, char c)
 		ret[cnt][i - pivot] = '\0';
 		cnt++;
 	}
-	ret[cnt] = '\0';
+	ret[cnt] = NULL;
 	return (ret);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 10:53:51 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/09 16:17:42 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/10 20:05:41 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void				*ft_memset(void *b, int c, size_t len)
 {
 	unsigned char	*ret;
-	int				i;
+	size_t			i;
 
 	ret = (unsigned char *)b;
 	i = 0;

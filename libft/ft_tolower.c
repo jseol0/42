@@ -6,16 +6,15 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 09:14:04 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/09 16:17:52 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/11 00:09:59 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	tolower(int c)
+int	ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
 		return (c + 32);
-	else
-		return (c);
+	return (c);
 }

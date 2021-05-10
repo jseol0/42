@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 12:12:09 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/09 16:17:40 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/10 20:06:35 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void			*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	char		*tmp;
 	const char	*s;
-	int			i;
+	size_t		i;
 
 	tmp = dst;
 	s = src;
