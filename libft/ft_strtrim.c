@@ -6,20 +6,18 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 11:21:59 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/10 20:26:03 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/11 11:47:44 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			is_set(char c, char const *set)
+static int	is_set(char c, char const *set)
 {
 	size_t	i;
-	size_t	set_length;
 
 	i = 0;
-	set_length = ft_strlen(set);
-	while (i < set_length)
+	while (set[i])
 	{
 		if (c == set[i])
 			return (1);
@@ -31,21 +29,28 @@ int			is_set(char c, char const *set)
 char		*ft_strtrim(char const *s1, char const *set)
 {
 	char	*ret;
-	int		start;
-	int		end;
-	int		i;
+	size_t	start;
+	size_t	end;
+	size_t	i;
+	size_t	s_len;
 
+	if (s1 == 0 || set == 0)
+		return (0);
 	i = 0;
-	while (is_set((s1[i]), set))
+	while (is_set(s1[i], set))
 		i++;
 	start = i;
+	s_len = ft_strlen(s1);
+	if (s1[i] == '\0')
+		return (ft_strdup(""));
 	i = 0;
-	while (is_set(s1[ft_strlen(s1) - i - 1], set))
+	while (is_set(s1[s_len - i - 1], set))
 		i++;
 	end = i;
-	ret = (char *)malloc(sizeof(char) * (ft_strlen(s1) - start - end + 1));
+	ret = (char *)malloc(sizeof(char) * (s_len - start - end + 1));
 	if (ret == NULL)
 		return (NULL);
-	ft_memcpy(ret, s1 + start, ft_strlen(s1) - start - end);
+	ft_memcpy(ret, s1 + start, s_len - start - end);
+	ret[s_len - start - end] = 0;
 	return (ret);
 }

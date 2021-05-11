@@ -6,15 +6,15 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 15:28:15 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/11 00:28:13 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/11 07:49:11 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char* ft_strrchr(const char* s, int c)
+char		*ft_strrchr(const char *s, int c)
 {
-	char* tmp_s;
+	char	*tmp_s;
 	char	tmp_c;
 	size_t	i;
 

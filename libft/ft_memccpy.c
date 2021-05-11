@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 08:04:01 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/09 16:17:38 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/11 10:43:42 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	char			*tmp;
-	const char		*s;
+	unsigned char	*tmp;
+	unsigned char	*s;
+	unsigned char	tmp_c;
 	size_t			i;
 
-	tmp = dst;
-	s = src;
+	tmp = (unsigned char *)dst;
+	s = (unsigned char *)src;
+	tmp_c = (unsigned char)c;
 	i = 0;
 	while (i < n)
 	{
-		if (s[i] == (unsigned char)c)
+		if (s[i] == tmp_c)
 		{
 			tmp[i] = s[i];
 			break ;
@@ -33,5 +35,5 @@ void				*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	}
 	if (i == n)
 		return (0);
-	return (dst + i + 1);
+	return ((unsigned char *)dst + i + 1);
 }

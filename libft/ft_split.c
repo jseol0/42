@@ -6,13 +6,13 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 12:13:23 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/10 20:26:38 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/11 11:49:41 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			is_set(char c, char set)
+static int	is_set(char c, char set)
 {
 	if (c == set)
 		return (1);
@@ -20,7 +20,7 @@ int			is_set(char c, char set)
 		return (0);
 }
 
-int			get_size(char const *s, char set)
+static int	get_size(char const *s, char set)
 {
 	int		i;
 	int		size;
@@ -41,7 +41,7 @@ int			get_size(char const *s, char set)
 	return (size);
 }
 
-char		**putret(char **ret, char const *s, char c)
+static char	**putret(char **ret, char const *s, char c)
 {
 	int		i;
 	int		cnt;
@@ -59,10 +59,10 @@ char		**putret(char **ret, char const *s, char c)
 		pivot = i;
 		while (!is_set(s[i], c) && s[i] != '\0')
 			i++;
-		ret[cnt] = (char *)malloc(sizeof(char) * i - pivot + 1);
+		ret[cnt] = (char *)malloc(sizeof(char) * (i - pivot + 1));
 		if (ret[cnt] == NULL)
 			return (NULL);
-		ft_memcpy(ret, s + pivot, i - pivot);
+		ft_memcpy(ret[cnt], s + pivot, i - pivot);
 		ret[cnt][i - pivot] = '\0';
 		cnt++;
 	}
@@ -75,6 +75,8 @@ char		**ft_split(char const *s, char c)
 	char	**ret;
 	int		ret_size;
 
+	if (s == 0)
+		return (0);
 	ret_size = get_size(s, c);
 	ret = (char **)malloc(sizeof(char *) * (ret_size + 1));
 	if (ret == NULL)

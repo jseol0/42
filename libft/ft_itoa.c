@@ -6,13 +6,13 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 12:54:06 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/10 20:28:35 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/11 10:18:22 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*putret(char *buf)
+static char	*putret(char *buf)
 {
 	char	*ret;
 	int		i;

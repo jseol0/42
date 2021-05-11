@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 09:30:46 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/10 20:04:44 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/11 08:58:03 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 void		ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*last;
-
-	if (lst == NULL)
+	if (!lst || !new)
 		return ;
-	last = ft_lstlast(*lst);
-	new->next = last->next;
-	last->next = new;
+	if (*lst == 0)
+		*lst = new;
+	else
+		(ft_lstlast(*lst)->next = new);
 }

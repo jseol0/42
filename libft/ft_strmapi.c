@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 14:41:09 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/09 16:27:08 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/11 07:59:12 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ char				*ft_strmapi(char const *s, char (*f)(unsigned
 int, char))
 {
 	char			*ret;
-	unsigned int	i;
-	unsigned int	len;
+	size_t			i;
+	size_t			len;
 
-	if (s || f)
+	if (!s || !f)
 		return (0);
 	len = ft_strlen(s);
 	ret = (char *)malloc(sizeof(char) * (len + 1));

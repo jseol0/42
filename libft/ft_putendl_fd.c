@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 16:34:45 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/10 19:01:27 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/11 11:51:22 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
+	if (s == 0)
+		return ;
 	ft_putstr_fd(s, fd);
-	write (fd, "\n", 1);
+	write(fd, "\n", 1);
 }

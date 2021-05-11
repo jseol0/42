@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 11:02:51 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/09 16:17:45 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/11 11:15:39 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char		*ft_strjoin(char const *s1, char const *s2)
 	size_t	s2_len;
 	size_t	len;
 
+	if (s1 == 0 || s2 == 0)
+		return (0);
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
 	len = s1_len + s2_len;
