@@ -1,21 +1,23 @@
 #include "get_next_line.h"
-#include <stdio.h>
 #include <fcntl.h>
+#include <stdio.h>
+#include <string.h>
 
-int	main(void)
+int main()
 {
-	int		temp;
-	int		fd;
-	char	*line;
+	int fd;
+	char *line;
+	int i;
 
-	fd = open("test.txt", O_RDONLY);
-	while ((temp = (get_next_line(fd, &line)) > 0))
+	fd = open("test.txt",O_RDONLY);
+	i = 1;
+	while (i < 20)
 	{
-		printf("%s\n", line);
+		int ret = get_next_line(fd, &line);
+ 		printf("line %d: %s ret: %d\n", i, line, ret);
 		free(line);
-	}
-	printf("%s\n", line);
-	free(line);
-	close(fd);
-	return (0);
+		line = 0;
+		i++;
+ 	}
+	while (1);
 }
