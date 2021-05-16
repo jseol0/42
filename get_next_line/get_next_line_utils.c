@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 16:35:18 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/15 17:12:08 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/16 19:39:24 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t		ft_strlen(char *s)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (s[i] != '\0')
@@ -22,22 +22,46 @@ size_t		ft_strlen(char *s)
 	return (i);
 }
 
-char		*ft_strncat(char *s1, char *s2, size_t len)
+size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	size_t i;
-	size_t j;
+	size_t	src_len;
+	size_t	i;
 
+	src_len = 0;
+	while (src[src_len] != '\0')
+		src_len++;
+	if (dstsize == 0)
+		return (src_len);
 	i = 0;
-	while (s1[i] != '\0')
-		i++;
-	j = 0;
-	while (j < len)
+	while (src[i] != '\0' && i < (dstsize - 1))
 	{
-		s1[i] = s2[i + j];
-		j++;
+		dst[i] = src[i];
+		i++;
 	}
-	s1[i + j] = '\0';
-	return (s1);
+	dst[i] = 0;
+	return (src_len);
+}
+
+size_t		ft_strlcat(char *dst, const char *src, size_t dstsize)
+{
+	char *	s;
+	size_t	i;
+	size_t	dst_len;
+	size_t	src_len;
+
+	s = src;
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(s);
+	i = 0;
+	while (src[i] != '\0' && dst_len + 1 + i < dstsize)
+	{
+		dst[dst_len + i] = src[i];
+		i++;
+	}
+	dst[dst_len + i] = '\0';
+	if (dstsize < dst_len)
+		return (dstsize + src_len);
+	return (dst_len + src_len);
 }
 
 char		*ft_strdup(char *s)
@@ -66,18 +90,17 @@ char		*ft_strjoin(char *s1, char *s2)
 	size_t	s1_len;
 	size_t	s2_len;
 
-	if (s1 == NULL)
-	{
-		ret = ft_strdup(s2);
-		return (ret);
-	}
+	if (s1 == NULL && s2 == NULL)
+		return (NULL);
+	else if (!(s1) || !(s2))
+		return (!(s1) ? ft_strdup(s2) : ft_strdup(s1));
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
 	ret = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
 	if (ret == NULL)
 		return (NULL);
-	ft_strncat(ret, s1, s1_len);
+	ft_strlcpy(ret, s1, s1_len + 1);
 	free(s1);
-	ft_strncat(ret, s2, s2_len);
+	ft_strlcat(ret + (s1_len), s2, s2_len + 1);
 	return (ret);
 }
