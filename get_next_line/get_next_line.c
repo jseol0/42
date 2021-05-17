@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_test.c                               :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 18:17:22 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/17 13:15:26 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/17 15:59:50 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		ft_strchr_index(char *s, char c)
+int				ft_strchr_index(char *s, char c)
 {
-	int	i;
+	int			i;
 
 	i = 0;
 	if (s == 0)
@@ -28,10 +28,10 @@ int		ft_strchr_index(char *s, char c)
 	return (-1);
 }
 
-int			ft_newline_line(char **store, size_t index, char **line)
+int				ft_newline_line(char **store, size_t index, char **line)
 {
-	size_t	len;
-	char	*tmp;
+	size_t		len;
+	char		*tmp;
 
 	(*store)[index] = '\0';
 	*line = ft_strdup(*store);
@@ -48,13 +48,13 @@ int			ft_newline_line(char **store, size_t index, char **line)
 	return (1);
 }
 
-int		ft_eof_line(char **store, char **line, int read_size)
+int				ft_eof_line(char **store, char **line, int read_size)
 {
-	int	index;
+	int			index;
 
 	if (read_size < 0)
 		return (-1);
-	if ((index = ft_strchr_index(*store, '\n')) >= 0)
+	if (*store && (index = ft_strchr_index(*store, '\n')) >= 0)
 		return (ft_newline_line(store, index, line));
 	else if (*store)
 	{
@@ -66,18 +66,21 @@ int		ft_eof_line(char **store, char **line, int read_size)
 	return (0);
 }
 
-int			get_next_line(int fd, char **line)
+int				get_next_line(int fd, char **line)
 {
 	static char	*store[OPEN_MAX];
 	char		buf[BUFFER_SIZE + 1];
 	int			read_size;
+	int			index;
 
 	if (fd < 0 || line == 0 || BUFFER_SIZE < 1 || fd > OPEN_MAX)
 		return (-1);
-	if ((read_size = (read(fd, buf, BUFFER_SIZE))) > 0)
+	while ((read_size = (read(fd, buf, BUFFER_SIZE))) > 0)
 	{
 		buf[read_size] = '\0';
 		store[fd] = ft_strjoin(store[fd], buf);
+		if ((index = ft_strchr_index(store[fd], '\n')) >= 0)
+			return (ft_newline_line(&store[fd], index, line));
 	}
 	return (ft_eof_line(&store[fd], line, read_size));
 }

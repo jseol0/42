@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_origin.c                             :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/13 07:56:56 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/16 19:29:09 by jseol            ###   ########.fr       */
+/*   Created: 2021/05/16 18:17:22 by jseol             #+#    #+#             */
+/*   Updated: 2021/05/17 16:00:32 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
-int		ft_strchr_index(char *s, char c)
+int				ft_strchr_index(char *s, char c)
 {
-	int	i;
+	int			i;
 
 	i = 0;
 	if (s == 0)
 		return (0);
-
 	while (s[i] != '\0')
 	{
 		if (s[i] == c)
@@ -29,10 +28,10 @@ int		ft_strchr_index(char *s, char c)
 	return (-1);
 }
 
-int		ft_newline_line(char **store, size_t index, char **line)
+int				ft_newline_line(char **store, size_t index, char **line)
 {
-	size_t	len;
-	char	*tmp;
+	size_t		len;
+	char		*tmp;
 
 	(*store)[index] = '\0';
 	*line = ft_strdup(*store);
@@ -49,9 +48,9 @@ int		ft_newline_line(char **store, size_t index, char **line)
 	return (1);
 }
 
-int		ft_eof_line(char **store, char **line, int read_size)
+int				ft_eof_line(char **store, char **line, int read_size)
 {
-	size_t	index;
+	int			index;
 
 	if (read_size < 0)
 		return (-1);
@@ -60,28 +59,28 @@ int		ft_eof_line(char **store, char **line, int read_size)
 	else if (*store)
 	{
 		*line = *store;
-		free(*store);
 		*store = 0;
 		return (0);
 	}
 	*line = ft_strdup("");
-	free(*store);
-	*store = 0;
 	return (0);
 }
 
-int			get_next_line(int fd, char **line)
+int				get_next_line(int fd, char **line)
 {
-	static char	*store = NULL;
+	static char	*store[OPEN_MAX];
 	char		buf[BUFFER_SIZE + 1];
 	int			read_size;
+	int			index;
 
-	if (fd < 0 || line == 0 || BUFFER_SIZE < 1)
+	if (fd < 0 || line == 0 || BUFFER_SIZE < 1 || fd > OPEN_MAX)
 		return (-1);
-	while (!ft_strchr_index(store, '\n') && (read_size = (read(fd, buf, BUFFER_SIZE))) > 0)
+	while ((read_size = (read(fd, buf, BUFFER_SIZE))) > 0)
 	{
 		buf[read_size] = '\0';
-		store = ft_strjoin(store, buf);
+		store[fd] = ft_strjoin(store[fd], buf);
+		if ((index = ft_strchr_index(store[fd], '\n')) >= 0)
+			return (ft_newline_line(&store[fd], index, line));
 	}
-	return (ft_eof_line(&store, line, read_size));
+	return (ft_eof_line(&store[fd], line, read_size));
 }
