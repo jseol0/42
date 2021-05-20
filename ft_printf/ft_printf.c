@@ -6,23 +6,22 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 17:08:25 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/19 21:08:08 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/20 16:22:44 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	setf(t_format *f)
+void			setf(t_format *f)
 {
 	f->zero = 0;
 	f->neg = 0;
 	f->widht = 0;
-	f-> prec = -1;
+	f->prec = -1;
 }
 
-void	checkoption(char *format, int i, t_format *f, va_list ap)
+void			checkoption(char *format, int i, t_format *f, va_list ap)
 {
-	// 정밀도랑 너비 체크하기
 	if (format[i] == '-')
 		f->neg = 1;
 	else if (format[i] == '0')
@@ -37,20 +36,36 @@ void	checkoption(char *format, int i, t_format *f, va_list ap)
 		f->widht = (f->widht * 10) + (format[i] - '0');
 	else if ((format[i] >= '0' && format[i] <= '9') && f->prec == 0)
 		f->prec = (f->prec * 10) + (format[i] - '0');
+	if (f->zero == 1 && f->prec >= 0)
+		f->zero == 0;
 }
 
-int		checkprint(char *format, int i, t_format *f, va_list ap)
+int				checkprint(t_format *f, va_list ap)
 {
-	int cnt;
+	int			cnt;
+	char		type;
 
 	cnt = 0;
-
+	type = f->spec;
+	if (type == 'c')
+		cnt = print_char(f, va_arg(ap, int));
+	else if (type == '%')
+		cnt = print_char(f, '%');
+	else if (type == 's')
+		cnt = print_str(f, va_arg(ap, char *));
+	else if (type == 'd' || type == 'i')
+		cnt = print_nbr(f, va_arg(ap, int));
+	else if (type == 'x' || type == 'X' || type == 'u')
+		cnt = print_nbr(f, va_arg(ap, unsigned int));
+	else if (type == 'p')
+		cnt = print_nbr(f, va_arg(ap, unsigned long long));
+	return (cnt);
 }
 
-int		get_format(va_list ap, char *format, t_format *f)
+int				get_format(va_list ap, char *format, t_format *f)
 {
-	int	i;
-	int	cnt;
+	int			i;
+	int			cnt;
 
 	i = 0;
 	cnt = 0;
@@ -60,7 +75,7 @@ int		get_format(va_list ap, char *format, t_format *f)
 		while (format[i] != '%' && format[i] != '\0')
 		{
 			i++;
-			cnt++;
+			cnt += ft_putchar(format[i]);
 		}
 		if (format[i] == '%')
 		{
@@ -70,7 +85,7 @@ int		get_format(va_list ap, char *format, t_format *f)
 				i++;
 			}
 			f->spec = format[i];
-			cnt += checkprint(format, i, f, ap);
+			cnt += checkprint(f, ap);
 		}
 	}
 	return (cnt);
@@ -78,7 +93,7 @@ int		get_format(va_list ap, char *format, t_format *f)
 
 int				ft_printf(const char *format, ...)
 {
-	va_list 	ap;
+	va_list		ap;
 	int			ret;
 	t_format	f;
 
