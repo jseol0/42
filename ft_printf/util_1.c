@@ -1,16 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   util_1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 11:31:09 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/20 16:22:48 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/23 19:48:44 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int		ft_strlen(char *s)
+{
+	int i = 0;
+	while (s[i] != 0)
+		i++;
+	return (i);
+}
 
 int		ft_putchar(char c)
 {
@@ -33,27 +41,11 @@ int		ft_putstr(char *s)
 	return (i);
 }
 
-size_t get_size(t_format *f, char *s);
-
-int			print_str(t_format *f, char *s)
+void			setf(t_format *f)
 {
-	int		cnt;
-	char	*tmp;
-	size_t	size;
-
-	cnt = 0;
-	size = get_size(f, s);
-	tmp = (char *)malloc(sizeof(char) * (size + 1));
-	return (cnt = applyformat(f, tmp));
+	f->zero = 0;
+	f->neg = 0;
+	f->width = 0;
+	f->prec = -1;
 }
 
-int		print_nbr(t_format *f, unsigned long long num)
-{
-	int cnt;
-	char *tmp;
-
-	cnt = 0;
-	// tmp = atoi or atoibase
-
-	return (cnt = print_str(f, tmp));
-}

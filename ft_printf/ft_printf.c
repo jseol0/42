@@ -6,19 +6,11 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 17:08:25 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/20 16:22:44 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/23 19:48:47 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void			setf(t_format *f)
-{
-	f->zero = 0;
-	f->neg = 0;
-	f->widht = 0;
-	f->prec = -1;
-}
 
 void			checkoption(char *format, int i, t_format *f, va_list ap)
 {
@@ -29,11 +21,11 @@ void			checkoption(char *format, int i, t_format *f, va_list ap)
 	else if (format[i] == '.')
 		f->prec = 0;
 	else if (format[i] == '*' && f->prec == -1)
-		f->widht = va_arg(ap, int);
+		f->width = va_arg(ap, int);
 	else if (format[i] == '*' && f->prec == 0)
 		f->prec = va_arg(ap, int);
 	else if ((format[i] >= '0' && format[i] <= '9') && f->prec == -1)
-		f->widht = (f->widht * 10) + (format[i] - '0');
+		f->width = (f->width * 10) + (format[i] - '0');
 	else if ((format[i] >= '0' && format[i] <= '9') && f->prec == 0)
 		f->prec = (f->prec * 10) + (format[i] - '0');
 	if (f->zero == 1 && f->prec >= 0)
