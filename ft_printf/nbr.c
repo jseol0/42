@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 15:34:34 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/23 19:48:43 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/24 23:25:50 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char		*putret(char *buf)
 	return (ret);
 }
 
-char		*ft_itoa(int n, t_format *f)
+char		*ft_itoa(int n)
 {
 	char	buf[42];
 	int		i;
@@ -57,11 +57,10 @@ char		*ft_itoa(int n, t_format *f)
 	return (putret(buf));
 }
 
-char		*ft_utoa(unsigned int n, t_format *f)
+char		*ft_utoa(unsigned int n)
 {
 	char	buf[42];
 	int		i;
-	int		sign;
 
 	i = 0;
 	while (1)
@@ -96,7 +95,8 @@ char		*ft_hextoa(unsigned long long n, t_format *f)
 	if (f->spec == 'p')
 	{
 		buf[i] = 'x';
-		buf[i + 1] = '0';
+		i++;
+		buf[i] = '0';
 		i++;
 	}
 	buf[i] = '\0';

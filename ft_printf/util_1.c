@@ -6,13 +6,13 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 11:31:09 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/23 19:48:44 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/24 23:25:49 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_strlen(char *s)
+int			ft_strlen(char *s)
 {
 	int i = 0;
 	while (s[i] != 0)
@@ -20,18 +20,18 @@ int		ft_strlen(char *s)
 	return (i);
 }
 
-int		ft_putchar(char c)
+int			ft_putchar(char c)
 {
 	write(1, &c, sizeof(char));
 	return (1);
 }
 
-int		ft_putstr(char *s)
+int			ft_putstr(char *s)
 {
 	int	i;
 
 	if (s == 0)
-		return ;
+		return (0);
 	i = 0;
 	while (s[i] != '\0')
 	{
@@ -41,11 +41,28 @@ int		ft_putstr(char *s)
 	return (i);
 }
 
-void			setf(t_format *f)
+void		setf(t_format *f)
 {
 	f->zero = 0;
-	f->neg = 0;
+	f->minus = 0;
 	f->width = 0;
 	f->prec = -1;
 }
 
+int			ft_strchr(const char *s, int c)
+{
+	int		i;
+	char	*tmp_s;
+	char	tmp_c;
+
+	tmp_s = (char *)s;
+	tmp_c = c;
+	i = 0;
+	while (tmp_s[i] != tmp_c)
+	{
+		if (tmp_s[i] == '\0')
+			return (0);
+		i++;
+	}
+	return (1);
+}
