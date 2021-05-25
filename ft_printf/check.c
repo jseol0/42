@@ -6,25 +6,31 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 18:26:30 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/24 23:25:43 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/25 18:44:14 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/*
-int			applyformat(t_format *f, char *dst, char *src)
+
+int			applyformat(t_format *f, char *dst, char *src, int size)
 {
 	int		cnt;
 
-	if (f->prec >= 0 || f->minus == 1 || f->spec == 'c' || f->spec == 's')
-		f->zero = 0;
+	cnt = 0;
 	if (f->spec == 'c' || f->spec == '%')
 		f->prec = -1;
-
-	cnt = 0;
+	if (f->prec >= 0 || f->minus == 1 || f->spec == 'c' || f->spec == 's')
+		f->zero = 0;
+	if (f->minus == 0 && f->zero == 0)
+		cnt = apply_default(f, dst, src, size);
+	if (f->minus == 1)
+		cnt = apply_minus(f, dst, src, size);
+	if (f->zero == 1)
+		cnt = apply_zero(f, dst, src, size);
+	return (cnt);
 }
-*/
+
 int			get_size(t_format *f, char *s)
 {
 	int		s_len;
@@ -41,7 +47,10 @@ int			get_size(t_format *f, char *s)
 		size = size > s_len ? size : s_len;
 	}
 	else if (type == 's')
-		size = f->prec > s_len ? f->prec : s_len;
+	{
+		size = f->prec != -1 ? f->prec : s_len;
+		size = f->width != 0 ? f->width : size;
+	}
 	else if (type == 'c' || type == '%')
 		size = f->width != 0 ? f->width : 1;
 	return (size);
@@ -55,6 +64,8 @@ int			print_char(t_format *f, char c)
 
 	cnt = 0;
 	arr[0] = c;
+	if (f->spec == '%')
+		arr[0] = '%';
 	arr[1] = '\0';
 	tmp = arr;
 	return (cnt = print_str(f, tmp));
@@ -69,9 +80,9 @@ int			print_str(t_format *f, char *s)
 	cnt = 0;
 	size = get_size(f, s);
 	tmp = (char *)malloc(sizeof(char) * (size + 1));
-	//return (cnt = applyformat(f, tmp, s));
-	ft_strncpy(tmp, s, size);
-	return (ft_putstr(tmp));
+	if (tmp == 0)
+		return (0);
+	return (cnt = applyformat(f, tmp, s, size));
 }
 
 int			print_nbr(t_format *f, unsigned long long num)

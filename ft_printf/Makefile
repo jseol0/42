@@ -8,6 +8,7 @@ SRCS =	ft_printf.c	\
 		nbr.c		\
 		util_1.c	\
 		util_2.c	\
+		applys.c	\
 
 OBJS = $(SRCS:.c=.o)
 
@@ -28,4 +29,4 @@ fclean : clean
 re : fclean all
 
 t : fclean all
-	gcc -Wall -Wextra -Werror main.c -L. -lftprintf
+	gcc -Wall -Wextra -Werror main.c -L. -lftprintf -fsanitize=address

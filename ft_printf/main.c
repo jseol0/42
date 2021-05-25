@@ -2,7 +2,8 @@
 
 int main()
 {
-	//ft_printf("%1.8s\n", arr);
-	printf("%8.5d", 123);
+//	printf("%%", 1);
+	printf("assd% asd\n");
+
 	return (0);
 }

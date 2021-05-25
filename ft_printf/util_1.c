@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 11:31:09 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/24 23:25:49 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/25 18:44:08 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,16 @@ int			ft_putchar(char c)
 	return (1);
 }
 
-int			ft_putstr(char *s)
+void			ft_putstr(char *s)
 {
 	int	i;
 
-	if (s == 0)
-		return (0);
 	i = 0;
 	while (s[i] != '\0')
 	{
 		ft_putchar(s[i]);
 		i++;
 	}
-	return (i);
 }
 
 void		setf(t_format *f)

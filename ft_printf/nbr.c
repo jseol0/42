@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 15:34:34 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/24 23:25:50 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/25 18:44:06 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ char		*putret(char *buf)
 	int		i;
 
 	ret = (char *)malloc(sizeof(char) * (ft_strlen(buf) + 1));
-	if (ret == NULL)
-		return (NULL);
+	if (ret == 0)
+		return (0);
 	i = 0;
 	while (buf[i] != '\0')
 	{

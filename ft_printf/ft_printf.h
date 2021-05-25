@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:59:37 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/24 23:25:44 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/25 18:44:12 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <stdio.h>
-# include <string.h>
 
 # define TYPE "cspdiuxX%"
 # define UPBASE "0123456789ABCDEF"
@@ -43,7 +42,7 @@ int					ft_printf(const char *format, ...);
 /*
 **	check
 */
-int					applyformat(t_format *f, char *dst, char *src);
+int					applyformat(t_format *f, char *dst, char *src, int size);
 int					get_size(t_format *f, char *s);
 int					print_char(t_format *f, char c);
 int					print_str(t_format *f, char *s);
@@ -58,13 +57,21 @@ char				*ft_utoa(unsigned int n);
 char				*ft_hextoa(unsigned long long n, t_format *f);
 
 /*
+**	applys
+*/
+int					apply_default(t_format *f, char *dst, char *src, int size);
+int					apply_minus(t_format *f, char *dst, char *src, int size);
+int					apply_zero(t_format *f, char *dst, char *src, int size);
+
+/*
 **	utils
 */
 int					ft_strlen(char *s);
 void				setf(t_format *f);
 int					ft_putchar(char c);
-int					ft_putstr(char *s);
+void				ft_putstr(char *s);
 int					ft_strchr(const char *s, int c);
 char				*ft_strncpy(char *s1, char *s2, int n);
+void				ft_free(char * tmp, t_format *f);
 
 #endif
