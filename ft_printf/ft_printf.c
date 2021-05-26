@@ -6,39 +6,48 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 17:08:25 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/26 16:46:11 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/26 23:19:30 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+void				check_width_and_prec(va_list *ap,
+		const char *format, t_format *f, int i)
+{
+	if (ft_isdigit(format[i]))
+	{
+		if (f->prec == -1)
+			f->width = f->width * 10 + format[i] - 48;
+		else
+			f->prec = f->prec * 10 + format[i] - 48;
+	}
+	else if (format[i] == '*')
+	{
+		if (f->prec == -1)
+		{
+			f->width = va_arg(*ap, int);
+			if (f->width < 0)
+			{
+				f->minus = 1;
+				f->width *= -1;
+			}
+		}
+		else
+			f->prec = va_arg(*ap, int);
+	}
+}
+
 void			checkoption(const char *format, int i, t_format *f, va_list *ap)
 {
-	if (format[i] == '-')
-		f->minus = 1;
-	else if (format[i] == '0')
+	if (format[i] == '0' && f->width == 0 && f->prec == -1)
 		f->zero = 1;
-	else if ((format[i] >= '0' && format[i] <= '9') && f->prec == -1)
-		f->width = (f->width * 10) + (format[i] - '0');
-	else if (format[i] == '*' && f->prec == -1)
-		f->width = va_arg(*ap, int);
+	else if (format[i] == '-')
+		f->minus = 1;
 	else if (format[i] == '.')
 		f->prec = 0;
-	else if ((format[i] >= '0' && format[i] <= '9') && f->prec == 0)
-		f->prec = (f->prec * 10) + (format[i] - '0');
-	else if (format[i] == '*' && f->prec == 0)
-		f->prec = va_arg(*ap, int);
-
-	if (f->width < 0)
-	{
-		f->minus = 1;
-		f->width *= -1;
-	}
-	if (f->prec < -1)
-	{
-		f->minus = 1;
-		f->prec *= -1;
-	}
+	else if (ft_isdigit(format[i]) || format[i] == '*')
+		check_width_and_prec(ap, format, f, i);
 }
 
 int				checkprint(t_format *f, va_list *ap)
@@ -81,12 +90,10 @@ int				get_format(va_list *ap, const char *format, t_format *f)
 			setf(f);
 			while (format[++i] != '\0' && !ft_strchr(TYPE, format[i]))
 				checkoption(format, i, f, ap);
-			f->spec = format[i];
-			if (!ft_strchr(TYPE, f->spec) || f->spec == '\0')
-				return (ERROR);
+			f->spec = format[i++];
+			if ((f->minus == 1 || f->prec > -1) && f->spec != '%')
+				f->zero = 0;
 			cnt += checkprint(f, ap);
-			i++;
-			cnt -= 1;
 		}
 	}
 	return (cnt);
@@ -99,7 +106,7 @@ int				ft_printf(const char *format, ...)
 	t_format	f;
 
 	va_start(ap, format);
-	ret = get_format(&ap, format, &f);
+	ret = get_format(&ap, (char *)format, &f);
 	va_end(ap);
 	return (ret);
 }

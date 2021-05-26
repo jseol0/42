@@ -5,11 +5,11 @@ NAME = libftprintf.a
 
 SRCS =	ft_printf.c	\
 		check.c		\
-		nbr.c		\
+		nbr_1.c		\
+		nbr_2.c		\
 		util_1.c	\
 		util_2.c	\
-		applys.c	\
-		apply_util.c
+		put_width.c	\
 
 OBJS = $(SRCS:.c=.o)
 

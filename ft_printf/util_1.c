@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 11:31:09 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/26 11:51:51 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/26 23:16:28 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void		setf(t_format *f)
 	f->width = 0;
 	f->prec = -1;
 	f->spec = '\0';
+	f->num_sign = 1;
 }
 
 int			ft_strchr(const char *s, int c)
