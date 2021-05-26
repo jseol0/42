@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 15:34:34 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/25 18:44:06 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/26 13:19:07 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ char		*putret(char *buf)
 	int		i;
 
 	ret = (char *)malloc(sizeof(char) * (ft_strlen(buf) + 1));
-	if (ret == 0)
-		return (0);
+	if (ret == NULL)
+		return (NULL);
 	i = 0;
 	while (buf[i] != '\0')
 	{
@@ -77,8 +77,8 @@ char		*ft_utoa(unsigned int n)
 
 char		*ft_hextoa(unsigned long long n, t_format *f)
 {
-	char buf[42];
-	int i;
+	char	buf[42];
+	int		i;
 
 	i = 0;
 	while (1)

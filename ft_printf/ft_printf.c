@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 17:08:25 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/25 18:44:09 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/26 16:46:11 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,17 @@ void			checkoption(const char *format, int i, t_format *f, va_list *ap)
 		f->prec = (f->prec * 10) + (format[i] - '0');
 	else if (format[i] == '*' && f->prec == 0)
 		f->prec = va_arg(*ap, int);
+
+	if (f->width < 0)
+	{
+		f->minus = 1;
+		f->width *= -1;
+	}
+	if (f->prec < -1)
+	{
+		f->minus = 1;
+		f->prec *= -1;
+	}
 }
 
 int				checkprint(t_format *f, va_list *ap)
@@ -71,11 +82,13 @@ int				get_format(va_list *ap, const char *format, t_format *f)
 			while (format[++i] != '\0' && !ft_strchr(TYPE, format[i]))
 				checkoption(format, i, f, ap);
 			f->spec = format[i];
+			if (!ft_strchr(TYPE, f->spec) || f->spec == '\0')
+				return (ERROR);
 			cnt += checkprint(f, ap);
 			i++;
+			cnt -= 1;
 		}
 	}
-	cnt -= 1;
 	return (cnt);
 }
 

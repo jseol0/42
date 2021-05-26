@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:59:37 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/25 18:44:12 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/26 16:46:12 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdarg.h>
 # include <stdio.h>
 
+# define ERROR -1
 # define TYPE "cspdiuxX%"
 # define UPBASE "0123456789ABCDEF"
 # define BASE "0123456789abcdef"
@@ -34,44 +35,49 @@ typedef struct		s_format
 /*
 **	ft_printf
 */
-void				checkoption(const char *format, int i, t_format *f, va_list *ap);
-int					checkprint(t_format *f, va_list *ap);
-int					get_format(va_list *ap, const char *format, t_format *f);
-int					ft_printf(const char *format, ...);
+void		checkoption(const char *format, int i, t_format *f, va_list *ap);
+int			checkprint(t_format *f, va_list *ap);
+int			get_format(va_list *ap, const char *format, t_format *f);
+int			ft_printf(const char *format, ...);
 
 /*
 **	check
 */
-int					applyformat(t_format *f, char *dst, char *src, int size);
-int					get_size(t_format *f, char *s);
-int					print_char(t_format *f, char c);
-int					print_str(t_format *f, char *s);
-int					print_nbr(t_format *f, unsigned long long num);
+int			applyformat(t_format *f, char *dst, char *src, int size);
+int			get_size(t_format *f, char *s);
+int			print_char(t_format *f, char c);
+int			print_str(t_format *f, char *s);
+int			print_nbr(t_format *f, unsigned long long num);
 
 /*
 **	nbr
 */
-char				*putret(char *buf);
-char				*ft_itoa(int n);
-char				*ft_utoa(unsigned int n);
-char				*ft_hextoa(unsigned long long n, t_format *f);
+char		*putret(char *buf);
+char		*ft_itoa(int n);
+char		*ft_utoa(unsigned int n);
+char		*ft_hextoa(unsigned long long n, t_format *f);
 
 /*
 **	applys
 */
-int					apply_default(t_format *f, char *dst, char *src, int size);
-int					apply_minus(t_format *f, char *dst, char *src, int size);
-int					apply_zero(t_format *f, char *dst, char *src, int size);
+int			apply_default(t_format *f, char *dst, char *src, int size);
+int			apply_minus(t_format *f, char *dst, char *src, int size);
+int			apply_zero(t_format *f, char *dst, char *src, int size);
+int			input_default_neg(t_format *f, char *dst, char *src, int size);
+int			input_default_plus(t_format *f, char *dst, char *src, int size);
+int			input_minus_neg(t_format *f, char *dst, char *src, int size);
+int			input_minus_plus(t_format *f, char *dst, char *src, int size);
 
 /*
 **	utils
 */
-int					ft_strlen(char *s);
-void				setf(t_format *f);
-int					ft_putchar(char c);
-void				ft_putstr(char *s);
-int					ft_strchr(const char *s, int c);
-char				*ft_strncpy(char *s1, char *s2, int n);
-void				ft_free(char * tmp, t_format *f);
+int			ft_strlen(char *s);
+void		setf(t_format *f);
+int			ft_putchar(char c);
+void		ft_putstr(char *s);
+int			ft_strchr(const char *s, int c);
+char		*ft_strncpy(char *s1, char *s2, int n);
+void		ft_free(char *tmp, t_format *f);
+char		*ft_strdup(char *s1);
 
 #endif

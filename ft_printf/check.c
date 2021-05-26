@@ -6,12 +6,11 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 18:26:30 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/25 18:44:14 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/26 16:46:14 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 int			applyformat(t_format *f, char *dst, char *src, int size)
 {
@@ -24,9 +23,9 @@ int			applyformat(t_format *f, char *dst, char *src, int size)
 		f->zero = 0;
 	if (f->minus == 0 && f->zero == 0)
 		cnt = apply_default(f, dst, src, size);
-	if (f->minus == 1)
+	else if (f->minus == 1)
 		cnt = apply_minus(f, dst, src, size);
-	if (f->zero == 1)
+	else if (f->zero == 1)
 		cnt = apply_zero(f, dst, src, size);
 	return (cnt);
 }
@@ -64,6 +63,8 @@ int			print_char(t_format *f, char c)
 
 	cnt = 0;
 	arr[0] = c;
+	if (f->spec == '%' && c)
+		return (ERROR);
 	if (f->spec == '%')
 		arr[0] = '%';
 	arr[1] = '\0';
@@ -77,11 +78,13 @@ int			print_str(t_format *f, char *s)
 	char	*tmp;
 	int		size;
 
+	if (s == NULL)
+		return (ERROR);
 	cnt = 0;
 	size = get_size(f, s);
 	tmp = (char *)malloc(sizeof(char) * (size + 1));
-	if (tmp == 0)
-		return (0);
+	if (tmp == NULL)
+		return (ERROR);
 	return (cnt = applyformat(f, tmp, s, size));
 }
 
@@ -90,7 +93,14 @@ int			print_nbr(t_format *f, unsigned long long num)
 	int		cnt;
 	char	type;
 	char	*tmp;
-	//캐스팅 고려하기
+
+	if (f->prec == 0 && num == 0)
+	{
+		tmp = ft_strdup("");
+		ft_putstr(tmp);
+		free(tmp);
+		return (1);
+	}
 	cnt = 0;
 	type = f->spec;
 	if (type == 'i' || type == 'd')
