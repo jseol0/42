@@ -6,22 +6,32 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 18:26:30 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/26 23:27:03 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/27 19:12:29 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			get_size(t_format *f, char *s)
+char			*put_size(t_format *f, char *s)
 {
+	int 	i;
 	int		s_len;
 	int		size;
-	char	type;
+	char	*tmp;
 
-	type = f->spec;
 	s_len = ft_strlen(s);
 	size = f->prec < s_len ? f->prec : s_len;
-	return (size);
+	tmp = (char *)malloc(sizeof(char) * (size + 1));
+	if (tmp == NULL)
+		return (NULL);
+	tmp[size] = 0;
+	i = 0;
+	while (i < size)
+	{
+		tmp[i] = s[i];
+		i++;
+	}
+	return (tmp);
 }
 
 int			print_char(t_format *f, char c)
@@ -34,29 +44,22 @@ int			print_char(t_format *f, char c)
 	if (f->minus == 1)
 		cnt += ft_putchar(c);
 	cnt += put_width_char(f->width, 1, f->zero);
+	if (f->minus == 0)
+		cnt += ft_putchar(c);
 	return (cnt);
 }
 
 int			print_str(t_format *f, char *s)
 {
-	int		i;
 	int		cnt;
 	char	*tmp;
-	int		size;
 
 	cnt = 0;
 	if (s == NULL)
-		return (ERROR);
-	if (f->prec == -1 || f->prec > ft_strlen(s))
+		s = ft_strdup("(null)");
+	if (f->prec < 0 || f->prec > ft_strlen(s))
 		f->prec = ft_strlen(s);
-	size = get_size(f, s);
-	tmp = (char *)malloc(sizeof(char) * (size + 1));
-	if (tmp == NULL)
-		return (ERROR);
-	i = 0;
-	while (i++ < size)
-		tmp[i] = s[i];
-	tmp[i] = '\0';
+	tmp = put_size(f, s);
 	cnt = put_width_str(&tmp, f);
 	ft_putstr(tmp);
 	free(tmp);

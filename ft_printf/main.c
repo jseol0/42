@@ -3,10 +3,7 @@
 
 int main()
 {
-
-	ft_printf("%-4.ca\n", 'y');
-//	printf("%-16.*sa\n", -2, "abc");
-//	ft_printf("%-4ca\n", 'y');
-//	ft_printf("%*.ca\n", 4, 'y');
+	printf("%%-d 42 == %-d", -2147483648);
+	ft_printf("%%-d 42 == %-d", -2147483648);
 	return (0);
 }

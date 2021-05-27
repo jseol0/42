@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 19:44:16 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/26 23:16:18 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/27 19:12:38 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int			put_width_str(char **buf, t_format *f)
 	i = 0;
 	while (i < f->width - ft_strlen(*buf))
 	{
-		width[i] = (f->zero == 1) ? '0' : ' ';
+		width[i] = (f->zero == 1) ? '0': ' ';
 		i++;
 	}
 	width[i] = '\0';

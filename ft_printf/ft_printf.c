@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 17:08:25 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/26 23:19:30 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/27 18:40:27 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void				check_width_and_prec(va_list *ap,
 	if (ft_isdigit(format[i]))
 	{
 		if (f->prec == -1)
-			f->width = f->width * 10 + format[i] - 48;
+			f->width = (f->width * 10) + (format[i] - 48);
 		else
-			f->prec = f->prec * 10 + format[i] - 48;
+			f->prec = (f->prec * 10) + (format[i] - 48);
 	}
 	else if (format[i] == '*')
 	{

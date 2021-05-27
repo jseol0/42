@@ -6,13 +6,13 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:49:44 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/26 23:16:33 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/27 19:12:30 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			put_minus2(int buf_len, t_format *f, char **buf)
+int			put_minus_2(int buf_len, t_format *f, char **buf)
 {
 	int		addlen;
 
@@ -57,6 +57,11 @@ char		*put_prec_nbr(char *tmp, t_format *f, int buf_len)
 	int		ret;
 	char	*buf;
 
+		if (tmp[0] == '0' && f->prec == 0)
+	{
+		buf = ft_strdup("");
+		return (buf);
+	}
 	ret = (f->prec > buf_len) ? f->prec : buf_len;
 	if (!(buf = (char *)malloc(sizeof(char) * ret + 1)))
 		return (0);

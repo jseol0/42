@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:59:37 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/26 23:36:32 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/27 19:12:33 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int			ft_printf(const char *format, ...);
 /*
 **	check
 */
-int			get_size(t_format *f, char *s);
+char		*put_size(t_format *f, char *s);
 int			print_char(t_format *f, char c);
 int			print_str(t_format *f, char *s);
 int			print_nbr(t_format *f, unsigned long long num);
@@ -74,5 +74,6 @@ void		ft_putstr(char *s);
 int			ft_strchr(const char *s, int c);
 int			ft_isdigit(int c);
 char		*ft_strjoin(char *s1, char *s2);
+char		*ft_strdup(char *s1);
 
 #endif
