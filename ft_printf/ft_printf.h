@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:59:37 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/27 19:12:33 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/27 23:47:52 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ typedef struct		s_format
 /*
 **	ft_printf
 */
-void		check_width_and_prec(va_list *ap, const char *format, t_format *f, int i);
+void		check_width_and_prec(va_list *ap, const char *format,
+									t_format *f, int i);
 void		checkoption(const char *format, int i, t_format *f, va_list *ap);
 int			checkprint(t_format *f, va_list *ap);
 int			get_format(va_list *ap, const char *format, t_format *f);
@@ -45,7 +46,7 @@ int			ft_printf(const char *format, ...);
 /*
 **	check
 */
-char		*put_size(t_format *f, char *s);
+char		*put_str(t_format *f, char *s);
 int			print_char(t_format *f, char c);
 int			print_str(t_format *f, char *s);
 int			print_nbr(t_format *f, unsigned long long num);
@@ -56,7 +57,7 @@ int			put_width_str(char **buf, t_format *f);
 **	nbr
 */
 char		*putret(char *buf);
-char		*ft_itoa(int n);
+char		*ft_itoa(int n, t_format *f);
 char		*ft_utoa(unsigned int n);
 char		*ft_hextoa(unsigned long long n, t_format *f);
 int			put_pointer(char **buf);
@@ -73,7 +74,7 @@ int			ft_putchar(char c);
 void		ft_putstr(char *s);
 int			ft_strchr(const char *s, int c);
 int			ft_isdigit(int c);
-char		*ft_strjoin(char *s1, char *s2);
+char		*ft_strjoin(char *s1, char *s2, int freeptr);
 char		*ft_strdup(char *s1);
 
 #endif

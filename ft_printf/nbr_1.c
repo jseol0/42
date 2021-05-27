@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 15:34:34 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/27 19:12:31 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/27 23:47:51 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,22 @@ char		*putret(char *buf)
 	return (ret);
 }
 
-char		*ft_itoa(int n)
+char		*ft_itoa(int n, t_format *f)
 {
 	char	buf[42];
 	int		i;
+	int		sign;
 
+	sign = 1;
+	if (n < 0)
+	{
+		sign *= -1;
+		f->num_sign = -1;
+	}
 	i = 0;
 	while (1)
 	{
-		buf[i] = (n % 10) + '0';
+		buf[i] = sign * (n % 10) + '0';
 		n /= 10;
 		i++;
 		if (n == 0)

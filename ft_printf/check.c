@@ -6,15 +6,15 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 18:26:30 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/27 19:12:29 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/27 23:40:21 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char			*put_size(t_format *f, char *s)
+char		*put_str(t_format *f, char *s)
 {
-	int 	i;
+	int		i;
 	int		s_len;
 	int		size;
 	char	*tmp;
@@ -59,7 +59,7 @@ int			print_str(t_format *f, char *s)
 		s = ft_strdup("(null)");
 	if (f->prec < 0 || f->prec > ft_strlen(s))
 		f->prec = ft_strlen(s);
-	tmp = put_size(f, s);
+	tmp = put_str(f, s);
 	cnt = put_width_str(&tmp, f);
 	ft_putstr(tmp);
 	free(tmp);
@@ -73,19 +73,14 @@ int			print_nbr(t_format *f, unsigned long long num)
 	char	*tmp;
 	char	*buf;
 
-	if ((f->spec == 'd' || f->spec == 'i') && (int)num < 0)
-	{
-		f->num_sign = -1;
-		num *= -1;
-	}
 	if (f->spec == 'i' || f->spec == 'd')
-		tmp = ft_itoa(num);
+		tmp = ft_itoa(num, f);
 	else if (f->spec == 'u')
 		tmp = ft_utoa(num);
 	else
 		tmp = ft_hextoa(num, f);
 	buf_len = ft_strlen(tmp);
-	buf = put_prec_nbr(tmp, f, buf_len);	//free(tmp);
+	buf = put_prec_nbr(tmp, f, buf_len);
 	buf_len += put_minus(f, &buf);
 	if (f->spec == 'p')
 		buf_len = put_pointer(&buf);

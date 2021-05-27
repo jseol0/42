@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:49:44 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/27 19:12:30 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/27 23:47:50 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int			put_minus_2(int buf_len, t_format *f, char **buf)
 	{
 		if (buf_len >= f->width)
 		{
-			*buf = ft_strjoin("-", *buf);
+			*buf = ft_strjoin("-", *buf, 2);
 			addlen = 1;
 		}
 		else if (buf_len < f->width)
@@ -32,7 +32,7 @@ int			put_minus_2(int buf_len, t_format *f, char **buf)
 
 int			put_pointer(char **buf)
 {
-	*buf = ft_strjoin("0x", *buf);
+	*buf = ft_strjoin("0x", *buf, 2);
 	return (ft_strlen(*buf));
 }
 
@@ -44,7 +44,7 @@ int			put_minus(t_format *f, char **buf)
 	if ((f->spec == 'd' || f->spec == 'i') &&
 		f->zero == 0 && f->num_sign == -1)
 	{
-		*buf = ft_strjoin("-", *buf);
+		*buf = ft_strjoin("-", *buf, 2);
 		addlen = 1;
 	}
 	return (addlen);
@@ -57,7 +57,7 @@ char		*put_prec_nbr(char *tmp, t_format *f, int buf_len)
 	int		ret;
 	char	*buf;
 
-		if (tmp[0] == '0' && f->prec == 0)
+	if (tmp[0] == '0' && f->prec == 0)
 	{
 		buf = ft_strdup("");
 		return (buf);
@@ -67,16 +67,11 @@ char		*put_prec_nbr(char *tmp, t_format *f, int buf_len)
 		return (0);
 	i = 0;
 	while (buf_len + i < ret)
-	{
-		buf[i] = '0';
-		i++;
-	}
+		buf[i++] = '0';
 	j = 0;
 	while (tmp[j] != '\0')
-	{
-		buf[i] = tmp[j];
-		i++;
-		j++;
-	}
+		buf[i++] = tmp[j++];
+	buf[i] = '\0';
+	free(tmp);
 	return (buf);
 }

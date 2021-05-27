@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 15:13:43 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/27 19:12:34 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/27 23:47:50 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ void			*ft_memcpy(void *dst, const void *src, int n)
 	return (dst);
 }
 
-char		*ft_strjoin(char *s1, char *s2)
+char		*ft_strjoin(char *s1, char *s2, int freeptr)
 {
 	char	*ret;
-	int	s1_len;
-	int	s2_len;
-	int	len;
+	int		s1_len;
+	int		s2_len;
+	int		len;
 
 	if (s1 == 0 || s2 == 0)
 		return (0);
@@ -52,7 +52,11 @@ char		*ft_strjoin(char *s1, char *s2)
 	if (ret == NULL)
 		return (NULL);
 	ft_memcpy(ret, s1, s1_len);
+	if (freeptr == 1 || freeptr == 0)
+		free(s1);
 	ft_memcpy(ret + s1_len, s2, s2_len);
+	if (freeptr == 2 || freeptr == 0)
+		free(s2);
 	ret[len] = '\0';
 	return (ret);
 }
@@ -60,8 +64,8 @@ char		*ft_strjoin(char *s1, char *s2)
 char		*ft_strdup(char *s1)
 {
 	char	*ret;
-	int	len;
-	int	i;
+	int		len;
+	int		i;
 
 	len = ft_strlen(s1);
 	ret = (char *)malloc(sizeof(char) * (len + 1));
