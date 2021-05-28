@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:49:44 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/27 23:47:50 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/28 17:41:01 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char		*put_prec_nbr(char *tmp, t_format *f, int buf_len)
 {
 	int		i;
 	int		j;
-	int		ret;
+	int		size;
 	char	*buf;
 
 	if (tmp[0] == '0' && f->prec == 0)
@@ -62,11 +62,11 @@ char		*put_prec_nbr(char *tmp, t_format *f, int buf_len)
 		buf = ft_strdup("");
 		return (buf);
 	}
-	ret = (f->prec > buf_len) ? f->prec : buf_len;
-	if (!(buf = (char *)malloc(sizeof(char) * ret + 1)))
+	size = (f->prec > buf_len) ? f->prec : buf_len;
+	if (!(buf = (char *)malloc(sizeof(char) * size + 1)))
 		return (0);
 	i = 0;
-	while (buf_len + i < ret)
+	while (buf_len + i < size)
 		buf[i++] = '0';
 	j = 0;
 	while (tmp[j] != '\0')

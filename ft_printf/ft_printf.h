@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:59:37 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/27 23:47:52 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/28 17:29:57 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
-# include <stdio.h>
 
 # define ERROR -1
 # define TYPE "cspdiuxX%"
