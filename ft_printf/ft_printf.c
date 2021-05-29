@@ -6,13 +6,13 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 17:08:25 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/27 23:47:53 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/29 10:19:40 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void				check_width_and_prec(va_list *ap,
+void			check_width_and_prec(va_list *ap,
 		const char *format, t_format *f, int i)
 {
 	if (ft_isdigit(format[i]))

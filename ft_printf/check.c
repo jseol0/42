@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 18:26:30 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/27 23:40:21 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/29 13:17:11 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int			print_str(t_format *f, char *s)
 
 	cnt = 0;
 	if (s == NULL)
-		s = ft_strdup("(null)");
+		s = "(null)";
 	if (f->prec < 0 || f->prec > ft_strlen(s))
 		f->prec = ft_strlen(s);
 	tmp = put_str(f, s);
