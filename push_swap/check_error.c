@@ -1,48 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   check_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/08 12:22:36 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/08 23:31:49 by jseol            ###   ########.fr       */
+/*   Created: 2021/06/08 20:55:57 by jseol             #+#    #+#             */
+/*   Updated: 2021/06/08 21:28:55 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int check_error(int argc, char **argv)
 {
-	int		arr[50];
-	int		i;
-	int		pivot;
-	char	**ptr;
-
-	if (check_error(argc, argv))
-		write (2, "error\n", 6);
+	int	i;
 
 	i = 0;
-	if (argc == 2 && argv[1][1])
+	if (argc == 1)
+		return (1);
+	while (argv[1][i])
 	{
-		ptr = ft_split(*(argv + 1), ' ');
-		while (*(ptr + i))
-		{
-			arr[i] = atoi(*(ptr + i));
+		if (ft_isdigit(argv[1][i]) || argv[1][i] == ' ')
 			i++;
-		}
-	}
-	else
-	{
-		while (i + 1 < argc)
-		{
-			arr[i] = atoi(*(argv + i + 1));
+		else if (argv[1][i] == '+' && ft_isdigit(argv[1][i + 1]))
 			i++;
-		}
+		else if (argv[1][i] == '-' && ft_isdigit(argv[1][i + 1]))
+			i++;
+		else
+			return (1);
 	}
-	pivot = i;
-
-	for (int i = 0; i < pivot; i++)
-		printf("%d\n", arr[i]);
 	return (0);
 }
