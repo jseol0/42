@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = libftprintf.a
 
 SRCS =	ft_printf.c	\
-		check.c		\
+		input.c		\
 		nbr_1.c		\
 		nbr_2.c		\
 		util_1.c	\

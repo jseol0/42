@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 09:59:37 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/29 10:20:17 by jseol            ###   ########.fr       */
+/*   Updated: 2021/05/30 10:43:19 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int				get_format(va_list *ap, const char *format, t_format *f);
 int				ft_printf(const char *format, ...);
 
 /*
-**	check
+**	input
 */
 char			*put_str(t_format *f, char *s);
 int				print_char(t_format *f, char c);
