@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/08 12:22:36 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/09 18:38:50 by jseol            ###   ########.fr       */
+/*   Created: 2021/06/09 14:54:35 by jseol             #+#    #+#             */
+/*   Updated: 2021/06/09 17:34:56 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void		push_swap(int argc, char **argv)
+int	ft_isspace(const char c)
 {
-	t_info	*info;
-
-	info = NULL;
-	info = make_info(info);
-	put_stack_a(info, argc, argv);
-
-}
-
-int	main(int argc, char **argv)
-{
-	if (check_error(argc, argv))
-	{
-		write (2, "error\n", 6);
-		return (-1);
-	}
-	push_swap(argc, argv);
-
-	return (0);
+	if (c == ' ' || c == '\t' || c == '\n' || c == '\v'
+		|| c == '\f' || c == '\r')
+		return (1);
+	else
+		return (0);
 }

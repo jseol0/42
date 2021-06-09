@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   make_info.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/08 12:22:36 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/09 18:38:50 by jseol            ###   ########.fr       */
+/*   Created: 2021/06/09 14:25:04 by jseol             #+#    #+#             */
+/*   Updated: 2021/06/09 18:26:37 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		push_swap(int argc, char **argv)
+t_info	*make_info(t_info *info)
 {
-	t_info	*info;
+	if (!(info = (t_info *)malloc(sizeof(t_info))))
+		exit (1);
+	info->a = NULL;
+	info->b = NULL;
 
-	info = NULL;
-	info = make_info(info);
-	put_stack_a(info, argc, argv);
-
-}
-
-int	main(int argc, char **argv)
-{
-	if (check_error(argc, argv))
-	{
-		write (2, "error\n", 6);
-		return (-1);
-	}
-	push_swap(argc, argv);
-
-	return (0);
+	return (info);
 }
