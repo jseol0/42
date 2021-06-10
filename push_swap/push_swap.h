@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:53:29 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/09 19:00:05 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/10 14:29:25 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ void				rr(t_info *info);
 void				rra(t_info *info);
 void				rrb(t_info *info);
 void				rrr(t_info *info);
+t_stack				*listlast(t_stack *lst);
+t_stack				*listfirst(t_stack *lst);
 
 #endif

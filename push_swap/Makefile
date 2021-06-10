@@ -1,24 +1,33 @@
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 
+NAME	= push_swap
 LIBS	= -lft
 LIB_DIR	= ./libft
 LIB_NAME = libft.a
-SRCS	= $(wildcard *.c)
+# SRCS	= $(wildcard *.c)
+SRCS 	= push_swap.c	\
+		check_error.c	\
+		make_info.c		\
+		operation_1.c	\
+		operation_2.c	\
+		operation_3.c	\
+		put_stack_a.c	\
+		stack.c			\
+		list_utils.c
 OBJS	= $(SRCS:.c=.o)
-NAME	= push_swap
+
+
+$(NAME) : $(OBJS) $(LIB_NAME)
+		$(CC) $(CFLAGS) $(OBJS) -L $(LIB_DIR) $(LIBS) -o $(NAME)
 
 $(LIB_NAME) :
-	$(MAKE) -C $(LIB_DIR) bonus
-
-$(NAME) : $(OBJS) $(LIBS)
-		$(CC) $(CFLAGS) -c $(SRCS) -L$(LIB_DIR) $(LIBS)
+		$(MAKE) -C $(LIB_DIR)
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c $^ -o $@
+		$(CC) $(CFLAGS) -c $< -o $@
 
 all : $(NAME)
-		$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L$(LIB_DIR) $(LIBS)
 
 clean :
 		$(MAKE) -C $(LIB_DIR) fclean

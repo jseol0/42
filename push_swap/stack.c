@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:30:17 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/09 19:00:08 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/10 16:09:04 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void		stack_add_end(t_info *info, char stack_name, int num)
 			// 나머지들 free 해주기
 			exit (-1);
 		}
-		*top = ft_lstlast(*top);
+		*top = listlast(*top);
 		tmp->num = num;
 		tmp->next = NULL;
 		tmp->prev = *top;
@@ -111,6 +111,7 @@ void		stack_add_end(t_info *info, char stack_name, int num)
 		(*top)->prev = NULL;
 		(*top)->num = num;
 	}
+	*top = listfirst(*top);
 }
 
 void		stack_del_end(t_info *info, char stack_name)
@@ -124,10 +125,11 @@ void		stack_del_end(t_info *info, char stack_name)
 		top = &info->b;
 	if (*top)
 	{
-		*top = ft_lstlast(*top);
+		*top = listlast(*top);
 		tmp = *top;
 		*top = (*top)->prev;
 		(*top)->next = NULL;
 		free(tmp);
 	}
+	*top = listfirst(*top);
 }

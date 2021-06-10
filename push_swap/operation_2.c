@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 11:59:33 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/09 19:00:09 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/10 16:21:32 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,12 @@ void	rr(t_info *info)
 void	rra(t_info *info)
 {
 	int	tmp;
+	t_stack *back;
 
+	back = listlast(info->a);
 	if (info->a)
 	{
-		tmp = info->a->num;
+		tmp = back->num;
 		stack_add_top(info, 'a', tmp);
 		stack_del_end(info, 'a');
 	}
@@ -57,10 +59,12 @@ void	rra(t_info *info)
 void	rrb(t_info *info)
 {
 	int	tmp;
+	t_stack *back;
 
+	back = listlast(info->b);
 	if (info->b)
 	{
-		tmp = info->b->num;
+		tmp = back->num;
 		stack_add_top(info, 'b', tmp);
 		stack_del_end(info, 'b');
 	}

@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/08 12:22:36 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/10 16:24:14 by jseol            ###   ########.fr       */
+/*   Created: 2021/06/10 14:14:50 by jseol             #+#    #+#             */
+/*   Updated: 2021/06/10 15:02:36 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		push_swap(int argc, char **argv)
+t_stack	*listlast(t_stack *lst)
 {
-	t_info	*info;
-
-	info = NULL;
-	info = make_info(info);
-	put_stack_a(info, argc, argv);
+	if (lst == NULL)
+		return (NULL);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
 }
 
-int	main(int argc, char **argv)
+t_stack	*listfirst(t_stack *lst)
 {
-	if (check_error(argc, argv))
-	{
-		write (2, "error\n", 6);
-		return (-1);
-	}
-	push_swap(argc, argv);
-
-	return (0);
+	if (lst == NULL)
+		return (NULL);
+	while (lst->prev != NULL)
+		lst = lst->prev;
+	return (lst);
 }
