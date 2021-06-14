@@ -5,16 +5,16 @@ NAME	= push_swap
 LIBS	= -lft
 LIB_DIR	= ./libft
 LIB_NAME = libft.a
-# SRCS	= $(wildcard *.c)
-SRCS 	= push_swap.c	\
-		check_error.c	\
-		make_info.c		\
-		operation_1.c	\
-		operation_2.c	\
-		operation_3.c	\
-		put_stack_a.c	\
-		stack.c			\
-		list_utils.c
+SRCS	= $(wildcard *.c)
+# SRCS 	= push_swap.c	\
+# 		check_error.c	\
+# 		make_info.c		\
+# 		operation_1.c	\
+# 		operation_2.c	\
+# 		operation_3.c	\
+# 		put_stack_a.c	\
+# 		stack.c			\
+# 		list_utils.c
 OBJS	= $(SRCS:.c=.o)
 
 

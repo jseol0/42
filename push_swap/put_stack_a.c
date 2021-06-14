@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:30:21 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/10 15:02:32 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/14 19:34:10 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,15 @@ void	check_duplicate(t_info *info)
 	}
 }
 
-void	put_stack_a(t_info *info, int argc, char **argv)
+void	put_stack_a(t_info *info)
 {
 	int		i;
 	char	**ptr;
 
 	i = 0;
-	if (argc == 2 && argv[1][1])
+	if (info->argc == 2 && info->argv[1][1])
 	{
-		ptr = ft_split(*(argv + 1), ' ');	// free
+		ptr = ft_split(*(info->argv + 1), ' ');	// free
 		while (*(ptr + i))
 		{
 			stack_add_end(info, 'a', atoi(*(ptr + i)));
@@ -90,12 +90,13 @@ void	put_stack_a(t_info *info, int argc, char **argv)
 	}
 	else
 	{
-		while (i + 1 < argc)
+		while (i + 1 < info->argc)
 		{
-			stack_add_end(info, 'a', atoi(*(argv + i + 1)));
+			stack_add_end(info, 'a', atoi(*(info->argv + i + 1)));
 			i++;
 			check_size(info);
 		}
 	}
+	info->a_size = i;
 	check_duplicate(info);
 }

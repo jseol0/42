@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:53:29 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/10 14:29:25 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/14 19:33:53 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,15 @@ typedef struct		s_info
 	struct s_stack	*b;
 	int				argc;
 	char			**argv;
+	int				middle;
+	int				pivot;
+	int				a_size;
 }					t_info;
 
 void				push_swap(int argc, char **argv);
 int					check_error(int argc, char **argv);
-t_info				*make_info(t_info *info);
-void				put_stack_a(t_info *info, int argc, char **argv);
+t_info				*make_info(t_info *info, int argc, char **argv);
+void				put_stack_a(t_info *info);
 long				push_swap_atoi(const char *str);
 void				check_size(t_info *info);
 void				check_duplicate(t_info *info);
