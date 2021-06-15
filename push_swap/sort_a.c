@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   sort_a.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 18:39:39 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/15 11:03:31 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/15 16:33:31 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,27 @@ void	get_pivot(t_info *info, char stack_name)
 
 void	sort_a(t_info *info)
 {
-	int i;
+	if (info->a_size <= 3)
+		return ;
+	int	i;
+	int	a_size;
 
 	get_middle_num(info, 'a');
 	get_pivot(info, 'a');
+	a_size = 0;
 	i = 0;
-	while (info->a_size)
+	while (i < info->a_size)
 	{
-		if (info->a->num > info->pivot)
+		if (info->a->num >= info->pivot)
+		{
 			ra(info);
+			a_size++;
+		}
 		else
 			pb(info);
+		i++;
 	}
-	// b에서 a로 넘기기....
+	info->a_size = a_size;
+	sort_a(info);
+	sort_b(info);
 }

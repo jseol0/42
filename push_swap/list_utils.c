@@ -6,11 +6,30 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:14:50 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/10 15:02:36 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/15 16:55:17 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int		listcount(t_stack *top, t_stack *end)
+{
+	int	ret;
+	t_stack *tmp_top;
+	t_stack *tmp_end;
+
+	if (top == NULL)
+		return (0);
+	tmp_top = top;
+	tmp_end = end;
+	ret = 0;
+	while (tmp_top != tmp_end->next)
+	{
+		ret++;
+		tmp_top = tmp_top->next;
+	}
+	return (ret)
+}
 
 t_stack	*listlast(t_stack *lst)
 {
