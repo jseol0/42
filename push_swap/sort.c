@@ -6,19 +6,22 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 18:39:39 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/14 19:33:49 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/15 11:03:31 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	get_middle_num(t_info *info)
+void	get_middle_num(t_info *info, char stack_name)
 {
 	int max;
 	int min;
 	t_stack *tmp;
 
-	tmp = info->a;
+	if (stack_name == 'a')
+		tmp = info->a;
+	else
+		tmp = info->b;
 	max = tmp->num;
 	min = tmp->num;
 	while (tmp)
@@ -30,31 +33,34 @@ void	get_middle_num(t_info *info)
 	info->middle = (max + min) / 2;
 }
 
-void	get_pivot(t_info *info)
+void	get_pivot(t_info *info, char stack_name)
 {
 	int pivot;
 	int mid_num;
 	t_stack *tmp;
 
+	if (stack_name == 'a')
+		tmp = info->a;
+	else
+		tmp = info->b;
 	pivot = tmp->num;
-	tmp = info->a;
 	while (tmp)
 	{
 		mid_num = info->middle - tmp->num;
 		if (mid_num < 0)
 			mid_num *= -1;
-		pivot = pivot > mid_num ? mid_num : pivot;
+		pivot = (info->middle - pivot) > mid_num ? tmp->num : pivot;
 		tmp = tmp->next;
 	}
 	info->pivot = pivot;
 }
 
-void	sort(t_info *info)
+void	sort_a(t_info *info)
 {
 	int i;
 
-	get_middle_num(info);
-	get_pivot(info);
+	get_middle_num(info, 'a');
+	get_pivot(info, 'a');
 	i = 0;
 	while (info->a_size)
 	{

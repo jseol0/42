@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:25:04 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/14 19:33:51 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/15 10:23:09 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_info	*make_info(t_info *info, int argc, char **argv)
 	info->argv = argv;
 	info->middle = 0;
 	info->pivot = 0;
+	info->a_size = 0;
 
 	return (info);
 }
