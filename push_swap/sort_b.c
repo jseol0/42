@@ -6,48 +6,42 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 16:32:59 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/15 17:35:33 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/16 16:38:57 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 
-void	sort_b(t_info *info)
+void	sort_b(t_info *info, int b_size)
 {
-	t_stack *top;
-	t_stack *end;
-	int		n_top;
-	int		n_end;
+	int	i;
+	int	a_size;
 
-	top = info->b;
-	end = listlast(info->b);
-	n_top = 1;
-	n_end = listcount(top, end);
+	i = 0;
+	if (b_size <= 3)
+	{
+		sort_remain(info, 'b', b_size);
+		while (i++ < b_size)
+			pa(info);
+		return ;
+	}
 	get_middle_num(info, 'b');
 	get_pivot(info, 'b');
-	while (1)
+	a_size = 0;
+	while (i < b_size)
 	{
-		while (top->num >= pivot)
+		if (info->b->num >= info->pivot)
 		{
-			pa;
-			n_top++;
+			pa(info);
+			a_size++;
 		}
-		while (end->num <= pivot)
-		{
-			rrb;
-			pa;
-			n_end--;
-		}
-		if (n_top >= n_end)
-			break;
-		rrb(info);
-		sb(info);
-		rb(info);
-		top = top->next;
-		n_top++;
-		end = end->prev;
+		else
+			rb(info);
+		i++;
 	}
-
-
+	b_size = listcount(info->b);
+	listfirst(info->b);
+	sort_a(info, a_size);
+	sort_b(info, b_size);
 }

@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 11:59:33 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/10 16:21:32 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/16 15:49:29 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ra(t_info *info)
 		tmp = info->a->num;
 		stack_add_end(info, 'a', tmp);
 		stack_del_top(info, 'a');
+		write (1, "ra\n", 4);
 	}
 }
 
@@ -33,6 +34,7 @@ void	rb(t_info *info)
 		tmp = info->b->num;
 		stack_add_end(info, 'b', tmp);
 		stack_del_top(info, 'b');
+		write (1, "rb\n", 4);
 	}
 }
 
@@ -53,6 +55,7 @@ void	rra(t_info *info)
 		tmp = back->num;
 		stack_add_top(info, 'a', tmp);
 		stack_del_end(info, 'a');
+		write (1, "rra\n", 4);
 	}
 }
 
@@ -67,5 +70,6 @@ void	rrb(t_info *info)
 		tmp = back->num;
 		stack_add_top(info, 'b', tmp);
 		stack_del_end(info, 'b');
+		write (1, "rrb\n", 4);
 	}
 }
