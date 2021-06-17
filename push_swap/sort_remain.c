@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 08:57:59 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/16 17:12:24 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/17 15:36:50 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	sort_remain(t_info *info, char stack_name, int size)
 {
 	if (size == 3)
 		sort_3(info, stack_name);
-	else
+	else if (size == 2)
 	{
 		if (stack_name == 'a')
 		{

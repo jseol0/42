@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:53:29 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/16 17:30:13 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/17 15:34:38 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,11 @@ typedef struct		s_info
 	int				argc;
 	char			**argv;
 	int				middle;
+	int				middle_s;
+	int				middle_l;
 	int				pivot;
+	int				pivot_s;
+	int				pivot_l;
 	int				a_size;
 	int				max;
 	int				min;
@@ -69,6 +73,8 @@ void				hardsorting(t_info *info, t_stack *top, t_stack *end);
 void				sort_3(t_info *info, char stack_name);
 void				sort_remain(t_info *info, char stack_name, int size);
 void				get_middle_num(t_info *info, char stack_name);
+// void				get_pivot_s(t_info *info, char stack_name);
 void				get_pivot(t_info *info, char stack_name);
 int					ft_abs(int num);
+void				rerocate(t_info *info, int ra_count, int rb_count);
 #endif
