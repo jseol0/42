@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:53:29 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/17 19:49:24 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/21 17:34:30 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,17 @@ typedef struct		s_info
 	struct s_stack	*b;
 	int				argc;
 	char			**argv;
-	int				middle;
-	int				middle_s;
-	int				middle_l;
-	int				pivot;
-	int				pivot_s;
-	int				pivot_l;
 	int				a_size;
+	int				chunk_size;
 	int				max;
 	int				min;
+	int				*chunk;
+	int				b_max;
+	int				b_min;
+	int				a_move;
+	int				b_move;
+	int				a_move_count;
+	int				b_move_count;
 }					t_info;
 
 void				push_swap(int argc, char **argv);
@@ -72,4 +74,8 @@ void				hardsorting(t_info *info, t_stack *top, t_stack *end);
 void				sort_3(t_info *info);
 void				sort_remain(t_info *info, int size);
 int					ft_abs(int num);
+void				get_chunk(t_info *info);
+void				get_chunk_size(t_info *info, int a_size);
+void				sort_chunk(t_info *info);
+
 #endif
