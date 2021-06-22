@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:53:29 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/21 17:34:30 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/22 16:02:24 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct		s_info
 	char			**argv;
 	int				a_size;
 	int				chunk_size;
+	int				remain_chunk;
 	int				max;
 	int				min;
 	int				*chunk;
@@ -77,5 +78,23 @@ int					ft_abs(int num);
 void				get_chunk(t_info *info);
 void				get_chunk_size(t_info *info, int a_size);
 void				sort_chunk(t_info *info);
+int					find_chunk_top(t_info *info, int count);
+int					find_chunk_down(t_info *info, int count);
+int					find_remain_top(t_info *info, int count);
+int					find_remain_down(t_info *info, int count);
+void				a_to_b(t_info *info);
+void				push_b_first(t_info *info, int top, int down);
+void				push_b(t_info *info, int top, int down, int count);
+void				move_stack(t_info *info);
+void				move_stack_1(t_info *info);
+void				move_stack_2(t_info *info);
+void				move_stack_3(t_info *info);
+void				move_check(t_info *info, int top, int down);
+void				move_b_check_1(t_info *info);
+void				move_b_check_2(t_info *info, int a_num);
+void				move_b_check_3(t_info *info, int a_num);
+void				move_b_check_4(t_info *info, int a_num);
+void				move_b_check_5(t_info *info, t_stack *tmp_b,
+	t_stack *tmp_b_last, int a_num);
 
 #endif
