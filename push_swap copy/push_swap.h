@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:53:29 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/22 16:02:24 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/23 16:08:19 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ typedef struct		s_info
 	int				b_move;
 	int				a_move_count;
 	int				b_move_count;
+	int				a_num_prev;
+	int				a_num_next;
+	int				chunk_count;
 }					t_info;
 
 void				push_swap(int argc, char **argv);
@@ -74,7 +77,6 @@ void				sort_a(t_info *info, int a_size);
 void				hardsorting(t_info *info, t_stack *top, t_stack *end);
 void				sort_3(t_info *info);
 void				sort_remain(t_info *info, int size);
-int					ft_abs(int num);
 void				get_chunk(t_info *info);
 void				get_chunk_size(t_info *info, int a_size);
 void				sort_chunk(t_info *info);
@@ -95,6 +97,10 @@ void				move_b_check_2(t_info *info, int a_num);
 void				move_b_check_3(t_info *info, int a_num);
 void				move_b_check_4(t_info *info, int a_num);
 void				move_b_check_5(t_info *info, t_stack *tmp_b,
-	t_stack *tmp_b_last, int a_num);
+									t_stack *tmp_b_last);
+int					rb_count(t_stack *tmp, t_stack *tmp_last);
+int					rrb_count(t_stack *tmp, t_stack *tmp_last);
+void				find_b_in_chunk_1(t_info *info, int a_num);
+void				find_b_in_chunk_2(t_info *info, int a_num);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 18:39:39 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/22 18:51:11 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/23 10:47:50 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,6 @@ void	a_to_b(t_info *info)
 	{
 		top = find_chunk_top(info, i);
 		down = find_chunk_down(info, i);
-		printf("chunk %d %d\n", top, down);
 		push_b(info, top, down, 20);
 		i++;
 	}
@@ -125,7 +124,6 @@ void	a_to_b(t_info *info)
 	{
 		top = find_remain_top(info, i);
 		down = find_remain_down(info, i);
-		printf("remain %d %d\n", top, down);
 		push_b(info, top, down, info->remain_chunk);
 	}
 }

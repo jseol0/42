@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 15:45:33 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/22 18:47:52 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/23 16:31:14 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,17 @@ void	move_stack(t_info *info)
 	{
 		if (info->a_move_count > info->b_move_count)
 		{
-			while (info->b_move_count--)
+			while (i++ < info->b_move_count)
 				rr(info);
+			i = 0;
 			while (i++ < (info->a_move_count - info->b_move_count))
 				ra(info);
 		}
 		else
 		{
-			while (info->a_move_count--)
+			while (i++ < info->a_move_count)
 				rr(info);
+			i = 0;
 			while (i++ < (info->b_move_count - info->a_move_count))
 				rb(info);
 		}
@@ -88,6 +90,7 @@ void	push_b(t_info *info, int top, int down, int count)
 {
 	int i;
 
+	info->chunk_count = count;
 	i = 0;
 	while (i++ < count)
 	{
@@ -97,9 +100,18 @@ void	push_b(t_info *info, int top, int down, int count)
 			continue;
 		}
 		move_check(info, top, down);
-		printf("a_move : %d a_move_count : %d b_move : %d b_move_count : %d\n", info->a_move, info->a_move_count, info->b_move, info->b_move_count);
 		move_stack(info);
 		info->b_max = info->b->num > info->b_max ? info->b->num : info->b_max;
 		info->b_min = info->b->num < info->b_min ? info->b->num : info->b_min;
+
+		t_stack *tmp;
+		tmp = info->b;
+		while (tmp)
+		{
+			printf("%ld ", tmp->num);
+			tmp = tmp->next;
+		}
+		printf("\n");
+		printf("\n");
 	}
 }
