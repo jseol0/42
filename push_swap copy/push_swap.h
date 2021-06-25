@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:53:29 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/23 16:08:19 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/25 16:34:07 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct		s_info
 	int				a_num_prev;
 	int				a_num_next;
 	int				chunk_count;
+	int				b_after_move;
 }					t_info;
 
 void				push_swap(int argc, char **argv);
@@ -88,13 +89,15 @@ void				a_to_b(t_info *info);
 void				push_b_first(t_info *info, int top, int down);
 void				push_b(t_info *info, int top, int down, int count);
 void				move_stack(t_info *info);
+void				move_stack_0(t_info *info);
 void				move_stack_1(t_info *info);
 void				move_stack_2(t_info *info);
 void				move_stack_3(t_info *info);
+void				b_after_move(t_info *info);
 void				move_check(t_info *info, int top, int down);
 void				move_b_check_1(t_info *info);
-void				move_b_check_2(t_info *info, int a_num);
-void				move_b_check_3(t_info *info, int a_num);
+void				move_b_check_2(t_info *info);
+void				move_b_check_3(t_info *info);
 void				move_b_check_4(t_info *info, int a_num);
 void				move_b_check_5(t_info *info, t_stack *tmp_b,
 									t_stack *tmp_b_last);

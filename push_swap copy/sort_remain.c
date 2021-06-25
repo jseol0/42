@@ -6,15 +6,16 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 08:57:59 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/17 19:49:19 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/25 17:40:46 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_5(t_info *info)
+void	sort_5(t_info *info)	// 5개일 경우 다시보기!
 {
-	int count;
+	int	count;
+	int	i;
 
 	count = 0;
 	while (listcount(info->a) != 3)
@@ -42,7 +43,8 @@ void	sort_5(t_info *info)
 			}
 			ra(info);
 			pa(info);
-			while (count--)
+			i = 0;
+			while (i++ < count)
 				rra(info);
 			rra(info);
 		}

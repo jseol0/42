@@ -1,16 +1,68 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_chunk.c                                        :+:      :+:    :+:   */
+/*   chunk.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 13:24:33 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/22 17:37:23 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/25 16:22:18 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	find_b_in_chunk_2(t_info *info, int a_num)
+{
+	t_stack *tmp;
+	int i;
+	int pivot;
+
+	i = 0;
+	while (info->chunk[i] != a_num)
+		i++;
+	pivot = i;
+	while (pivot < info->chunk_count)
+	{
+		pivot++;
+		tmp = info->b;
+		while (tmp)
+		{
+			if (tmp->num == info->chunk[pivot])
+			{
+				info->a_num_next = tmp->num;
+				return ;
+			}
+			tmp = tmp->next;
+		}
+	}
+}
+
+void	find_b_in_chunk_1(t_info *info, int a_num)
+{
+	t_stack *tmp;
+	int i;
+	int pivot;
+
+	i = 0;
+	while (info->chunk[i] != a_num)
+		i++;
+	pivot = i;
+	while (pivot > -1)
+	{
+		pivot--;
+		tmp = info->b;
+		while (tmp)
+		{
+			if (tmp->num == info->chunk[pivot])
+			{
+				info->a_num_prev = tmp->num;
+				return ;
+			}
+			tmp = tmp->next;
+		}
+	}
+}
 
 void	sort_chunk(t_info *info)
 {

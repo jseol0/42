@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 15:45:33 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/23 16:31:14 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/25 17:24:04 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	push_b_first(t_info *info, int top, int down)
 	pb(info);
 	info->b_max = info->b->num > info->b_max ? info->b->num : info->b_max;
 	info->b_min = info->b->num < info->b_min ? info->b->num : info->b_min;
+	if (info->b->next != NULL && info->b->num < info->b->next->num)
+		rb(info);
 }
 
 void	move_check(t_info *info, int top, int down)
@@ -55,35 +57,20 @@ void	move_check(t_info *info, int top, int down)
 
 void	move_stack(t_info *info)
 {
-	int	i;
-
-	i = 0;
 	if (info->a_move == 0 && info->b_move == 0)
-	{
-		if (info->a_move_count > info->b_move_count)
-		{
-			while (i++ < info->b_move_count)
-				rr(info);
-			i = 0;
-			while (i++ < (info->a_move_count - info->b_move_count))
-				ra(info);
-		}
-		else
-		{
-			while (i++ < info->a_move_count)
-				rr(info);
-			i = 0;
-			while (i++ < (info->b_move_count - info->a_move_count))
-				rb(info);
-		}
-		pb(info);
-	}
+		move_stack_0(info);
 	else if (info->a_move == 0 && info->b_move == 1)
 		move_stack_1(info);
 	else if (info->a_move == 1 && info->b_move == 1)
 		move_stack_2(info);
 	else if (info->a_move == 1 && info->b_move == 0)
 		move_stack_3(info);
+	info->b_max = info->b->num > info->b_max ? info->b->num : info->b_max;
+	info->b_min = info->b->num < info->b_min ? info->b->num : info->b_min;
+	if (info->b_after_move == 1)
+		rb(info);
+	else if (info->b_after_move == 2)
+		b_after_move(info);
 }
 
 void	push_b(t_info *info, int top, int down, int count)
@@ -103,15 +90,5 @@ void	push_b(t_info *info, int top, int down, int count)
 		move_stack(info);
 		info->b_max = info->b->num > info->b_max ? info->b->num : info->b_max;
 		info->b_min = info->b->num < info->b_min ? info->b->num : info->b_min;
-
-		t_stack *tmp;
-		tmp = info->b;
-		while (tmp)
-		{
-			printf("%ld ", tmp->num);
-			tmp = tmp->next;
-		}
-		printf("\n");
-		printf("\n");
 	}
 }

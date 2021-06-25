@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:38:39 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/23 16:51:38 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/25 16:37:40 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	move_b_check_5(t_info *info, t_stack *tmp_b,
 		tmp_b_last = tmp_b_last->prev;
 		rrb_count++;
 	}
-	info->b_move = rb_count > rrb_count ? 0 : 1;
+	info->b_move = rb_count > rrb_count ? 1 : 0;
 	info->b_move_count = rb_count > rrb_count ? rrb_count : rb_count;
 }
 
@@ -52,11 +52,11 @@ void	move_b_check_4(t_info *info, int a_num)
 	listfirst(tmp_b);
 	find_b_in_chunk_1(info, a_num);
 	find_b_in_chunk_2(info, a_num);
-	printf("a_num : %d prev : %d next : %d\n", a_num, info->a_num_prev, info->a_num_next);
 	move_b_check_5(info, tmp_b, tmp_b_last);
+	info->b_after_move = 2;
 }
 
-void	move_b_check_3(t_info *info, int a_num)
+void	move_b_check_3(t_info *info)
 {
 	t_stack	*tmp_b;
 	int		rb_count;
@@ -65,27 +65,24 @@ void	move_b_check_3(t_info *info, int a_num)
 	tmp_b = info->b;
 	rb_count = 0;
 	rrb_count = 0;
-	if (a_num < info->b_min)
+
+	while (tmp_b->num != info->b_min)
 	{
-		while (tmp_b->num != info->b_min)
-		{
-			tmp_b = tmp_b->next;
-			rb_count++;
-		}
-		listlast(tmp_b);
-		while (tmp_b->num != info->b_min)
-		{
-			tmp_b = tmp_b->prev;
-			rrb_count++;
-		}
-		info->b_move = rb_count > rrb_count ? 0 : 1;
-		info->b_move_count = rb_count > rrb_count ? rrb_count : rb_count;
+		tmp_b = tmp_b->next;
+		rb_count++;
 	}
-	else if (a_num < info->b_max && a_num > info->b_min)
-		move_b_check_4(info, a_num);
+	listlast(tmp_b);
+	while (tmp_b->num != info->b_min)
+	{
+		tmp_b = tmp_b->prev;
+		rrb_count++;
+	}
+	info->b_move = rb_count > rrb_count ? 1 : 0;
+	info->b_move_count = rb_count > rrb_count ? rrb_count : rb_count;
+	info->b_after_move = 1;
 }
 
-void	move_b_check_2(t_info *info, int a_num)
+void	move_b_check_2(t_info *info)
 {
 	t_stack	*tmp_b;
 	int		rb_count;
@@ -94,25 +91,19 @@ void	move_b_check_2(t_info *info, int a_num)
 	tmp_b = info->b;
 	rb_count = 0;
 	rrb_count = 0;
-	if (a_num > info->b_max)
+	while (tmp_b->num != info->b_max)
 	{
-		while (tmp_b->num != info->b_max)
-		{
-			tmp_b = tmp_b->next;
-			rb_count++;
-		}
-		listlast(tmp_b);
-		while (tmp_b->num != info->b_max)
-		{
-			tmp_b = tmp_b->prev;
-			rrb_count++;
-		}
-		info->b_move = rb_count > rrb_count ? 0 : 1;
-		info->b_move_count = rb_count > rrb_count ? rrb_count : rb_count;
+		tmp_b = tmp_b->next;
+		rb_count++;
 	}
-	else
-		move_b_check_3(info, a_num);
-
+	listlast(tmp_b);
+	while (tmp_b->num != info->b_max)
+	{
+		tmp_b = tmp_b->prev;
+		rrb_count++;
+	}
+	info->b_move = rb_count > rrb_count ? 1 : 0;
+	info->b_move_count = rb_count > rrb_count ? rrb_count : rb_count;
 }
 
 void	move_b_check_1(t_info *info)
@@ -136,5 +127,10 @@ void	move_b_check_1(t_info *info)
 			tmp_a = tmp_a->prev;
 		a_num = tmp_a->num;
 	}
-	move_b_check_2(info, a_num);
+	if (a_num > info->b_max)
+		move_b_check_2(info);
+	else if (a_num < info->b_min)
+		move_b_check_3(info);
+	else if (a_num < info->b_max && a_num > info->b_min)
+		move_b_check_4(info, a_num);
 }

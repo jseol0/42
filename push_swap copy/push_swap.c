@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 12:22:36 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/23 16:05:06 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/25 17:02:11 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ void		push_swap(int argc, char **argv)
 	a_size = listcount(info->a);
 	info->a_size = a_size;
 	sort_a(info, a_size);
+	while (info->a)
+	{
+		printf("%ld ", info->a->num);
+		info->a = info->a->next;
+	}
+	printf("\n");
 }
 
 int	main(int argc, char **argv)
