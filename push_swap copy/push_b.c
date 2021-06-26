@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 15:45:33 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/25 17:24:04 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/26 18:22:56 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	move_check(t_info *info, int top, int down)
 
 void	move_stack(t_info *info)
 {
+	printf("b_move : %d b_move_count : %d\n", info->b_move, info->b_move_count);
 	if (info->a_move == 0 && info->b_move == 0)
 		move_stack_0(info);
 	else if (info->a_move == 0 && info->b_move == 1)
@@ -90,5 +91,13 @@ void	push_b(t_info *info, int top, int down, int count)
 		move_stack(info);
 		info->b_max = info->b->num > info->b_max ? info->b->num : info->b_max;
 		info->b_min = info->b->num < info->b_min ? info->b->num : info->b_min;
+		t_stack *tmp;
+		tmp = info->b;
+		while (tmp)
+		{
+			printf("%ld ", tmp->num);
+			tmp = tmp->next;
+		}
+		printf("\n\n");
 	}
 }

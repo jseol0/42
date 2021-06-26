@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:38:39 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/25 16:37:40 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/26 18:22:54 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ void	move_b_check_2(t_info *info)
 	}
 	info->b_move = rb_count > rrb_count ? 1 : 0;
 	info->b_move_count = rb_count > rrb_count ? rrb_count : rb_count;
+	info->b_after_move = 0;
 }
 
 void	move_b_check_1(t_info *info)
@@ -127,6 +128,7 @@ void	move_b_check_1(t_info *info)
 			tmp_a = tmp_a->prev;
 		a_num = tmp_a->num;
 	}
+	printf("a_num : %d b_max : %d b_min : %d\n", a_num, info->b_max, info->b_min);
 	if (a_num > info->b_max)
 		move_b_check_2(info);
 	else if (a_num < info->b_min)
