@@ -1,20 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/16 17:28:51 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/16 17:36:32 by jseol            ###   ########.fr       */
+/*   Created: 2021/06/27 13:18:13 by jseol             #+#    #+#             */
+/*   Updated: 2021/06/27 14:59:33 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_abs(int num)
+void	free_stack(t_info *info)
 {
-	if (num < 0)
-		num *= -1;
-	return (num);
+	t_stack *tmp;
+
+	tmp = info->b;
+	while (info->b)
+	{
+		info->b = info->b->next;
+		free(tmp);
+		tmp = info->b;
+	}
+	tmp = info->a;
+	while (info->a)
+	{
+		info->a = info->a->next;
+		free(tmp);
+		tmp = info->a;
+	}
+}
+
+void	split_free(char **ptr)
+{
+	int i;
+
+	i = 0;
+	while (ptr[i])
+	{
+		free(ptr[i]);
+		i++;
+	}
+	free(ptr);
 }

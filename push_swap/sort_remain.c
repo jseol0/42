@@ -6,34 +6,46 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 08:57:59 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/17 15:36:50 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/27 17:26:34 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	hardsorting_rev(t_info *info, t_stack *top, t_stack *end)
+void	sort_5(t_info *info)	// 5개일 경우 다시보기!
 {
-	int max;
-	int min;
+	int	count;
+	int	i;
 
-	max = info->max;
-	min = info->min;
-	if (top->num == min && end->num != max)
-		rb(info);
-	else if ((top->num != max && top->num != min) && end->num == max)
-		rrb(info);
-	else if ((top->num != max && top->num != min) && end->num == min)
-		sb(info);
-	else if (top->num == max && end->num != min)
+	while (listcount(info->a) != 3)
+		pb(info);
+	sort_3(info);
+	while (info->b)
 	{
-		rrb(info);
-		sb(info);
-	}
-	else if (top->num == min && end->num == max)
-	{
-		sb(info);
-		rrb(info);
+		if (info->b->num < info->min)
+		{
+			pa(info);
+			info->min = info->a->num;
+		}
+		else if (info->b->num > info->max)
+		{
+			pa(info);
+			info->max = info->a->num;
+			ra(info);
+		}
+		else
+		{
+			count = 0;
+			while (!(info->b->num < info->a->num && info->b->num > listlast(info->a)->num))
+			{
+				ra(info);
+				count++;
+			}
+			pa(info);
+			i = 0;
+			while (i++ < count)
+				rra(info);
+		}
 	}
 }
 
@@ -62,16 +74,14 @@ void	hardsorting(t_info *info, t_stack *top, t_stack *end)
 	}
 }
 
-void		sort_3(t_info *info, char stack_name)
+void		sort_3(t_info *info)
 {
 	t_stack	*top;
 	t_stack	*end;
 	t_stack *tmp;
 
-	if (stack_name == 'a')
-		tmp = info->a;
-	else
-		tmp = info->b;
+
+	tmp = info->a;
 	top = tmp;
 	end = listlast(tmp);
 	listfirst(tmp);
@@ -84,27 +94,24 @@ void		sort_3(t_info *info, char stack_name)
 		top = top->next;
 	}
 	top = tmp;
-	if (stack_name == 'a')
-		hardsorting(info, top, end);
-	else
-		hardsorting_rev(info, top, end);
+	hardsorting(info, top, end);
 }
 
-void	sort_remain(t_info *info, char stack_name, int size)
+void	sort_remain(t_info *info, int size)
 {
-	if (size == 3)
-		sort_3(info, stack_name);
+	if (size == 5 || size == 4)
+		sort_5(info);
+	else if (size == 3)
+		sort_3(info);
 	else if (size == 2)
 	{
-		if (stack_name == 'a')
-		{
-			if (info->a->num > info->a->next->num)
-				sa(info);
-		}
-		else
-		{
-			if (info->b->num < info->b->next->num)
-				sb(info);
-		}
+		if (info->a->num > info->a->next->num)
+			sa(info);
+	}
+	else if (size == 1)
+	{
+		free_stack(info);
+		free(info);
+		exit (0);
 	}
 }

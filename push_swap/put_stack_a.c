@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:30:21 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/15 12:30:43 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/27 13:21:45 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,40 +38,6 @@ long		push_swap_atoi(const char *str)
 	return (ret);
 }
 
-void	check_size(t_info *info)
-{
-	long tmp;
-
-	tmp = info->a->num;
-	if (tmp > 2147283647 || tmp < -2147483648)
-	{
-		write (2, "error\n", 6);
-		exit (1);
-	}
-}
-
-void	check_duplicate(t_info *info)
-{
-	t_stack *tmp1;
-	t_stack *tmp2;
-
-	tmp1 = info->a;
-	while (tmp1->next != NULL)
-	{
-		tmp2 = tmp1->next;
-		while (tmp2 != NULL)
-		{
-			if (tmp1->num == tmp2->num)
-			{
-				write (2, "error\n", 6);
-				exit (1);
-			}
-			tmp2 = tmp2->next;
-		}
-		tmp1 = tmp1->next;
-	}
-}
-
 void	put_stack_a(t_info *info)
 {
 	int		i;
@@ -80,19 +46,20 @@ void	put_stack_a(t_info *info)
 	i = 0;
 	if (info->argc == 2 && info->argv[1][1])
 	{
-		ptr = ft_split(*(info->argv + 1), ' ');	// free
+		ptr = ft_split(*(info->argv + 1), ' ');
 		while (*(ptr + i))
 		{
-			stack_add_end(info, 'a', atoi(*(ptr + i)));
+			stack_add_end(info, 'a', push_swap_atoi(*(ptr + i)));
 			i++;
 			check_size(info);
 		}
+		split_free(ptr);
 	}
 	else
 	{
 		while (i + 1 < info->argc)
 		{
-			stack_add_end(info, 'a', atoi(*(info->argv + i + 1)));
+			stack_add_end(info, 'a', push_swap_atoi(*(info->argv + i + 1)));
 			i++;
 			check_size(info);
 		}

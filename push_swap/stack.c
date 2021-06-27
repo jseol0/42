@@ -6,13 +6,13 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:30:17 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/10 16:09:04 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/27 16:50:59 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		stack_add_top(t_info *info, char stack_name, int num)
+void		stack_add_top(t_info *info, char stack_name, long num)
 {
 	t_stack	**top;
 	t_stack	*tmp;
@@ -25,9 +25,10 @@ void		stack_add_top(t_info *info, char stack_name, int num)
 	{
 		if (!(tmp = (t_stack *)malloc(sizeof(t_stack))))
 		{
-			write (2, "error\n", 6);
-			// 나머지들 free 해주기
-			exit (-1);
+			write (2, "Error\n", 6);
+			free_stack(info);
+			free(info);
+			exit (1);
 		}
 		tmp->next = *top;
 		tmp->prev = NULL;
@@ -39,9 +40,10 @@ void		stack_add_top(t_info *info, char stack_name, int num)
 	{
 		if (!(*top = (t_stack *)malloc(sizeof(t_stack))))
 		{
-			write (2, "error\n", 6);
-			// 나머지들 free 해주기
-			exit (-1);
+			write (2, "Error\n", 6);
+			free_stack(info);
+			free(info);
+			exit (1);
 		}
 		(*top)->next = NULL;
 		(*top)->prev = NULL;
@@ -75,7 +77,7 @@ void		stack_del_top(t_info *info, char stack_name)
 	}
 }
 
-void		stack_add_end(t_info *info, char stack_name, int num)
+void		stack_add_end(t_info *info, char stack_name, long num)
 {
 	t_stack	**top;
 	t_stack	*tmp;
@@ -88,9 +90,10 @@ void		stack_add_end(t_info *info, char stack_name, int num)
 	{
 		if (!(tmp = (t_stack *)malloc(sizeof(t_stack))))
 		{
-			write (2, "error\n", 6);
-			// 나머지들 free 해주기
-			exit (-1);
+			write (2, "Error\n", 6);
+			free_stack(info);
+			free(info);
+			exit (1);
 		}
 		*top = listlast(*top);
 		tmp->num = num;
@@ -103,9 +106,10 @@ void		stack_add_end(t_info *info, char stack_name, int num)
 	{
 		if (!(*top = (t_stack *)malloc(sizeof(t_stack))))
 		{
-			write (2, "error\n", 6);
-			// 나머지들 free 해주기
-			exit (-1);
+			write (2, "Error\n", 6);
+			free_stack(info);
+			free(info);
+			exit (1);
 		}
 		(*top)->next = NULL;
 		(*top)->prev = NULL;

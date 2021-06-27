@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:53:29 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/17 15:34:38 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/27 16:51:23 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,22 @@ typedef struct		s_info
 	struct s_stack	*b;
 	int				argc;
 	char			**argv;
-	int				middle;
-	int				middle_s;
-	int				middle_l;
-	int				pivot;
-	int				pivot_s;
-	int				pivot_l;
 	int				a_size;
+	int				chunk_size;
+	int				remain_chunk;
 	int				max;
 	int				min;
+	int				*chunk;
+	int				b_max;
+	int				b_min;
+	int				a_move;
+	int				b_move;
+	int				a_move_count;
+	int				b_move_count;
+	int				a_num_prev;
+	int				a_num_next;
+	int				chunk_count;
+	int				b_after_move;
 }					t_info;
 
 void				push_swap(int argc, char **argv);
@@ -49,9 +56,9 @@ void				put_stack_a(t_info *info);
 long				push_swap_atoi(const char *str);
 void				check_size(t_info *info);
 void				check_duplicate(t_info *info);
-void				stack_add_top(t_info *info, char stack_name, int num);
+void				stack_add_top(t_info *info, char stack_name, long num);
 void				stack_del_top(t_info *info, char stack_name);
-void				stack_add_end(t_info *info, char stack_name, int num);
+void				stack_add_end(t_info *info, char stack_name, long num);
 void				stack_del_end(t_info *info, char stack_name);
 void				sa(t_info *info);
 void				sb(t_info *info);
@@ -68,13 +75,40 @@ t_stack				*listlast(t_stack *lst);
 t_stack				*listfirst(t_stack *lst);
 int					listcount(t_stack *top);
 void				sort_a(t_info *info, int a_size);
-void				sort_b(t_info *info, int b_size);
 void				hardsorting(t_info *info, t_stack *top, t_stack *end);
-void				sort_3(t_info *info, char stack_name);
-void				sort_remain(t_info *info, char stack_name, int size);
-void				get_middle_num(t_info *info, char stack_name);
-// void				get_pivot_s(t_info *info, char stack_name);
-void				get_pivot(t_info *info, char stack_name);
-int					ft_abs(int num);
-void				rerocate(t_info *info, int ra_count, int rb_count);
+void				sort_3(t_info *info);
+void				sort_remain(t_info *info, int size);
+void				get_chunk(t_info *info);
+void				get_chunk_size(t_info *info, int a_size);
+void				sort_chunk(t_info *info);
+int					find_chunk_top(t_info *info, int count);
+int					find_chunk_down(t_info *info, int count);
+int					find_remain_top(t_info *info, int count);
+int					find_remain_down(t_info *info, int count);
+void				a_to_b(t_info *info);
+void				push_b_first(t_info *info, int top, int down);
+void				push_b(t_info *info, int top, int down, int count);
+void				move_stack(t_info *info);
+void				move_stack_0(t_info *info);
+void				move_stack_1(t_info *info);
+void				move_stack_2(t_info *info);
+void				move_stack_3(t_info *info);
+void				b_after_move(t_info *info);
+void				move_check(t_info *info, int top, int down);
+void				move_b_check_1(t_info *info);
+void				move_b_check_2(t_info *info);
+void				move_b_check_3(t_info *info);
+void				move_b_check_4(t_info *info, int a_num);
+void				move_b_check_5(t_info *info, t_stack *tmp_b,
+									t_stack *tmp_b_last);
+int					rb_count(t_stack *tmp, t_stack *tmp_last);
+int					rrb_count(t_stack *tmp, t_stack *tmp_last);
+void				find_b_in_chunk_1(t_info *info, int a_num);
+void				find_b_in_chunk_2(t_info *info, int a_num);
+void				check_sorted(t_info *info);
+void				sort_arr(int *arr, int count);
+void				split_free(char **ptr);
+void				free_b(t_info *info);
+void				free_stack(t_info *info);
+
 #endif

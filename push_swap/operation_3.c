@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 15:38:40 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/17 14:58:06 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/27 16:28:48 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ void	rrr(t_info *info)
 		stack_add_top(info, 'b', tmp);
 		stack_del_end(info, 'b');
 	}
-	write (1, "rrr\n", 5);
+	write (1, "rrr\n", 4);
 }
