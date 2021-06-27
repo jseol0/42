@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 15:45:33 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/27 13:36:35 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/27 22:49:42 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,18 +73,38 @@ void	move_stack(t_info *info)
 		b_after_move(info);
 }
 
-void	push_b(t_info *info, int top, int down, int count)
+void	push_b(t_info *info, int top, int down, int count, int i)
 {
-	int i;
+	int j;
 
 	info->chunk_count = count;
-	i = 0;
-	while (i++ < count)
+	j = 0;
+	while (j++ < count)
 	{
 		if (info->b == NULL || listcount(info->b) == 1)
 		{
 			push_b_first(info, top, down);
+			if (count == 20)
+			{
+				top = find_chunk_top(info, i);
+				down = find_chunk_down(info, i);
+			}
+			else
+			{
+				top = find_remain_top(info, i);
+				down = find_remain_down(info, i);
+			}
 			continue;
+		}
+		if (count == 20)
+		{
+			top = find_chunk_top(info, i);
+			down = find_chunk_down(info, i);
+		}
+		else
+		{
+			top = find_remain_top(info, i);
+			down = find_remain_down(info, i);
 		}
 		move_check(info, top, down);
 		move_stack(info);

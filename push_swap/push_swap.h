@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:53:29 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/27 16:51:23 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/27 22:12:32 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int					find_remain_top(t_info *info, int count);
 int					find_remain_down(t_info *info, int count);
 void				a_to_b(t_info *info);
 void				push_b_first(t_info *info, int top, int down);
-void				push_b(t_info *info, int top, int down, int count);
+void				push_b(t_info *info, int top, int down, int count, int i);
 void				move_stack(t_info *info);
 void				move_stack_0(t_info *info);
 void				move_stack_1(t_info *info);
