@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:53:29 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/27 22:12:32 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/28 17:15:30 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct		s_stack
 {
 	long			num;
+	char			*operation;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }					t_stack;
@@ -29,6 +30,7 @@ typedef struct		s_info
 {
 	struct s_stack	*a;
 	struct s_stack	*b;
+	struct s_stack	*operation;
 	int				argc;
 	char			**argv;
 	int				a_size;
@@ -45,7 +47,6 @@ typedef struct		s_info
 	int				b_move_count;
 	int				a_num_prev;
 	int				a_num_next;
-	int				chunk_count;
 	int				b_after_move;
 }					t_info;
 
@@ -110,5 +111,9 @@ void				sort_arr(int *arr, int count);
 void				split_free(char **ptr);
 void				free_b(t_info *info);
 void				free_stack(t_info *info);
+t_stack 			*create_node(char *operation);
+void				append_node(t_stack **head, t_stack *newnode);
+void				compress_oper(t_stack *oper);
+int					compression_condition(t_stack *oper);
 
 #endif

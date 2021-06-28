@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 13:24:33 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/27 15:11:48 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/28 14:49:50 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	find_b_in_chunk_2(t_info *info, int a_num)
 	while (info->chunk[i] != a_num)
 		i++;
 	pivot = i;
-	while (pivot < info->chunk_count)
+	while (pivot < info->a_size)
 	{
 		pivot++;
 		tmp = info->b;

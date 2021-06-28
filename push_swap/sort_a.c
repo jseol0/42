@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 18:39:39 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/27 22:50:09 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/28 13:22:08 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,19 +122,10 @@ void	a_to_b(t_info *info)
 	}
 	if (info->remain_chunk)
 	{
-		printf("remin\n");
 		top = find_remain_top(info, i);
 		down = find_remain_down(info, i);
 		push_b(info, top, down, info->remain_chunk, i);
 	}
-	t_stack *tmp;
-	tmp = info->b;
-	while (tmp)
-	{
-		printf("%ld ", tmp->num);
-		tmp = tmp->next;
-	}
-	printf("\n");
 }
 
 void	sort_a(t_info *info, int a_size)

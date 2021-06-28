@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 23:12:06 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/27 16:28:23 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/28 17:37:58 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	sa(t_info *info)
 		tmp = info->a->num;
 		info->a->num = info->a->next->num;
 		info->a->next->num = tmp;
-		write (1, "sa\n", 3);
+		append_node(&info->operation, create_node("sa"));
 	}
 }
 
@@ -34,7 +34,7 @@ void	sb(t_info *info)
 		tmp = info->b->num;
 		info->b->num = info->b->next->num;
 		info->b->next->num = tmp;
-		write (1, "sb\n", 3);
+		append_node(&info->operation, create_node("sb"));
 	}
 }
 
@@ -54,7 +54,7 @@ void	ss(t_info *info)
 		info->b->num = info->b->next->num;
 		info->b->next->num = tmp;
 	}
-	write (1, "ss\n", 3);
+	append_node(&info->operation, create_node("ss"));
 }
 
 void	pa(t_info *info)
@@ -66,7 +66,7 @@ void	pa(t_info *info)
 		tmp = info->b->num;
 		stack_del_top(info, 'b');
 		stack_add_top(info, 'a', tmp);
-		write (1, "pa\n", 3);
+		append_node(&info->operation, create_node("pa"));
 	}
 }
 
@@ -79,6 +79,6 @@ void	pb(t_info *info)
 		tmp = info->a->num;
 		stack_del_top(info, 'a');
 		stack_add_top(info, 'b', tmp);
-		write (1, "pb\n", 3);
+		append_node(&info->operation, create_node("pb"));
 	}
 }

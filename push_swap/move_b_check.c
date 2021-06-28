@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:38:39 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/27 13:36:06 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/28 14:54:02 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	move_b_check_4(t_info *info, int a_num)
 
 	tmp_b = info->b;
 	tmp_b_last = listlast(tmp_b);
-	listfirst(tmp_b);
+	tmp_b = listfirst(tmp_b);
 	find_b_in_chunk_1(info, a_num);
 	find_b_in_chunk_2(info, a_num);
 	move_b_check_5(info, tmp_b, tmp_b_last);
@@ -71,7 +71,7 @@ void	move_b_check_3(t_info *info)
 		tmp_b = tmp_b->next;
 		rb_count++;
 	}
-	listlast(tmp_b);
+	tmp_b = listlast(tmp_b);
 	while (tmp_b->num != info->b_min)
 	{
 		tmp_b = tmp_b->prev;
@@ -96,7 +96,7 @@ void	move_b_check_2(t_info *info)
 		tmp_b = tmp_b->next;
 		rb_count++;
 	}
-	listlast(tmp_b);
+	tmp_b = listlast(tmp_b);
 	while (tmp_b->num != info->b_max)
 	{
 		tmp_b = tmp_b->prev;

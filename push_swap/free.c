@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 13:18:13 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/27 14:59:33 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/28 17:42:54 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ void	free_stack(t_info *info)
 		info->a = info->a->next;
 		free(tmp);
 		tmp = info->a;
+	}
+	tmp = info->operation;
+	while (info->operation)
+	{
+		info->operation = info->operation->next;
+		free(tmp);
+		tmp = info->operation;
 	}
 }
 

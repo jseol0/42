@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 15:45:33 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/27 22:49:42 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/28 14:53:42 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	push_b_first(t_info *info, int top, int down)
 	int i;
 
 	i = 0;
-	if (top < (info->a_size - down))
+	if (top <= (info->a_size - down))
 	{
 		while (i < top)
 		{
@@ -37,7 +37,7 @@ void	push_b_first(t_info *info, int top, int down)
 	info->b_max = info->b->num > info->b_max ? info->b->num : info->b_max;
 	info->b_min = info->b->num < info->b_min ? info->b->num : info->b_min;
 	if (info->b->next != NULL && info->b->num < info->b->next->num)
-		rb(info);
+		sb(info);
 }
 
 void	move_check(t_info *info, int top, int down)
@@ -77,11 +77,10 @@ void	push_b(t_info *info, int top, int down, int count, int i)
 {
 	int j;
 
-	info->chunk_count = count;
 	j = 0;
-	while (j++ < count)
+	while (j < count)
 	{
-		if (info->b == NULL || listcount(info->b) == 1)
+		if (j == 0 || j == 1)
 		{
 			push_b_first(info, top, down);
 			if (count == 20)
@@ -94,6 +93,7 @@ void	push_b(t_info *info, int top, int down, int count, int i)
 				top = find_remain_top(info, i);
 				down = find_remain_down(info, i);
 			}
+			j++;
 			continue;
 		}
 		if (count == 20)
@@ -110,5 +110,6 @@ void	push_b(t_info *info, int top, int down, int count, int i)
 		move_stack(info);
 		info->b_max = info->b->num > info->b_max ? info->b->num : info->b_max;
 		info->b_min = info->b->num < info->b_min ? info->b->num : info->b_min;
+		j++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 12:22:36 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/27 16:43:40 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/28 17:43:06 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@ void		push_swap(int argc, char **argv)
 	info->a_size = a_size;
 	check_sorted(info);
 	sort_a(info, a_size);
-	// while (info->a)
-	// {
-	// 	printf("%ld ", info->a->num);
-	// 	info->a = info->a->next;
-	// }
+	compress_oper(info->operation);
+	while (info->operation)
+	{
+		printf("%s\n", info->operation->operation);
+		info->operation = info->operation->next;
+	}
 	free_stack(info);
 	free(info);
 }
