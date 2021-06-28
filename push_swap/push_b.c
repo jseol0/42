@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 15:45:33 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/28 14:53:42 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/28 22:13:35 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	move_check(t_info *info, int top, int down)
 		info->a_move = 1;
 		info->a_move_count = info->a_size - down;
 	}
+	printf("5\n");
 	move_b_check_1(info);
 }
 
@@ -80,6 +81,7 @@ void	push_b(t_info *info, int top, int down, int count, int i)
 	j = 0;
 	while (j < count)
 	{
+		printf("4\n");
 		if (j == 0 || j == 1)
 		{
 			push_b_first(info, top, down);
@@ -106,10 +108,20 @@ void	push_b(t_info *info, int top, int down, int count, int i)
 			top = find_remain_top(info, i);
 			down = find_remain_down(info, i);
 		}
+		printf("4-1\n");
 		move_check(info, top, down);
+		printf("4-2\n");
 		move_stack(info);
+		printf("4-3\n");
 		info->b_max = info->b->num > info->b_max ? info->b->num : info->b_max;
 		info->b_min = info->b->num < info->b_min ? info->b->num : info->b_min;
 		j++;
 	}
+	// t_stack *tmp = info->b;
+	// while (tmp)
+	// {
+	// 	printf("%ld ", tmp->num);
+	// 	tmp = tmp->next;
+	// }
+	// printf("\n");
 }

@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 18:39:39 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/28 13:22:08 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/28 21:52:28 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,15 +116,21 @@ void	a_to_b(t_info *info)
 	while (i < info->chunk_size)
 	{
 		top = find_chunk_top(info, i);
+		printf("1-1\n");
 		down = find_chunk_down(info, i);
+		printf("2-1\n");
 		push_b(info, top, down, 20, i);
+		printf("3\n");
 		i++;
 	}
 	if (info->remain_chunk)
 	{
 		top = find_remain_top(info, i);
+		printf("1-2\n");
 		down = find_remain_down(info, i);
+		printf("2-2\n");
 		push_b(info, top, down, info->remain_chunk, i);
+		printf("3\n");
 	}
 }
 
