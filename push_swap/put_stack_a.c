@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:30:21 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/27 13:21:45 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/29 16:37:54 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ long		push_swap_atoi(const char *str)
 	return (ret);
 }
 
-void	put_stack_a(t_info *info)
+void		put_stack_a(t_info *info)
 {
 	int		i;
 	char	**ptr;

@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 16:19:55 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/28 17:35:27 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/29 15:58:47 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		compression_condition(t_stack *oper)
 			&& ft_strcmp(tmp->next->operation, "rrb") == 0)
 		|| (ft_strcmp(tmp->operation, "rrb") == 0
 			&& ft_strcmp(tmp->next->operation, "rb") == 0)
-		||(ft_strcmp(tmp->operation, "rr") == 0
+		|| (ft_strcmp(tmp->operation, "rr") == 0
 			&& ft_strcmp(tmp->next->operation, "rrr") == 0)
 		|| (ft_strcmp(tmp->operation, "rrr") == 0
 			&& ft_strcmp(tmp->next->operation, "rr") == 0))

@@ -6,13 +6,13 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 08:57:59 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/27 17:26:34 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/29 16:39:48 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_5(t_info *info)	// 5개일 경우 다시보기!
+void	sort_5(t_info *info)
 {
 	int	count;
 	int	i;
@@ -36,7 +36,8 @@ void	sort_5(t_info *info)	// 5개일 경우 다시보기!
 		else
 		{
 			count = 0;
-			while (!(info->b->num < info->a->num && info->b->num > listlast(info->a)->num))
+			while (!(info->b->num < info->a->num
+			 && info->b->num > listlast(info->a)->num))
 			{
 				ra(info);
 				count++;
@@ -80,7 +81,6 @@ void		sort_3(t_info *info)
 	t_stack	*end;
 	t_stack *tmp;
 
-
 	tmp = info->a;
 	top = tmp;
 	end = listlast(tmp);
@@ -112,6 +112,6 @@ void	sort_remain(t_info *info, int size)
 	{
 		free_stack(info);
 		free(info);
-		exit (0);
+		exit(0);
 	}
 }

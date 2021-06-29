@@ -6,25 +6,25 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 18:39:39 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/28 21:52:28 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/29 16:35:42 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_remain_down(t_info *info, int count)
+int			find_remain_down(t_info *info, int count)
 {
-	t_stack *tmp;
-	int index;
-	int i;
+	t_stack	*tmp;
+	int		index;
+	int		i;
 
 	index = listcount(info->a) - 1;
 	tmp = info->a;
 	tmp = listlast(tmp);
 	while (tmp)
 	{
-		i = 0 + (20 * count);
-		while (i < info->remain_chunk + (20 * count))
+		i = 0 + (info->chunk_count * count);
+		while (i < info->remain_chunk + (info->chunk_count * count))
 		{
 			if (tmp->num == info->chunk[i])
 				return (index);
@@ -36,18 +36,18 @@ int	find_remain_down(t_info *info, int count)
 	return (index);
 }
 
-int	find_remain_top(t_info *info, int count)
+int			find_remain_top(t_info *info, int count)
 {
-	t_stack *tmp;
-	int index;
-	int i;
+	t_stack	*tmp;
+	int		index;
+	int		i;
 
 	index = 0;
 	tmp = info->a;
 	while (tmp)
 	{
-		i = 0 + (20 * count);
-		while (i < info->remain_chunk + (20 * count))
+		i = 0 + (info->chunk_count * count);
+		while (i < info->remain_chunk + (info->chunk_count * count))
 		{
 			if (tmp->num == info->chunk[i])
 				return (index);
@@ -59,19 +59,19 @@ int	find_remain_top(t_info *info, int count)
 	return (index);
 }
 
-int	find_chunk_down(t_info *info, int count)
+int			find_chunk_down(t_info *info, int count)
 {
-	t_stack *tmp;
-	int index;
-	int i;
+	t_stack	*tmp;
+	int		index;
+	int		i;
 
 	index = listcount(info->a) - 1;
 	tmp = info->a;
 	tmp = listlast(tmp);
 	while (tmp)
 	{
-		i = 0 + (20 * count);
-		while (i < 20 + (20 * count))
+		i = 0 + (info->chunk_count * count);
+		while (i < info->chunk_count + (info->chunk_count * count))
 		{
 			if (tmp->num == info->chunk[i])
 				return (index);
@@ -80,21 +80,21 @@ int	find_chunk_down(t_info *info, int count)
 		tmp = tmp->prev;
 		index--;
 	}
-	return (index);
+	return (0);
 }
 
-int	find_chunk_top(t_info *info, int count)
+int			find_chunk_top(t_info *info, int count)
 {
-	t_stack *tmp;
-	int index;
-	int i;
+	t_stack	*tmp;
+	int		index;
+	int		i;
 
 	index = 0;
 	tmp = info->a;
 	while (tmp)
 	{
-		i = 0 + (20 * count);
-		while (i < 20 + (20 * count))
+		i = 0 + (info->chunk_count * count);
+		while (i < info->chunk_count + (info->chunk_count * count))
 		{
 			if (tmp->num == info->chunk[i])
 				return (index);
@@ -116,21 +116,15 @@ void	a_to_b(t_info *info)
 	while (i < info->chunk_size)
 	{
 		top = find_chunk_top(info, i);
-		printf("1-1\n");
 		down = find_chunk_down(info, i);
-		printf("2-1\n");
-		push_b(info, top, down, 20, i);
-		printf("3\n");
+		push_b(info, top, down, info->chunk_count, i);
 		i++;
 	}
 	if (info->remain_chunk)
 	{
 		top = find_remain_top(info, i);
-		printf("1-2\n");
 		down = find_remain_down(info, i);
-		printf("2-2\n");
 		push_b(info, top, down, info->remain_chunk, i);
-		printf("3\n");
 	}
 }
 

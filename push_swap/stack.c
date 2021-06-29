@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:30:17 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/27 16:50:59 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/29 16:37:29 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void		stack_add_top(t_info *info, char stack_name, long num)
 	{
 		if (!(tmp = (t_stack *)malloc(sizeof(t_stack))))
 		{
-			write (2, "Error\n", 6);
+			write(2, "Error\n", 6);
 			free_stack(info);
 			free(info);
-			exit (1);
+			exit(1);
 		}
 		tmp->next = *top;
 		tmp->prev = NULL;
@@ -40,10 +40,10 @@ void		stack_add_top(t_info *info, char stack_name, long num)
 	{
 		if (!(*top = (t_stack *)malloc(sizeof(t_stack))))
 		{
-			write (2, "Error\n", 6);
+			write(2, "Error\n", 6);
 			free_stack(info);
 			free(info);
-			exit (1);
+			exit(1);
 		}
 		(*top)->next = NULL;
 		(*top)->prev = NULL;
@@ -90,10 +90,10 @@ void		stack_add_end(t_info *info, char stack_name, long num)
 	{
 		if (!(tmp = (t_stack *)malloc(sizeof(t_stack))))
 		{
-			write (2, "Error\n", 6);
+			write(2, "Error\n", 6);
 			free_stack(info);
 			free(info);
-			exit (1);
+			exit(1);
 		}
 		*top = listlast(*top);
 		tmp->num = num;
@@ -106,10 +106,10 @@ void		stack_add_end(t_info *info, char stack_name, long num)
 	{
 		if (!(*top = (t_stack *)malloc(sizeof(t_stack))))
 		{
-			write (2, "Error\n", 6);
+			write(2, "Error\n", 6);
 			free_stack(info);
 			free(info);
-			exit (1);
+			exit(1);
 		}
 		(*top)->next = NULL;
 		(*top)->prev = NULL;

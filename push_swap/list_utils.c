@@ -6,16 +6,16 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:14:50 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/28 15:45:31 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/29 16:32:03 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		listcount(t_stack *top)
+int			listcount(t_stack *top)
 {
-	int	ret;
-	t_stack *tmp_top;
+	int		ret;
+	t_stack	*tmp_top;
 
 	tmp_top = top;
 	if (top == NULL)
@@ -47,9 +47,9 @@ t_stack	*listfirst(t_stack *lst)
 	return (lst);
 }
 
-t_stack *create_node(char *operation)
+t_stack		*create_node(char *operation)
 {
-	t_stack *newnode;
+	t_stack	*newnode;
 
 	newnode = (t_stack *)malloc(sizeof(t_stack));
 	if (newnode == NULL)
@@ -60,9 +60,9 @@ t_stack *create_node(char *operation)
 	return (newnode);
 }
 
-void	append_node(t_stack **head, t_stack *newnode)
+void		append_node(t_stack **head, t_stack *newnode)
 {
-	t_stack *tail;
+	t_stack	*tail;
 
 	if (*head == NULL)
 		*head = newnode;

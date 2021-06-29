@@ -6,23 +6,23 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 13:24:33 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/28 14:49:50 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/29 16:29:54 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	find_b_in_chunk_2(t_info *info, int a_num)
+void		find_b_in_chunk_2(t_info *info, int a_num)
 {
-	t_stack *tmp;
-	int i;
-	int pivot;
+	t_stack	*tmp;
+	int		i;
+	int		pivot;
 
 	i = 0;
 	while (info->chunk[i] != a_num)
 		i++;
 	pivot = i;
-	while (pivot < info->a_size)
+	while (pivot < info->first_a_size)
 	{
 		pivot++;
 		tmp = info->b;
@@ -38,11 +38,11 @@ void	find_b_in_chunk_2(t_info *info, int a_num)
 	}
 }
 
-void	find_b_in_chunk_1(t_info *info, int a_num)
+void		find_b_in_chunk_1(t_info *info, int a_num)
 {
-	t_stack *tmp;
-	int i;
-	int pivot;
+	t_stack	*tmp;
+	int		i;
+	int		pivot;
 
 	i = 0;
 	while (info->chunk[i] != a_num)
@@ -66,15 +66,15 @@ void	find_b_in_chunk_1(t_info *info, int a_num)
 
 void	sort_chunk(t_info *info)
 {
-	int tmp;
-	int i;
-	int j;
+	int	tmp;
+	int	i;
+	int	j;
 
 	i = 0;
-	while (i < info->a_size - 1)
+	while (i < info->first_a_size - 1)
 	{
 		j = 0;
-		while (j < info->a_size - 1 - i)
+		while (j < info->first_a_size - 1 - i)
 		{
 			if (info->chunk[j] > info->chunk[j + 1])
 			{
@@ -90,28 +90,28 @@ void	sort_chunk(t_info *info)
 
 void	get_chunk_size(t_info *info, int a_size)
 {
-	int size;
+	int	size;
 
-	size = a_size / 20;
-	if (a_size % 20 > 0)
-		info->remain_chunk = (a_size % 20);
+	size = a_size / info->chunk_count;
+	if (a_size % info->chunk_count > 0)
+		info->remain_chunk = (a_size % info->chunk_count);
 	info->chunk_size = size;
 }
 
-void	get_chunk(t_info *info)
+void		get_chunk(t_info *info)
 {
-	t_stack *tmp;
-	int i;
+	t_stack	*tmp;
+	int		i;
 
-	if (!(info->chunk = (int *)malloc(sizeof(int) * info->a_size)))
+	if (!(info->chunk = (int *)malloc(sizeof(int) * info->first_a_size)))
 	{
 		free_stack(info);
 		free(info);
-		exit (1);
+		exit(1);
 	}
 	tmp = info->a;
 	i = 0;
-	while (i < info->a_size)
+	while (i < info->first_a_size)
 	{
 		info->chunk[i] = tmp->num;
 		tmp = tmp->next;

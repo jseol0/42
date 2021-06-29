@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:55:57 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/27 16:53:13 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/29 16:31:16 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	sort_arr(int *arr, int count)
 {
-	int i;
-	int j;
-	int tmp;
+	int	i;
+	int	j;
+	int	tmp;
 
 	i = 0;
 	while (i < count - 1)
@@ -36,11 +36,11 @@ void	sort_arr(int *arr, int count)
 	}
 }
 
-void	check_sorted(t_info *info)
+void		check_sorted(t_info *info)
 {
-	int	i;
-	int *tmp;
-	t_stack *tmp_a;
+	int		i;
+	int		*tmp;
+	t_stack	*tmp_a;
 
 	if (!(tmp = (int *)malloc(sizeof(int) * info->a_size)))
 	{
@@ -70,27 +70,27 @@ void	check_sorted(t_info *info)
 	free(tmp);
 	free_stack(info);
 	free(info);
-	exit (0);
+	exit(0);
 }
 
-void	check_size(t_info *info)
+void		check_size(t_info *info)
 {
-	long tmp;
+	long	tmp;
 
 	tmp = info->a->num;
 	if (tmp > 2147483647 || tmp < -2147483648)
 	{
-		write (2, "Error\n", 6);
+		write(2, "Error\n", 6);
 		free_stack(info);
 		free(info);
-		exit (1);
+		exit(1);
 	}
 }
 
-void	check_duplicate(t_info *info)
+void		check_duplicate(t_info *info)
 {
-	t_stack *tmp1;
-	t_stack *tmp2;
+	t_stack	*tmp1;
+	t_stack	*tmp2;
 
 	tmp1 = info->a;
 	while (tmp1->next != NULL)
@@ -103,7 +103,7 @@ void	check_duplicate(t_info *info)
 				write (2, "Error\n", 6);
 				free_stack(info);
 				free(info);
-				exit (1);
+				exit(1);
 			}
 			tmp2 = tmp2->next;
 		}
@@ -111,13 +111,13 @@ void	check_duplicate(t_info *info)
 	}
 }
 
-int check_error(int argc, char **argv)
+int		check_error(int argc, char **argv)
 {
 	int	i;
 
 	i = 0;
 	if (argc == 1)
-		exit (1);
+		exit(1);
 	while (argv[1][i])
 	{
 		if (ft_isdigit(argv[1][i]) || argv[1][i] == ' ')

@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:53:29 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/28 17:15:30 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/29 16:33:58 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ typedef struct		s_info
 	int				argc;
 	char			**argv;
 	int				a_size;
+	int				first_a_size;
 	int				chunk_size;
+	int				chunk_count;
 	int				remain_chunk;
 	int				max;
 	int				min;
@@ -111,7 +113,7 @@ void				sort_arr(int *arr, int count);
 void				split_free(char **ptr);
 void				free_b(t_info *info);
 void				free_stack(t_info *info);
-t_stack 			*create_node(char *operation);
+t_stack				*create_node(char *operation);
 void				append_node(t_stack **head, t_stack *newnode);
 void				compress_oper(t_stack *oper);
 int					compression_condition(t_stack *oper);
