@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:53:29 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/29 10:51:27 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/29 19:39:29 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct		s_info
 	int				a_size;
 	int				first_a_size;
 	int				chunk_size;
+	int				chunk_count;
 	int				remain_chunk;
 	int				max;
 	int				min;
@@ -83,13 +84,13 @@ void				sort_remain(t_info *info, int size);
 void				get_chunk(t_info *info);
 void				get_chunk_size(t_info *info, int a_size);
 void				sort_chunk(t_info *info);
-int					find_chunk_top(t_info *info, int count);
-int					find_chunk_down(t_info *info, int count);
+int					find_chunk_top(t_info *info);
+int					find_chunk_down(t_info *info);
 int					find_remain_top(t_info *info, int count);
 int					find_remain_down(t_info *info, int count);
 void				a_to_b(t_info *info);
 void				push_b_first(t_info *info, int top, int down);
-void				push_b(t_info *info, int top, int down, int count, int i);
+void				push_b(t_info *info);
 void				move_stack(t_info *info);
 void				move_stack_0(t_info *info);
 void				move_stack_1(t_info *info);
@@ -112,7 +113,7 @@ void				sort_arr(int *arr, int count);
 void				split_free(char **ptr);
 void				free_b(t_info *info);
 void				free_stack(t_info *info);
-t_stack 			*create_node(char *operation);
+t_stack				*create_node(char *operation);
 void				append_node(t_stack **head, t_stack *newnode);
 void				compress_oper(t_stack *oper);
 int					compression_condition(t_stack *oper);

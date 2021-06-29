@@ -6,17 +6,17 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 13:24:33 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/29 10:54:40 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/29 19:39:39 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	find_b_in_chunk_2(t_info *info, int a_num)
+void		find_b_in_chunk_2(t_info *info, int a_num)
 {
-	t_stack *tmp;
-	int i;
-	int pivot;
+	t_stack	*tmp;
+	int		i;
+	int		pivot;
 
 	i = 0;
 	while (info->chunk[i] != a_num)
@@ -38,11 +38,11 @@ void	find_b_in_chunk_2(t_info *info, int a_num)
 	}
 }
 
-void	find_b_in_chunk_1(t_info *info, int a_num)
+void		find_b_in_chunk_1(t_info *info, int a_num)
 {
-	t_stack *tmp;
-	int i;
-	int pivot;
+	t_stack	*tmp;
+	int		i;
+	int		pivot;
 
 	i = 0;
 	while (info->chunk[i] != a_num)
@@ -66,9 +66,9 @@ void	find_b_in_chunk_1(t_info *info, int a_num)
 
 void	sort_chunk(t_info *info)
 {
-	int tmp;
-	int i;
-	int j;
+	int	tmp;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < info->first_a_size - 1)
@@ -90,24 +90,24 @@ void	sort_chunk(t_info *info)
 
 void	get_chunk_size(t_info *info, int a_size)
 {
-	int size;
+	int	size;
 
-	size = a_size / 20;
-	if (a_size % 20 > 0)
-		info->remain_chunk = (a_size % 20);
+	size = a_size / info->chunk_count;
+	if (a_size % info->chunk_count > 0)
+		info->remain_chunk = (a_size % info->chunk_count);
 	info->chunk_size = size;
 }
 
-void	get_chunk(t_info *info)
+void		get_chunk(t_info *info)
 {
-	t_stack *tmp;
-	int i;
+	t_stack	*tmp;
+	int		i;
 
 	if (!(info->chunk = (int *)malloc(sizeof(int) * info->first_a_size)))
 	{
 		free_stack(info);
 		free(info);
-		exit (1);
+		exit(1);
 	}
 	tmp = info->a;
 	i = 0;

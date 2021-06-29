@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 12:22:36 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/29 10:50:53 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/29 16:32:56 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void		push_swap(int argc, char **argv)
 {
 	t_info	*info;
-	int a_size;
+	int		a_size;
 
 	info = NULL;
 	info = make_info(info, argc, argv);
@@ -28,10 +28,10 @@ void		push_swap(int argc, char **argv)
 	compress_oper(info->operation);
 	while (info->operation)
 	{
-		printf("%s\n", info->operation->operation);
+		ft_putstr_fd(info->operation->operation, 1);
+		write(1, "\n", 1);
 		info->operation = info->operation->next;
 	}
-
 	free_stack(info);
 	free(info);
 }
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 {
 	if (check_error(argc, argv))
 	{
-		write (2, "Error\n", 6);
+		write(2, "Error\n", 6);
 		return (-1);
 	}
 	push_swap(argc, argv);

@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:38:39 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/29 12:05:41 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/29 20:51:56 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	move_b_check_5(t_info *info, t_stack *tmp_b,
 		tmp->num == info->a_num_prev))
 	{
 		tmp_last = tmp;
-		tmp = tmp->next;
+		if (tmp->next)
+			tmp = tmp->next;
 		rb_count++;
 	}
 	while (!(tmp_b_last->num == info->a_num_next &&
@@ -65,7 +66,6 @@ void	move_b_check_3(t_info *info)
 	tmp_b = info->b;
 	rb_count = 0;
 	rrb_count = 0;
-
 	while (tmp_b->num != info->b_min)
 	{
 		tmp_b = tmp_b->next;
@@ -116,7 +116,6 @@ void	move_b_check_1(t_info *info)
 	a_num = 0;
 	tmp_a = info->a;
 	i = 0;
-	// printf("a_size : %d a_move : %d a_move_count : %d\n", info->a_size, info->a_move, info->a_move_count);
 	if (info->a_move == 0)
 	{
 		while (i++ < info->a_move_count)

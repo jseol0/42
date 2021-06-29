@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 12:15:31 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/29 10:55:56 by jseol            ###   ########.fr       */
+/*   Updated: 2021/06/29 19:39:40 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ void	move_stack_1(t_info *info)
 	i = 0;
 	while (i++ < info->a_move_count)
 		ra(info);
-		i++;
 	i = 0;
 	while (i++ < info->b_move_count)
 		rrb(info);
@@ -97,20 +96,20 @@ void	move_stack_0(t_info *info)
 
 	i = 0;
 	if (info->a_move_count > info->b_move_count)
-		{
-			while (i++ < info->b_move_count)
-				rr(info);
-			i = 0;
-			while (i++ < (info->a_move_count - info->b_move_count))
-				ra(info);
-		}
-		else
-		{
-			while (i++ < info->a_move_count)
-				rr(info);
-			i = 0;
-			while (i++ < (info->b_move_count - info->a_move_count))
-				rb(info);
-		}
-		pb(info);
+	{
+		while (i++ < info->b_move_count)
+			rr(info);
+		i = 0;
+		while (i++ < (info->a_move_count - info->b_move_count))
+			ra(info);
+	}
+	else
+	{
+		while (i++ < info->a_move_count)
+			rr(info);
+		i = 0;
+		while (i++ < (info->b_move_count - info->a_move_count))
+			rb(info);
+	}
+	pb(info);
 }
