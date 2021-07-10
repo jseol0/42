@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 18:39:39 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/30 23:14:54 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/11 01:49:58 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	b_to_a(t_info *info, int size)
 {
 	if (size <= 3)
 	{
-		sort_remain(info, info->b, size);
+		hardsorting_2(info, info->b, size);
 		while (size--)
 			pa(info);
 		return ;
@@ -24,22 +24,26 @@ void	b_to_a(t_info *info, int size)
 	int	i;
 	int	pivot;
 
-	info->rb_count = 0;
-	info->pa_count = 0;
+	int rb_count = 0;
+	int pa_count = 0;
 	get_array(info, info->b, size);
-	pivot = info->arr[(size / 2) - 1];
+	pivot = info->arr[((size - 1) / 2)];
 	while (size--)
 	{
 		if (info->b->num <= pivot)
-			rb(info);
+		{	rb(info);
+			rb_count++;
+		}
 		else
-			pa(info);
+		{	pa(info);
+			pa_count++;}
 	}
+	free(info->arr);
 	i = 0;
-	while (i++ < info->rb_count)
+	while (i++ < rb_count)
 		rrb(info);
-	a_to_b(info, info->pa_count);
-	b_to_a(info, info->rb_count);
+	a_to_b(info, pa_count);
+	b_to_a(info, rb_count);
 }
 
 void	a_to_b(t_info *info, int size)
@@ -57,22 +61,27 @@ void	a_to_b(t_info *info, int size)
 	int	i;
 	int	pivot;
 
-	info->ra_count = 0;
-	info->pb_count = 0;
+	int ra_count = 0;
+	int pb_count = 0;
 	get_array(info, info->a, size);
-	pivot = info->arr[(size / 2) - 1];
+	pivot = info->arr[((size - 1) / 2)];
 	while (size--)
 	{
 		if (info->a->num > pivot)
-			ra(info);
+		{	ra(info);
+			ra_count++;
+		}
 		else
-			pb(info);
+		{	pb(info);
+			pb_count++;
+		}
 	}
+	free(info->arr);
 	i = 0;
-	while (i++ < info->ra_count)
+	while (i++ < ra_count)
 		rra(info);
-	a_to_b(info, info->ra_count);
-	b_to_a(info, listcount(info->b));
+	a_to_b(info, ra_count);
+	b_to_a(info, pb_count);
 }
 
 void	sort_a(t_info *info)

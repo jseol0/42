@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 13:24:33 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/30 14:43:09 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/10 18:11:11 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	sort_array(t_info *info, int size)
 	}
 }
 
-void		get_array(t_info *info, t_stack *stack, int size)	//free
+void	get_array(t_info *info, t_stack *stack, int size)
 {
 	t_stack	*tmp;
 	int		i;

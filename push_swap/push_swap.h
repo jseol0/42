@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:53:29 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/29 16:33:58 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/11 01:05:32 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,14 @@ typedef struct		s_info
 	int				argc;
 	char			**argv;
 	int				a_size;
-	int				first_a_size;
-	int				chunk_size;
-	int				chunk_count;
-	int				remain_chunk;
+	int				*arr;
+	int				arr_size;
+	int				ra_count;
+	int				rb_count;
+	int				pa_count;
+	int				pb_count;
 	int				max;
 	int				min;
-	int				*chunk;
-	int				b_max;
-	int				b_min;
-	int				a_move;
-	int				b_move;
-	int				a_move_count;
-	int				b_move_count;
-	int				a_num_prev;
-	int				a_num_next;
-	int				b_after_move;
 }					t_info;
 
 void				push_swap(int argc, char **argv);
@@ -77,37 +69,21 @@ void				rrr(t_info *info);
 t_stack				*listlast(t_stack *lst);
 t_stack				*listfirst(t_stack *lst);
 int					listcount(t_stack *top);
-void				sort_a(t_info *info, int a_size);
-void				hardsorting(t_info *info, t_stack *top, t_stack *end);
-void				sort_3(t_info *info);
-void				sort_remain(t_info *info, int size);
-void				get_chunk(t_info *info);
-void				get_chunk_size(t_info *info, int a_size);
-void				sort_chunk(t_info *info);
-int					find_chunk_top(t_info *info, int count);
-int					find_chunk_down(t_info *info, int count);
-int					find_remain_top(t_info *info, int count);
-int					find_remain_down(t_info *info, int count);
-void				a_to_b(t_info *info);
-void				push_b_first(t_info *info, int top, int down);
-void				push_b(t_info *info, int top, int down, int count, int i);
-void				move_stack(t_info *info);
-void				move_stack_0(t_info *info);
-void				move_stack_1(t_info *info);
-void				move_stack_2(t_info *info);
-void				move_stack_3(t_info *info);
-void				b_after_move(t_info *info);
-void				move_check(t_info *info, int top, int down);
-void				move_b_check_1(t_info *info);
-void				move_b_check_2(t_info *info);
-void				move_b_check_3(t_info *info);
-void				move_b_check_4(t_info *info, int a_num);
-void				move_b_check_5(t_info *info, t_stack *tmp_b,
-									t_stack *tmp_b_last);
+void				sort_a(t_info *info);
+void				hardsorting_a(t_info *info, t_stack *top, t_stack *end);
+void				hardsorting_b(t_info *info, t_stack *top, t_stack *end);
+void				hardsorting_2(t_info *info, t_stack *stack, int size);
+void				hardsorting_2_a(t_info *info, int a, int b, int c);
+void				hardsorting_2_b(t_info *info, int a, int b, int c);
+void				case_1(t_info *info, int flag);
+void				case_2(t_info *info, int flag);
+void				sort_3(t_info *info, t_stack *stack);
+void				sort_remain(t_info *info, t_stack *stack, int size);
+void				get_array(t_info *info, t_stack *stack, int size);
+void				sort_array(t_info *info, int size);
+void				a_to_b(t_info *info, int size);
 int					rb_count(t_stack *tmp, t_stack *tmp_last);
 int					rrb_count(t_stack *tmp, t_stack *tmp_last);
-void				find_b_in_chunk_1(t_info *info, int a_num);
-void				find_b_in_chunk_2(t_info *info, int a_num);
 void				check_sorted(t_info *info);
 void				sort_arr(int *arr, int count);
 void				split_free(char **ptr);

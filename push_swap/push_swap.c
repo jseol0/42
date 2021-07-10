@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 12:22:36 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/29 16:32:56 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/11 02:04:37 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,14 @@
 void		push_swap(int argc, char **argv)
 {
 	t_info	*info;
-	int		a_size;
 
 	info = NULL;
 	info = make_info(info, argc, argv);
 	put_stack_a(info);
-	a_size = listcount(info->a);
-	info->a_size = a_size;
-	info->first_a_size = a_size;
+	info->a_size = listcount(info->a);
+	get_array(info, info->a, info->a_size);
 	check_sorted(info);
-	sort_a(info, a_size);
+	sort_a(info);
 	compress_oper(info->operation);
 	while (info->operation)
 	{
@@ -32,6 +30,13 @@ void		push_swap(int argc, char **argv)
 		write(1, "\n", 1);
 		info->operation = info->operation->next;
 	}
+	// t_stack *tmp = info->a;
+	// while (tmp)
+	// {
+	// 	printf("%ld ", tmp->num);
+	// 	tmp = tmp->next;
+	// }
+	// printf("\n");
 	free_stack(info);
 	free(info);
 }
