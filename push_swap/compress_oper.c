@@ -6,15 +6,15 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 16:19:55 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/29 20:07:19 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/11 18:59:48 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		compression_condition(t_stack *oper)
+int	compression_condition(t_stack *oper)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = oper;
 	if ((ft_strcmp(tmp->operation, "ra") == 0
@@ -39,11 +39,9 @@ int		compression_condition(t_stack *oper)
 
 void	compress_oper(t_stack *oper)
 {
-	t_stack *head;
-	t_stack *del_node_1;
-	t_stack *del_node_2;
+	t_stack	*del_node_1;
+	t_stack	*del_node_2;
 
-	head = oper;
 	while (oper->next)
 	{
 		del_node_1 = oper;
@@ -59,11 +57,11 @@ void	compress_oper(t_stack *oper)
 				oper->prev->next = oper->next->next;
 				oper->next->next->prev = oper->prev;
 			}
-			oper = head;
+			oper = listfirst(oper);
 			free(del_node_1);
 			free(del_node_2);
 		}
 		oper = oper->next;
 	}
-	oper = head;
+	oper = listfirst(oper);
 }

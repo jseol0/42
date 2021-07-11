@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 12:13:23 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/11 11:49:41 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/11 16:35:59 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	get_size(char const *s, char set)
 		if (is_set(s[i], set))
 		{
 			i++;
-			continue;
+			continue ;
 		}
 		size++;
 		while (!is_set(s[i], set) && s[i])
@@ -54,7 +54,7 @@ static char	**putret(char **ret, char const *s, char c)
 		if (is_set(s[i], c))
 		{
 			i++;
-			continue;
+			continue ;
 		}
 		pivot = i;
 		while (!is_set(s[i], c) && s[i] != '\0')
@@ -70,7 +70,7 @@ static char	**putret(char **ret, char const *s, char c)
 	return (ret);
 }
 
-char		**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**ret;
 	int		ret_size;

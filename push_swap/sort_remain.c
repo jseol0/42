@@ -6,54 +6,16 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 08:57:59 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/11 01:05:56 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/11 21:42:03 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_5(t_info *info)
-{
-	int	count;
-	int	i;
-
-	while (listcount(info->a) != 3)
-		pb(info);
-	sort_3(info, info->a);
-	while (info->b)
-	{
-		if (info->b->num < info->min)
-		{
-			pa(info);
-			info->min = info->a->num;
-		}
-		else if (info->b->num > info->max)
-		{
-			pa(info);
-			info->max = info->a->num;
-			ra(info);
-		}
-		else
-		{
-			count = 0;
-			while (!(info->b->num < info->a->num
-			 && info->b->num > listlast(info->a)->num))
-			{
-				ra(info);
-				count++;
-			}
-			pa(info);
-			i = 0;
-			while (i++ < count)
-				rra(info);
-		}
-	}
-}
-
 void	hardsorting_b(t_info *info, t_stack *top, t_stack *end)
 {
-	int max;
-	int min;
+	int	max;
+	int	min;
 
 	max = info->max;
 	min = info->min;
@@ -77,8 +39,8 @@ void	hardsorting_b(t_info *info, t_stack *top, t_stack *end)
 
 void	hardsorting_a(t_info *info, t_stack *top, t_stack *end)
 {
-	int max;
-	int min;
+	int	max;
+	int	min;
 
 	max = info->max;
 	min = info->min;
@@ -100,11 +62,12 @@ void	hardsorting_a(t_info *info, t_stack *top, t_stack *end)
 	}
 }
 
-void		sort_3(t_info *info, t_stack *stack)
+void	sort_3(t_info *info, t_stack *stack)
 {
 	t_stack	*top;
 	t_stack	*end;
-	t_stack *tmp;
+	t_stack	*tmp;
+
 	tmp = stack;
 	top = tmp;
 	end = listlast(tmp);
@@ -112,8 +75,10 @@ void		sort_3(t_info *info, t_stack *stack)
 	info->min = top->num;
 	while (top)
 	{
-		info->max = info->max < top->num ? top->num : info->max;
-		info->min = info->min > top->num ? top->num : info->min;
+		if (info->max < top->num)
+			info->max = top->num;
+		if (info->min > top->num)
+			info->min = top->num;
 		top = top->next;
 	}
 	top = listfirst(tmp);

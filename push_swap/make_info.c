@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:25:04 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/10 19:16:56 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/11 16:43:40 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 t_info	*make_info(t_info *info, int argc, char **argv)
 {
-	if (!(info = (t_info *)malloc(sizeof(t_info))))
+	info = (t_info *)malloc(sizeof(t_info));
+	if (info == NULL)
 		exit(1);
 	info->a = NULL;
 	info->b = NULL;

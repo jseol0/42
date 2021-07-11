@@ -6,13 +6,13 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:55:57 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/30 14:43:56 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/11 16:23:31 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		check_sorted(t_info *info)
+void	check_sorted(t_info *info)
 {
 	int		i;
 	t_stack	*tmp_a;
@@ -22,15 +22,19 @@ void		check_sorted(t_info *info)
 	while (tmp_a)
 	{
 		if (tmp_a->num != info->arr[i++])
+		{
+			free(info->arr);
 			return ;
+		}
 		tmp_a = tmp_a->next;
 	}
 	free_stack(info);
+	free(info->arr);
 	free(info);
 	exit(0);
 }
 
-void		check_size(t_info *info)
+void	check_size(t_info *info)
 {
 	long	tmp;
 
@@ -44,7 +48,7 @@ void		check_size(t_info *info)
 	}
 }
 
-void		check_duplicate(t_info *info)
+void	check_duplicate(t_info *info)
 {
 	t_stack	*tmp1;
 	t_stack	*tmp2;
@@ -68,7 +72,7 @@ void		check_duplicate(t_info *info)
 	}
 }
 
-int		check_error(int argc, char **argv)
+int	check_error(int argc, char **argv)
 {
 	int	i;
 

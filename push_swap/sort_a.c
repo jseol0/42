@@ -6,14 +6,30 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 18:39:39 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/11 01:49:58 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/11 20:58:10 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	a_to_b(t_info *info, int size)
+{
+	int	pivot;
+
+	if (size <= 3)
+	{
+		hardsorting_2(info, info->a, size);
+		return ;
+	}
+	get_array(info, info->a, size);
+	pivot = info->arr[((size - 1) / 2)];
+	a_to_b_2(info, pivot, size);
+}
+
 void	b_to_a(t_info *info, int size)
 {
+	int	pivot;
+
 	if (size <= 3)
 	{
 		hardsorting_2(info, info->b, size);
@@ -21,58 +37,29 @@ void	b_to_a(t_info *info, int size)
 			pa(info);
 		return ;
 	}
-	int	i;
-	int	pivot;
-
-	int rb_count = 0;
-	int pa_count = 0;
 	get_array(info, info->b, size);
 	pivot = info->arr[((size - 1) / 2)];
-	while (size--)
-	{
-		if (info->b->num <= pivot)
-		{	rb(info);
-			rb_count++;
-		}
-		else
-		{	pa(info);
-			pa_count++;}
-	}
-	free(info->arr);
-	i = 0;
-	while (i++ < rb_count)
-		rrb(info);
-	a_to_b(info, pa_count);
-	b_to_a(info, rb_count);
+	b_to_a_2(info, pivot, size);
 }
 
-void	a_to_b(t_info *info, int size)
+void	a_to_b_2(t_info *info, int pivot, int size)
 {
-	if (size <= 3 && listcount(info->a) <= 3)
-	{
-		sort_remain(info, info->a, size);
-		return ;
-	}
-	else if (size <= 3)
-	{
-		hardsorting_2(info, info->a, size);
-		return ;
-	}
 	int	i;
-	int	pivot;
+	int	ra_count;
+	int	pb_count;
 
-	int ra_count = 0;
-	int pb_count = 0;
-	get_array(info, info->a, size);
-	pivot = info->arr[((size - 1) / 2)];
+	ra_count = 0;
+	pb_count = 0;
 	while (size--)
 	{
 		if (info->a->num > pivot)
-		{	ra(info);
+		{
+			ra(info);
 			ra_count++;
 		}
 		else
-		{	pb(info);
+		{
+			pb(info);
 			pb_count++;
 		}
 	}
@@ -82,6 +69,35 @@ void	a_to_b(t_info *info, int size)
 		rra(info);
 	a_to_b(info, ra_count);
 	b_to_a(info, pb_count);
+}
+
+void	b_to_a_2(t_info *info, int pivot, int size)
+{
+	int	i;
+	int	rb_count;
+	int	pa_count;
+
+	rb_count = 0;
+	pa_count = 0;
+	while (size--)
+	{
+		if (info->b->num <= pivot)
+		{
+			rb(info);
+			rb_count++;
+		}
+		else
+		{
+			pa(info);
+			pa_count++;
+		}
+	}
+	free(info->arr);
+	i = 0;
+	while (i++ < rb_count)
+		rrb(info);
+	a_to_b(info, pa_count);
+	b_to_a(info, rb_count);
 }
 
 void	sort_a(t_info *info)

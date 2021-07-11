@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 12:54:06 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/11 10:18:22 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/11 16:41:42 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	*putret(char *buf)
 	return (ret);
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	buf[42];
 	int		i;

@@ -6,15 +6,16 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 12:22:36 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/11 02:04:37 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/11 21:42:28 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		push_swap(int argc, char **argv)
+void	push_swap(int argc, char **argv)
 {
 	t_info	*info;
+	t_stack	*tmp;
 
 	info = NULL;
 	info = make_info(info, argc, argv);
@@ -24,19 +25,13 @@ void		push_swap(int argc, char **argv)
 	check_sorted(info);
 	sort_a(info);
 	compress_oper(info->operation);
-	while (info->operation)
+	tmp = info->operation;
+	while (tmp)
 	{
-		ft_putstr_fd(info->operation->operation, 1);
+		ft_putstr_fd(tmp->operation, 1);
 		write(1, "\n", 1);
-		info->operation = info->operation->next;
+		tmp = tmp->next;
 	}
-	// t_stack *tmp = info->a;
-	// while (tmp)
-	// {
-	// 	printf("%ld ", tmp->num);
-	// 	tmp = tmp->next;
-	// }
-	// printf("\n");
 	free_stack(info);
 	free(info);
 }

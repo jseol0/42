@@ -6,13 +6,13 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 15:38:40 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/29 16:32:34 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/11 16:44:10 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		rrr(t_info *info)
+void	rrr(t_info *info)
 {
 	int		tmp;
 	t_stack	*back;

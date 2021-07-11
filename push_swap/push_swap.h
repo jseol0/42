@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:53:29 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/11 01:05:32 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/11 21:44:39 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 # define PUSH_SWAP_H
 
 # include "./libft/libft.h"
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct		s_stack
+typedef struct s_stack
 {
 	long			num;
 	char			*operation;
@@ -26,7 +25,7 @@ typedef struct		s_stack
 	struct s_stack	*prev;
 }					t_stack;
 
-typedef struct		s_info
+typedef struct s_info
 {
 	struct s_stack	*a;
 	struct s_stack	*b;
@@ -52,8 +51,10 @@ long				push_swap_atoi(const char *str);
 void				check_size(t_info *info);
 void				check_duplicate(t_info *info);
 void				stack_add_top(t_info *info, char stack_name, long num);
-void				stack_del_top(t_info *info, char stack_name);
+void				stack_add_top_2(t_info *info, t_stack **top, long num);
 void				stack_add_end(t_info *info, char stack_name, long num);
+void				stack_add_end_2(t_info *info, t_stack **top, long num);
+void				stack_del_top(t_info *info, char stack_name);
 void				stack_del_end(t_info *info, char stack_name);
 void				sa(t_info *info);
 void				sb(t_info *info);
@@ -78,10 +79,17 @@ void				hardsorting_2_b(t_info *info, int a, int b, int c);
 void				case_1(t_info *info, int flag);
 void				case_2(t_info *info, int flag);
 void				sort_3(t_info *info, t_stack *stack);
+void				sort_5(t_info *info);
+void				sort_5_1(t_info *info);
+void				sort_5_2(t_info *info);
+void				sort_5_3(t_info *info);
 void				sort_remain(t_info *info, t_stack *stack, int size);
 void				get_array(t_info *info, t_stack *stack, int size);
 void				sort_array(t_info *info, int size);
 void				a_to_b(t_info *info, int size);
+void				b_to_a(t_info *info, int size);
+void				a_to_b_2(t_info *info, int pivot, int size);
+void				b_to_a_2(t_info *info, int pivot, int size);
 int					rb_count(t_stack *tmp, t_stack *tmp_last);
 int					rrb_count(t_stack *tmp, t_stack *tmp_last);
 void				check_sorted(t_info *info);

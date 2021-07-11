@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 13:18:13 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/28 17:42:54 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/11 16:24:52 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_stack(t_info *info)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = info->b;
 	while (info->b)
@@ -41,7 +41,7 @@ void	free_stack(t_info *info)
 
 void	split_free(char **ptr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (ptr[i])

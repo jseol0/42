@@ -6,13 +6,13 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 14:41:09 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/11 07:59:12 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/11 16:39:28 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char				*ft_strmapi(char const *s, char (*f)(unsigned
+char	*ft_strmapi(char const *s, char (*f)(unsigned
 int, char))
 {
 	char			*ret;

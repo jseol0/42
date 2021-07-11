@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 11:59:33 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/10 16:17:47 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/11 16:44:03 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	rr(t_info *info)
 	append_node(&info->operation, create_node("rr"));
 }
 
-void		rra(t_info *info)
+void	rra(t_info *info)
 {
 	int		tmp;
 	t_stack	*back;
@@ -74,7 +74,7 @@ void		rra(t_info *info)
 	}
 }
 
-void		rrb(t_info *info)
+void	rrb(t_info *info)
 {
 	int		tmp;
 	t_stack	*back;

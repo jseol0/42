@@ -6,13 +6,13 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 12:03:17 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/10 20:06:07 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/11 16:29:19 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void				ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	unsigned char	*tmp;
 	size_t			i;

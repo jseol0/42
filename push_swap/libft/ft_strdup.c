@@ -6,13 +6,13 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 09:34:16 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/10 23:15:08 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/11 16:41:09 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
 	char	*ret;
 	size_t	len;

@@ -6,13 +6,13 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 10:53:51 by jseol             #+#    #+#             */
-/*   Updated: 2021/05/10 20:05:41 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/11 16:36:54 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void				*ft_memset(void *b, int c, size_t len)
+void	*ft_memset(void *b, int c, size_t len)
 {
 	unsigned char	*ret;
 	size_t			i;

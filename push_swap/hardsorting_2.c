@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:59:59 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/11 01:48:37 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/11 16:26:49 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,21 @@ void	case_2(t_info *info, int flag)
 
 void	hardsorting_2_b(t_info *info, int a, int b, int c)
 {
-	if (a < b && a < c && b > c)	// 1 3 2
+	if (a < b && a < c && b > c)
 	{
 		sb(info);
 		case_1(info, 2);
 	}
-	else if (a < b && a > c)		// 2 3 1
+	else if (a < b && a > c)
 		sb(info);
-	else if (a > b && a < c)		// 2 1 3
+	else if (a > b && a < c)
 	{
 		case_1(info, 2);
 		sb(info);
 	}
-	else if (a > b && a > c && b < c)	// 3 1 2
+	else if (a > b && a > c && b < c)
 		case_1(info, 2);
-	else if (a < b && a < c && b < c)	// 1 2 3
+	else if (a < b && a < c && b < c)
 	{
 		sb(info);
 		case_1(info, 2);
@@ -65,21 +65,21 @@ void	hardsorting_2_b(t_info *info, int a, int b, int c)
 
 void	hardsorting_2_a(t_info *info, int a, int b, int c)
 {
-	if (a < b && a < c && b > c)	// 1 3 2
+	if (a < b && a < c && b > c)
 		case_1(info, 1);
-	else if (a < b && a > c)		// 2 3 1
+	else if (a < b && a > c)
 	{
 		case_1(info, 1);
 		sa(info);
 	}
-	else if (a > b && a < c)		// 2 1 3
+	else if (a > b && a < c)
 		sa(info);
-	else if (a > b && a > c && b < c)	// 3 1 2
+	else if (a > b && a > c && b < c)
 	{
 		sa(info);
 		case_1(info, 1);
 	}
-	else if (a > b && a > c && b > c)	// 3 2 1
+	else if (a > b && a > c && b > c)
 	{
 		sa(info);
 		case_1(info, 1);
@@ -89,9 +89,9 @@ void	hardsorting_2_a(t_info *info, int a, int b, int c)
 
 void	hardsorting_2(t_info *info, t_stack *stack, int size)
 {
-	int a;
-	int b;
-	int c;
+	int	a;
+	int	b;
+	int	c;
 
 	a = stack->num;
 	b = stack->next->num;
@@ -105,5 +105,4 @@ void	hardsorting_2(t_info *info, t_stack *stack, int size)
 		hardsorting_2_a(info, a, b, c);
 	else if (stack == info->b && size == 3)
 		hardsorting_2_b(info, a, b, c);
-
 }

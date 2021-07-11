@@ -6,13 +6,13 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:30:21 by jseol             #+#    #+#             */
-/*   Updated: 2021/06/29 16:37:54 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/11 19:04:24 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long		push_swap_atoi(const char *str)
+long	push_swap_atoi(const char *str)
 {
 	int		i;
 	int		sign;
@@ -38,7 +38,7 @@ long		push_swap_atoi(const char *str)
 	return (ret);
 }
 
-void		put_stack_a(t_info *info)
+void	put_stack_a(t_info *info)
 {
 	int		i;
 	char	**ptr;
@@ -49,8 +49,7 @@ void		put_stack_a(t_info *info)
 		ptr = ft_split(*(info->argv + 1), ' ');
 		while (*(ptr + i))
 		{
-			stack_add_end(info, 'a', push_swap_atoi(*(ptr + i)));
-			i++;
+			stack_add_end(info, 'a', push_swap_atoi(*(ptr + i++)));
 			check_size(info);
 		}
 		split_free(ptr);
@@ -59,8 +58,7 @@ void		put_stack_a(t_info *info)
 	{
 		while (i + 1 < info->argc)
 		{
-			stack_add_end(info, 'a', push_swap_atoi(*(info->argv + i + 1)));
-			i++;
+			stack_add_end(info, 'a', push_swap_atoi(*(info->argv + i++ + 1)));
 			check_size(info);
 		}
 	}

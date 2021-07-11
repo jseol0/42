@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 13:24:33 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/10 18:11:11 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/11 16:23:04 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void	get_array(t_info *info, t_stack *stack, int size)
 	t_stack	*tmp;
 	int		i;
 
-	if (!(info->arr = (int *)malloc(sizeof(int) * size)))
+	info->arr = (int *)malloc(sizeof(int) * size);
+	if (info->arr == NULL)
 	{
 		free_stack(info);
 		free(info);
