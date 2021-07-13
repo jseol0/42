@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:30:21 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/11 19:04:24 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/14 00:38:40 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,5 @@ void	put_stack_a(t_info *info)
 			check_size(info);
 		}
 	}
-	info->a_size = i;
 	check_duplicate(info);
 }
