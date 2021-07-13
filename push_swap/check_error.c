@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:55:57 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/11 16:23:31 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/14 02:36:58 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,6 @@ void	check_sorted(t_info *info)
 	exit(0);
 }
 
-void	check_size(t_info *info)
-{
-	long	tmp;
-
-	tmp = info->a->num;
-	if (tmp > 2147483647 || tmp < -2147483648)
-	{
-		write(2, "Error\n", 6);
-		free_stack(info);
-		free(info);
-		exit(1);
-	}
-}
-
 void	check_duplicate(t_info *info)
 {
 	t_stack	*tmp1;
@@ -72,23 +58,74 @@ void	check_duplicate(t_info *info)
 	}
 }
 
-int	check_error(int argc, char **argv)
+int	check_num_2(char **argv)
 {
 	int	i;
+	int	j;
+
+	i = 1;
+	while (argv[i])
+	{
+		j = 0;
+		while (argv[i][j])
+		{
+			if (ft_isdigit(argv[i][j]) || argv[i][j] == ' ')
+				j++;
+			else if (argv[i][j] == '+' && ft_isdigit(argv[i][j + 1]))
+				j++;
+			else if (argv[i][j] == '-' && ft_isdigit(argv[i][j + 1]))
+				j++;
+			else
+				return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+
+int	check_num_1(char **ptr)
+{
+	int	i;
+	int	j;
 
 	i = 0;
-	if (argc == 1)
-		exit(1);
-	while (argv[1][i])
+	while (ptr[i])
 	{
-		if (ft_isdigit(argv[1][i]) || argv[1][i] == ' ')
-			i++;
-		else if (argv[1][i] == '+' && ft_isdigit(argv[1][i + 1]))
-			i++;
-		else if (argv[1][i] == '-' && ft_isdigit(argv[1][i + 1]))
-			i++;
-		else
-			return (1);
+		j = 0;
+		while (ptr[i][j])
+		{
+			if (ft_isdigit(ptr[i][j]) || ptr[i][j] == ' ')
+				j++;
+			else if (ptr[i][j] == '+' && ft_isdigit(ptr[i][j + 1]))
+				j++;
+			else if (ptr[i][j] == '-' && ft_isdigit(ptr[i][j + 1]))
+				j++;
+			else
+			{
+				split_free(ptr);
+				return (1);
+			}
+		}
+		i++;
+	}
+	split_free(ptr);
+	return (0);
+}
+
+int	check_num(int argc, char **argv)
+{
+	char	**ptr;
+
+	if (argc < 2)
+		exit(1);
+	if (argc == 2)
+	{
+		ptr = ft_split(*(argv + 1), ' ');
+		return (check_num_1(ptr));
+	}
+	else if (argc > 2)
+	{
+		return (check_num_2(argv));
 	}
 	return (0);
 }

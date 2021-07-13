@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 12:22:36 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/13 16:48:37 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/14 02:22:40 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	push_swap(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	if (check_error(argc, argv))
+	if (check_num(argc, argv))
 	{
 		write(2, "Error\n", 6);
 		return (-1);

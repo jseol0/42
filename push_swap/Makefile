@@ -1,16 +1,11 @@
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror -g
+CFLAGS	= -Wall -Wextra -Werror
 
 NAME	= push_swap
-
 NAME_B	= checker
 
-bonus	= checker
-
 LIBS	= -lft
-
 LIB_DIR	= ./libft
-
 LIB_NAME = libft/libft.a
 
 SRCS	=	array.c	\

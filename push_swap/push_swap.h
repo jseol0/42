@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:53:29 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/13 23:09:06 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/14 02:36:40 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@
 # include "./libft/libft.h"
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 typedef struct s_stack
 {
-	long			num;
+	double			num;
 	char			*operation;
 	struct s_stack	*next;
 	struct s_stack	*prev;
@@ -44,17 +45,19 @@ typedef struct s_info
 }					t_info;
 
 void				push_swap(int argc, char **argv);
-int					check_error(int argc, char **argv);
+int					check_num(int argc, char **argv);
+int					check_num_1(char **ptr);
+int					check_num_2(char **argv);
 t_info				*make_info(t_info *info, int argc, char **argv);
 void				put_stack_a(t_info *info);
-long				push_swap_atoi(const char *str);
+double				push_swap_atoi(const char *str);
 void				check_size(t_info *info);
 void				check_duplicate(t_info *info);
-void				stack_add_top(t_info *info, char stack_name, long num);
-void				stack_add_top_2(t_info *info, t_stack **top, long num);
-void				stack_add_end(t_info *info, char stack_name, long num);
-void				stack_add_end_1(t_info *info, t_stack **top, long num);
-void				stack_add_end_2(t_info *info, t_stack **top, long num);
+void				stack_add_top(t_info *info, char stack_name, double num);
+void				stack_add_top_2(t_info *info, t_stack **top, double num);
+void				stack_add_end(t_info *info, char stack_name, double num);
+void				stack_add_end_1(t_info *info, t_stack **top, double num);
+void				stack_add_end_2(t_info *info, t_stack **top, double num);
 void				stack_del_top(t_info *info, char stack_name);
 void				stack_del_end(t_info *info, char stack_name);
 void				sa(t_info *info);

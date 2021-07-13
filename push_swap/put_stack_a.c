@@ -6,17 +6,31 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:30:21 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/14 00:38:40 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/14 02:49:15 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	push_swap_atoi(const char *str)
+void	check_size(t_info *info)
+{
+	double	tmp;
+
+	tmp = listlast(info->a)->num;
+	if (tmp > 2147483647 || tmp < -2147483648)
+	{
+		write(2, "Error\n", 6);
+		free_stack(info);
+		free(info);
+		exit(1);
+	}
+}
+
+double	push_swap_atoi(const char *str)
 {
 	int		i;
 	int		sign;
-	long	ret;
+	double	ret;
 
 	i = 0;
 	while (ft_isspace(str[i]))
@@ -49,8 +63,9 @@ void	put_stack_a(t_info *info)
 		ptr = ft_split(*(info->argv + 1), ' ');
 		while (*(ptr + i))
 		{
-			stack_add_end(info, 'a', push_swap_atoi(*(ptr + i++)));
+			stack_add_end(info, 'a', push_swap_atoi(*(ptr + i)));
 			check_size(info);
+			i++;
 		}
 		split_free(ptr);
 	}
@@ -58,8 +73,9 @@ void	put_stack_a(t_info *info)
 	{
 		while (i + 1 < info->argc)
 		{
-			stack_add_end(info, 'a', push_swap_atoi(*(info->argv + i++ + 1)));
+			stack_add_end(info, 'a', push_swap_atoi(*(info->argv + i + 1)));
 			check_size(info);
+			i++;
 		}
 	}
 	check_duplicate(info);

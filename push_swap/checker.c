@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 12:30:52 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/13 22:51:16 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/14 02:23:37 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	main(int argc, char **argv)
 {
 	t_info	*info;
 
-	if (check_error(argc, argv))
+	if (check_num(argc, argv))
 	{
 		write(2, "Error\n", 6);
 		return (-1);

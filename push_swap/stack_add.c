@@ -6,13 +6,13 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 21:09:12 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/13 23:08:56 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/14 02:14:29 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stack_add_top_2(t_info *info, t_stack **top, long num)
+void	stack_add_top_2(t_info *info, t_stack **top, double num)
 {
 	*top = (t_stack *)malloc(sizeof(t_stack));
 	if (*top == NULL)
@@ -26,7 +26,7 @@ void	stack_add_top_2(t_info *info, t_stack **top, long num)
 	(*top)->num = num;
 }
 
-void	stack_add_top(t_info *info, char stack_name, long num)
+void	stack_add_top(t_info *info, char stack_name, double num)
 {
 	t_stack	**top;
 	t_stack	*tmp;
@@ -54,7 +54,7 @@ void	stack_add_top(t_info *info, char stack_name, long num)
 		stack_add_top_2(info, top, num);
 }
 
-void	stack_add_end_2(t_info *info, t_stack **top, long num)
+void	stack_add_end_2(t_info *info, t_stack **top, double num)
 {
 	*top = (t_stack *)malloc(sizeof(t_stack));
 	if (*top == NULL)
@@ -68,7 +68,7 @@ void	stack_add_end_2(t_info *info, t_stack **top, long num)
 	(*top)->num = num;
 }
 
-void	stack_add_end_1(t_info *info, t_stack **top, long num)
+void	stack_add_end_1(t_info *info, t_stack **top, double num)
 {
 	t_stack	*tmp;
 
@@ -87,7 +87,7 @@ void	stack_add_end_1(t_info *info, t_stack **top, long num)
 	*top = tmp;
 }
 
-void	stack_add_end(t_info *info, char stack_name, long num)
+void	stack_add_end(t_info *info, char stack_name, double num)
 {
 	t_stack	**top;
 
