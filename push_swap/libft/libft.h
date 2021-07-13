@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 20:23:34 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/11 17:04:42 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/13 15:52:45 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 int					ft_isspace(const char c);
 int					ft_strcmp(char *s1, char *s2);
+char				*ft_strstr(char *str, char *to_find);
 
 t_list				*ft_lstnew(void *content);
 void				ft_lstadd_front(t_list **lst, t_list *new);
