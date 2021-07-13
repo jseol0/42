@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 12:30:52 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/13 18:08:47 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/13 22:51:16 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_is_sorted(t_info *info)
 {
-	int i;
+	int		i;
 	t_stack	*tmp_a;
 
 	tmp_a = info->a;
@@ -48,7 +48,7 @@ int	check_oper_1(t_info *info, char *line)
 
 int	check_oper(t_info *info, char *line)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	if (ft_strstr(line, "sa"))

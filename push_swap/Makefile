@@ -5,11 +5,13 @@ NAME	= push_swap
 
 NAME_B	= checker
 
+bonus	= checker
+
 LIBS	= -lft
 
 LIB_DIR	= ./libft
 
-LIB_NAME = libft.a
+LIB_NAME = libft/libft.a
 
 SRCS	=	array.c	\
 			check_error.c	\
@@ -48,6 +50,8 @@ OBJS	= $(SRCS:.c=.o)
 
 OBJS_B	= $(SRCS_B:.c=.o)
 
+all : $(NAME)
+
 $(NAME) : $(OBJS) $(LIB_NAME)
 		$(CC) $(CFLAGS) $(OBJS) -L $(LIB_DIR) $(LIBS) -o $(NAME)
 
@@ -57,10 +61,10 @@ $(LIB_NAME) :
 %.o : %.c
 		$(CC) $(CFLAGS) -c $< -o $@
 
-bonus : $(OBJS_B) $(LIB_NAME)
-		$(CC) $(CFLAGS) $(OBJS_B) -L $(LIB_DIR) $(LIBS) -o $(NAME_B)
+bonus : $(NAME_B)
 
-all : $(NAME) bonus
+$(NAME_B) : $(OBJS_B) $(LIB_NAME)
+		$(CC) $(CFLAGS) $(OBJS_B) -L $(LIB_DIR) $(LIBS) -o $(NAME_B)
 
 clean :
 		$(MAKE) -C $(LIB_DIR) fclean

@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:53:29 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/13 16:29:15 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/13 23:09:06 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void				check_duplicate(t_info *info);
 void				stack_add_top(t_info *info, char stack_name, long num);
 void				stack_add_top_2(t_info *info, t_stack **top, long num);
 void				stack_add_end(t_info *info, char stack_name, long num);
+void				stack_add_end_1(t_info *info, t_stack **top, long num);
 void				stack_add_end_2(t_info *info, t_stack **top, long num);
 void				stack_del_top(t_info *info, char stack_name);
 void				stack_del_end(t_info *info, char stack_name);

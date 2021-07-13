@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 21:09:12 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/11 21:21:33 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/13 23:08:56 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,31 +68,35 @@ void	stack_add_end_2(t_info *info, t_stack **top, long num)
 	(*top)->num = num;
 }
 
+void	stack_add_end_1(t_info *info, t_stack **top, long num)
+{
+	t_stack	*tmp;
+
+	tmp = (t_stack *)malloc(sizeof(t_stack));
+	if (tmp == NULL)
+	{
+		free_stack(info);
+		free(info);
+		exit(1);
+	}
+	*top = listlast(*top);
+	tmp->num = num;
+	tmp->next = NULL;
+	tmp->prev = *top;
+	(*top)->next = tmp;
+	*top = tmp;
+}
+
 void	stack_add_end(t_info *info, char stack_name, long num)
 {
 	t_stack	**top;
-	t_stack	*tmp;
 
 	if (stack_name == 'a')
 		top = &info->a;
 	else
 		top = &info->b;
 	if (*top)
-	{
-		tmp = (t_stack *)malloc(sizeof(t_stack));
-		if (tmp == NULL)
-		{
-			free_stack(info);
-			free(info);
-			exit(1);
-		}
-		*top = listlast(*top);
-		tmp->num = num;
-		tmp->next = NULL;
-		tmp->prev = *top;
-		(*top)->next = tmp;
-		*top = tmp;
-	}
+		stack_add_end_1(info, top, num);
 	else
 		stack_add_end_2(info, top, num);
 	*top = listfirst(*top);
