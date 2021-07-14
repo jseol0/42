@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:30:21 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/14 02:49:15 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/14 15:28:48 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ double	push_swap_atoi(const char *str)
 	i = 0;
 	while (ft_isspace(str[i]))
 		i++;
+	if (str[i] == '0')
+		i++;
 	sign = 1;
 	if (str[i] == '-' || str[i] == '+')
 	{
@@ -42,12 +44,13 @@ double	push_swap_atoi(const char *str)
 			sign = -1;
 		i++;
 	}
+	if (str[i] == '0')
+		i++;
 	ret = 0;
 	while (('0' <= str[i]) && (str[i] <= '9'))
 	{
 		ret *= 10;
-		ret += (str[i] - '0') * sign;
-		i++;
+		ret += (str[i++] - '0') * sign;
 	}
 	return (ret);
 }

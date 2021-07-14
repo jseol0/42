@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 12:30:52 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/14 02:23:37 by jseol            ###   ########.fr       */
+/*   Updated: 2021/07/14 15:06:41 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,11 @@ int	check_oper(t_info *info, char *line)
 {
 	int	i;
 
+	if (ft_strstr(line, " "))
+	{
+		write(2, "Error\n", 6);
+		exit(0);
+	}
 	i = 1;
 	if (ft_strstr(line, "sa"))
 		sa(info);
