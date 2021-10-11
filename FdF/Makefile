@@ -6,7 +6,7 @@
 #    By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/20 19:21:52 by jseol             #+#    #+#              #
-#    Updated: 2021/07/31 16:38:32 by jseol            ###   ########.fr        #
+#    Updated: 2021/10/07 22:09:48 by jseol            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRC		=	main.c \
 			init.c	\
 			read_map.c	\
 			read_map2.c	\
-			color.c	\
+			rotate.c	\
+			projection.c
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 

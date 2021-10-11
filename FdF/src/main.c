@@ -6,20 +6,11 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 20:00:39 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/25 20:44:50 by jseol            ###   ########.fr       */
+/*   Updated: 2021/10/07 22:14:38 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
-
-void	my_mlx_pixel_put(t_image *image, int x, int y, int color)
-{
-	char *dst;
-
-	dst = image->ptr + (y * image->size_line + x * (image->bpp / 8));
-	*(unsigned int *)dst = color;
-}
 
 void	ft_error(char *s)
 {
@@ -52,7 +43,9 @@ int	main(int argc, char **argv)
 		ft_error("Error: mlx_init error");
 	read_map(&map, argv[1]);
 	mlx->map = &map;
-	draw(mlx);
+	draw(mlx->map, mlx->image);
+	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->image->image, 0, 0);
 	mlx_loop(mlx->mlx);
+
 	return (0);
 }

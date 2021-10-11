@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:17:52 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/25 20:34:27 by jseol            ###   ########.fr       */
+/*   Updated: 2021/10/01 13:12:11 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,7 @@ t_mlx	*ft_init(void)
 {
 	t_mlx	*mlx;
 
-	mlx = (t_mlx *)malloc(sizeof(t_mlx));
-	if (mlx == NULL)
-		return (NULL);
+	mlx = (t_mlx *)ft_malloc(sizeof(t_mlx), 1);
 	mlx->mlx = mlx_init();
 	mlx->window = mlx_new_window(mlx->mlx, WIN_WIDTH, WIN_HEIGHT, "fdf");
 	mlx->image = new_image(mlx);
