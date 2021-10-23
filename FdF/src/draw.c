@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 15:43:06 by jseol             #+#    #+#             */
-/*   Updated: 2021/10/04 12:41:13 by jseol            ###   ########.fr       */
+/*   Updated: 2021/10/23 17:54:05 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	dda(t_image *img, t_map *map, int x, int y)
 	while (i <= step)
 	{
 		if (x >= 0 && x <= WIN_WIDTH && y >= 0 && y <= WIN_HEIGHT)
-			my_mlx_pixel_put(img, x + map->default_x, y +  map->default_y, WHITE);		// 컬러 넣기
+			my_mlx_pixel_put(img, x + map->default_x, y +  map->default_y, map->color[y][x]);
 		x += xinc;
 		y += yinc;
 		i++;

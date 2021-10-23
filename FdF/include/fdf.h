@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 20:01:13 by jseol             #+#    #+#             */
-/*   Updated: 2021/10/07 22:09:33 by jseol            ###   ########.fr       */
+/*   Updated: 2021/10/23 16:24:42 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	ft_error(char *s);
 void	*ft_malloc(size_t size, size_t count);
 int		get_height(char *map_name, int *width);
 int		get_wordcount(char *s, char c);
-void	put_int_to_code(int *code_line, char *line, t_map *map);
+void	put_int_to_code(int *z, int* color, char *line, t_map *map);
 void	get_map_z(t_map *map, char *map_name);
 void	read_map(t_map *map, char *map_name);
 t_image	*new_image(t_mlx *mlx);
@@ -84,8 +84,8 @@ t_mlx	*ft_init(void);
 void	draw(t_map *map, t_image *img);
 void	draw_line(t_map *map, t_image *img, int x1, int y1);
 void	draw_color(t_map *map, t_image *img, int x1, int y1);
-void	color(t_map *map, int y, int x);
-int		get_color(t_map *map);
+int		divide_z(char *split, int col_val);
+int		divide_col(char *split, int col_val);
 void	get_depth(t_map *map);
 void	rotate_map(t_map *map);
 void	projection(t_map *map);

@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 21:10:08 by jseol             #+#    #+#             */
-/*   Updated: 2021/10/07 22:14:32 by jseol            ###   ########.fr       */
+/*   Updated: 2021/10/23 17:39:28 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,49 +40,28 @@ void	get_depth(t_map *map)
 	map->max_depth = max;
 }
 
-void	color(t_map *map, int y, int x)
+int		divide_z(char *split, int col_val)
 {
-	int	color;
-	int	cur;
-	int	max;
-	int	min;
+	char	*z;
+	int		ret;
 
-	color = WHITE;
-	cur = map->z[y][x];
-	max = map->max_depth;
-	min = map->min_depth;
-	if (max >= cur  && cur > (max / 3) * 2)
-		color = RED;
-	else if ((max / 3) * 2 >= cur && cur > max / 3)
-		color = ORANGE;
-	else if (max / 3 >= cur && cur > 0)
-		color = YELLOW;
-	else if (0 > cur  && cur >= min / 3)
-		color = GREEN;
-	else if (min / 3 > cur && cur >= (min / 3) * 2)
-		color = BLUE;
-	else if ((min / 3) * 2 > cur && cur >= min)
-		color = PURPLE;
+	z = (char *)ft_malloc(sizeof(char), 1);
+	z = ft_strncpy(z, split, col_val);
+	ret = ft_atoi(z);
+	free(z);
 
-	return (color);
+	return (ret);
 }
 
-void	get_color(t_map *map)
+int		divide_col(char *split, int col_val)
 {
-	int	x;
-	int	y;
+	char	*col;
+	int		ret;
 
-	map->color = (int **)ft_malloc(sizeof(int *), (map->height));
-	y = 0;
-	while (y < map->height)
-	{
-		map->color[y] = (int *)ft_malloc(sizeof(int), (map->width))
-		x = 0;
-		while (x < map->width)
-		{
-			map->color[y][x] = (map, y, x);
-			x++;
-		}
-		y++;
-	}
+	col = (char *)ft_malloc(sizeof(char), 1);
+	col = ft_strcpy(col, split + col_val + 3);
+	ret = ft_atoi_base(col, "0123456789ABCDEF");
+	free(col);
+
+	return (ret);
 }

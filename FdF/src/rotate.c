@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/22 16:14:04 by jseol             #+#    #+#             */
-/*   Updated: 2021/09/12 12:22:08 by jseol            ###   ########.fr       */
+/*   Updated: 2021/10/23 16:24:41 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	rotate_map(t_map *map)
 			map->vectors[y][x].x = (x * cos(0.5236)) - (y * sin(0.5236));
 			map->vectors[y][x].y = (x * sin(0.5236)) + (y * cos(0.5236)) - map->z[y][x];
 			map->vectors[y][x].z = map->z[y][x];
-			map->vectors[y][x].color = get_color(map, x, y);
 			x++;
 		}
 		y++;
