@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 20:00:39 by jseol             #+#    #+#             */
-/*   Updated: 2021/10/23 17:47:56 by jseol            ###   ########.fr       */
+/*   Updated: 2021/10/26 15:46:06 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,22 @@ int	main(int argc, char **argv)
 		ft_error("Error: mlx_init error");
 	read_map(&map, argv[1]);
 	mlx->map = &map;
+	iso_projection(mlx->map);
 	// draw(mlx->map, mlx->image);
 	// mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->image->image, 0, 0);
 	// mlx_loop(mlx->mlx);
 
+	int i = 0;
+	while (i < mlx->map->height)
+	{
+		int j = 0;
+		while (j < mlx->map->width)
+		{
+			printf("%f %f ", mlx->map->vectors[i][j].x, mlx->map->vectors[i][j].y);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
 	return (0);
 }

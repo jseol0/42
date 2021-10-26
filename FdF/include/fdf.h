@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 20:01:13 by jseol             #+#    #+#             */
-/*   Updated: 2021/10/23 16:24:42 by jseol            ###   ########.fr       */
+/*   Updated: 2021/10/26 15:46:58 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct	s_vector
 {
 	float	x;
 	float	y;
-	float	z;
 }				t_vector;
 
 typedef struct	s_map
@@ -88,7 +87,7 @@ int		divide_z(char *split, int col_val);
 int		divide_col(char *split, int col_val);
 void	get_depth(t_map *map);
 void	rotate_map(t_map *map);
-void	projection(t_map *map);
+void	iso_projection(t_map *map);
 
 
 #endif

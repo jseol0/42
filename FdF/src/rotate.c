@@ -30,7 +30,6 @@ void	rotate_map(t_map *map)
 		{
 			map->vectors[y][x].x = (x * cos(0.5236)) - (y * sin(0.5236));
 			map->vectors[y][x].y = (x * sin(0.5236)) + (y * cos(0.5236)) - map->z[y][x];
-			map->vectors[y][x].z = map->z[y][x];
 			x++;
 		}
 		y++;
