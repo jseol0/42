@@ -29,6 +29,13 @@ void	*ft_malloc(size_t size, size_t count)
 	return (ptr);
 }
 
+int	key_control(int keycode)
+{
+	if (keycode == ESC)
+		exit(0);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_mlx	*mlx;
@@ -45,8 +52,10 @@ int	main(int argc, char **argv)
 	mlx->map = &map;
 	iso_projection(mlx->map);
 	// draw(mlx->map, mlx->image);
-	// mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->image->image, 0, 0);
-	// mlx_loop(mlx->mlx);
+
+	int plus_x = (WIN_WIDTH / 2) - (mlx->map->width / 2);
+	int plus_y = (WIN_HEIGHT / 2) - (mlx->map->height / 2);
+
 
 	int i = 0;
 	while (i < mlx->map->height)
@@ -54,11 +63,16 @@ int	main(int argc, char **argv)
 		int j = 0;
 		while (j < mlx->map->width)
 		{
-			printf("%f %f ", mlx->map->vectors[i][j].x, mlx->map->vectors[i][j].y);
+			my_mlx_pixel_put(mlx->image, (mlx->map->vectors[i][j].x + plus_x), (mlx->map->vectors[i][j].y + plus_y), mlx->map->color[i][j]);
 			j++;
 		}
-		printf("\n");
 		i++;
 	}
+
+
+	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->image->image, 0, 0);
+	mlx_key_hook(mlx->window, key_control, mlx);
+	mlx_loop(mlx->mlx);
+
 	return (0);
 }

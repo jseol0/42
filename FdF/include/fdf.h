@@ -16,13 +16,14 @@
 # define WIN_WIDTH		1440
 # define WIN_HEIGHT		840
 # define WHITE			0xFFFFFF
-# define RED			0xFF0000
-# define ORANGE			0xFF6600
-# define YELLOW			0xFFFF00
-# define GREEN			0x00FF00
-# define PURPLE			0xFF00FF
-# define BLUE			0x0000FF
-# define LINE_LEN		50
+// # define RED			0xFF0000
+// # define ORANGE			0xFF6600
+// # define YELLOW			0xFFFF00
+// # define GREEN			0x00FF00
+// # define PURPLE			0xFF00FF
+// # define BLUE			0x0000FF
+// # define LINE_LEN		50
+# define ESC			53
 
 #include "libft.h"
 #include "mlx.h"
