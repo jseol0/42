@@ -72,6 +72,10 @@ x, y 길이 늘려주기 - 전체 윈도우의 중앙에 맞추기
 plus_x = (WIN_WIDTH / 2) - (mlx->map->width / 2)
 plus_y = (WIN_HEIGHT / 2) - (mlx->map->height / 2)
 
++ 간격 벌리기 ...??방법
+
 나중에 픽셀 찍을때
 my_mlx_pixel_put(img, x + plus_x, y + plus_y, color)
+
+
 */

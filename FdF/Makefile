@@ -13,7 +13,7 @@
 NAME	= fdf
 
 # src / obj files
-SRC		=	main.c \
+SRC		=	fdf.c \
 			draw.c	\
 			init.c	\
 			read_map.c	\

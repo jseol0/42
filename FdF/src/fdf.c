@@ -63,7 +63,7 @@ int	main(int argc, char **argv)
 		int j = 0;
 		while (j < mlx->map->width)
 		{
-			my_mlx_pixel_put(mlx->image, (mlx->map->vectors[i][j].x + plus_x), (mlx->map->vectors[i][j].y + plus_y), mlx->map->color[i][j]);
+			my_mlx_pixel_put(mlx->image, (mlx->map->vectors[i][j].x + plus_x + 50), (mlx->map->vectors[i][j].y + plus_y + 50), mlx->map->color[i][j]);
 			j++;
 		}
 		i++;

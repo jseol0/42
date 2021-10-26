@@ -22,7 +22,7 @@
 // # define GREEN			0x00FF00
 // # define PURPLE			0xFF00FF
 // # define BLUE			0x0000FF
-// # define LINE_LEN		50
+# define LINE_LEN		50
 # define ESC			53
 
 #include "libft.h"
