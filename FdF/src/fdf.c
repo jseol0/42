@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 20:00:39 by jseol             #+#    #+#             */
-/*   Updated: 2021/10/26 15:46:06 by jseol            ###   ########.fr       */
+/*   Updated: 2021/10/27 16:31:28 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,24 +50,22 @@ int	main(int argc, char **argv)
 		ft_error("Error: mlx_init error");
 	read_map(&map, argv[1]);
 	mlx->map = &map;
-	iso_projection(mlx->map);
-	// draw(mlx->map, mlx->image);
+	iso_projection(mlx, mlx->map);
+	draw(mlx);
 
-	int plus_x = (WIN_WIDTH / 2) - (mlx->map->width / 2);
-	int plus_y = (WIN_HEIGHT / 2) - (mlx->map->height / 2);
-
-
-	int i = 0;
-	while (i < mlx->map->height)
-	{
-		int j = 0;
-		while (j < mlx->map->width)
-		{
-			my_mlx_pixel_put(mlx->image, (mlx->map->vectors[i][j].x + plus_x + 50), (mlx->map->vectors[i][j].y + plus_y + 50), mlx->map->color[i][j]);
-			j++;
-		}
-		i++;
-	}
+	// int i = 0;
+	// while (i < mlx->map->height)
+	// {
+	// 	int j = 0;
+	// 	while (j < mlx->map->width)
+	// 	{
+	// 		printf("y: %d ", i);
+	// 		printf("%f %f\n", mlx->vectors[i][j].x, mlx->vectors[i][j].y);
+	// 		// my_mlx_pixel_put(mlx->image, (mlx->map->vectors[i][j].x + plus_x + 50), (mlx->map->vectors[i][j].y + plus_y + 50), mlx->map->color[i][j]);
+	// 		j++;
+	// 	}
+	// 	i++;
+	// }
 
 
 	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->image->image, 0, 0);

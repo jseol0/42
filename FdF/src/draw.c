@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 15:43:06 by jseol             #+#    #+#             */
-/*   Updated: 2021/10/23 17:54:05 by jseol            ###   ########.fr       */
+/*   Updated: 2021/10/27 17:04:06 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	my_mlx_pixel_put(t_image *image, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	dda(t_image *img, t_map *map, int x, int y)
+void	dda(t_mlx *mlx, int x, int y)
 {
 	int	i;
 	float	step;
@@ -28,7 +28,7 @@ void	dda(t_image *img, t_map *map, int x, int y)
 	float	yinc;
 	t_vector	**v;
 
-	v = map->vectors;
+	v = mlx->vectors;
 	if (fabs(v[y][x + 1].x) - fabs(v[y][x].x) > fabs(v[y][x + 1].y) - fabs(v[y][x].y))
 		step = fabs(v[y][x + 1].x) - fabs(v[y][x].x);
 	else
@@ -39,28 +39,28 @@ void	dda(t_image *img, t_map *map, int x, int y)
 	while (i <= step)
 	{
 		if (x >= 0 && x <= WIN_WIDTH && y >= 0 && y <= WIN_HEIGHT)
-			my_mlx_pixel_put(img, x + map->default_x, y +  map->default_y, map->color[y][x]);
+			my_mlx_pixel_put(mlx->image, x + mlx->map->default_x, y + mlx->map->default_y, mlx->map->color[y][x]);
 		x += xinc;
 		y += yinc;
 		i++;
 	}
 }
 
-void	draw(t_map *map, t_image *img)
+void	draw(t_mlx * mlx)
 {
 	int	x;
 	int	y;
 
 	y = 0;
-	while (y < map->height)
+	while (y < mlx->map->height)
 	{
 		x = 0;
-		while (x < map->width)
+		while (x < mlx->map->width)
 		{
-			if (x + 1 < map->width)
-				dda(img, map, x, y);
-			if (y + 1 < map->height)
-				dda(img, map, x, y);
+			if (x + 1 < mlx->map->width)
+				dda(mlx, x, y);
+			if (y + 1 < mlx->map->height)
+				dda(mlx, x, y);
 			x++;
 		}
 		y++;
@@ -68,14 +68,5 @@ void	draw(t_map *map, t_image *img)
 }
 
 /*
-x, y 길이 늘려주기 - 전체 윈도우의 중앙에 맞추기
-plus_x = (WIN_WIDTH / 2) - (mlx->map->width / 2)
-plus_y = (WIN_HEIGHT / 2) - (mlx->map->height / 2)
-
-+ 간격 벌리기 ...??방법
-
-나중에 픽셀 찍을때
-my_mlx_pixel_put(img, x + plus_x, y + plus_y, color)
-
-
+dda vs Bresenham
 */
