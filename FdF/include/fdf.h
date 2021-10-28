@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 20:01:13 by jseol             #+#    #+#             */
-/*   Updated: 2021/10/27 15:20:19 by jseol            ###   ########.fr       */
+/*   Updated: 2021/10/28 17:15:52 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,19 @@
 
 #include <stdio.h>
 
+typedef struct	s_bresenham
+{
+	int	x;
+	int	y;
+	int	x1;
+	int	y1;
+	int	flag;
+}				t_bresenham;
+
 typedef struct	s_vector
 {
-	float	x;
-	float	y;
+	int	x;
+	int	y;
 }				t_vector;
 
 typedef struct	s_map

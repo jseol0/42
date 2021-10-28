@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 20:00:39 by jseol             #+#    #+#             */
-/*   Updated: 2021/10/27 16:31:28 by jseol            ###   ########.fr       */
+/*   Updated: 2021/10/28 18:42:53 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,12 @@ int	main(int argc, char **argv)
 	// 	while (j < mlx->map->width)
 	// 	{
 	// 		printf("y: %d ", i);
-	// 		printf("%f %f\n", mlx->vectors[i][j].x, mlx->vectors[i][j].y);
-	// 		// my_mlx_pixel_put(mlx->image, (mlx->map->vectors[i][j].x + plus_x + 50), (mlx->map->vectors[i][j].y + plus_y + 50), mlx->map->color[i][j]);
+	// 		printf("%d %d\n", mlx->vectors[i][j].x, mlx->vectors[i][j].y);
+	// 		my_mlx_pixel_put(mlx->image, (mlx->vectors[i][j].x + mlx->map->default_x), (mlx->vectors[i][j].y + mlx->map->default_y), mlx->map->color[i][j]);
 	// 		j++;
 	// 	}
 	// 	i++;
 	// }
-
 
 	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->image->image, 0, 0);
 	mlx_key_hook(mlx->window, key_control, mlx);
