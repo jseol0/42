@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 15:43:06 by jseol             #+#    #+#             */
-/*   Updated: 2021/10/28 18:10:15 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/02 17:33:27 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,36 +28,36 @@ void	bresenham(t_mlx *mlx, t_bresenham *b, int x, int y)
 
 	dx = (abs(b->x1) - abs(b->x));
 	dy = (abs(b->y1) - abs(b->y));
-	if (dy > dx)
+	if (dx > dy)
 	{
-		p = 2 * (dy - dx);
+		p = (2 * dy) - dx;
 		while (b->x <= b->x1)
 		{
 			my_mlx_pixel_put(mlx->image, b->x + mlx->map->default_x,
 			 b->y + mlx->map->default_y, mlx->map->color[y][x]);
 			b->x++;
 			if (p < 0)
-				p = p + (2 * dy);
+				p += 2 * dy;
 			else
 			{
-				p = p + (2 * (dy - dx));
+				p += 2 * (dy - dx);
 				b->y++;
 			}
 		}
 	}
 	else
 	{
-		p = 2 * (dx - dy);
+		p = (2 * dx) - dy;
 		while (b->y <= b->y1)
 		{
 			my_mlx_pixel_put(mlx->image, b->x + mlx->map->default_x,
 				 b->y + mlx->map->default_y, mlx->map->color[y][x]);
 			b->y++;
 			if (p < 0)
-				p = p + (2 * dy);
+				p += 2 * dx;
 			else
 			{
-				p = p + (2 * (dx - dy));
+				p += 2 * (dx - dy);
 				b->x++;
 			}
 		}
@@ -66,22 +66,27 @@ void	bresenham(t_mlx *mlx, t_bresenham *b, int x, int y)
 
 // void	dda(t_mlx *mlx, t_bresenham *b, int x, int y)
 // {
-// 	int	dx;
-// 	int	dy;
-// 	int	step;
+// 	float	dx;
+// 	float	dy;
+// 	float	step;
 
-// 	dx = (abs(b->x1) - abs(b->x));
-// 	dy = (abs(b->y1) - abs(b->y));
+// 	dx = (fabs(b->x1) - fabs(b->x));
+// 	dy = (fabs(b->y1) - fabs(b->y));
 // 	if (dx > dy)
 // 		step = dx;
 // 	else
 // 		step = dy;
-// 	int	xinc = dx / step;
-// 	int	yinc = dy / step;
-// 	int i = 0;
+// 	float	xinc = dx / step;
+// 	float	yinc = dy / step;
+// 	int	i = 0;
 // 	while (i <= step)
 // 	{
-
+// 		if (b->x + mlx->map->default_x >= 0 && b->x + mlx->map->default_x <= WIN_WIDTH &&
+// 			b->y + mlx->map->default_y >= 0 && b->y + mlx->map->default_y <= WIN_HEIGHT)
+// 			my_mlx_pixel_put(mlx->image, b->x + mlx->map->default_x,
+// 				 b->y + mlx->map->default_y, mlx->map->color[y][x]);
+// 		b->x += xinc;
+// 		b->y += yinc;
 // 	}
 // }
 
@@ -92,11 +97,11 @@ void	prepare_bresenham(t_bresenham *b, t_vector **v, int x, int y)
 	if (b->flag == 1)
 	{
 		b->x1 = v[y][x + 1].x;
-		b->y1 = v[y][x].y;
+		b->y1 = v[y][x + 1].y;
 	}
 	else if (b->flag == -1)
 	{
-		b->x1 = v[y][x].x;
+		b->x1 = v[y + 1][x].x;
 		b->y1 = v[y + 1][x].y;
 	}
 }

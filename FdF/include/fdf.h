@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 20:01:13 by jseol             #+#    #+#             */
-/*   Updated: 2021/10/28 17:15:52 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/02 17:29:31 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct	s_bresenham
 	int	y;
 	int	x1;
 	int	y1;
-	int	flag;
+	int		flag;
 }				t_bresenham;
 
 typedef struct	s_vector
