@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/22 16:11:12 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/02 18:36:36 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/03 17:32:52 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,19 @@ int	get_height(char *map_name, int *width)
 	char	*line;
 	int		ret;
 	int		fd;
+	int		w;
 
 	ret = 0;
+	w = 0;
 	fd = open(map_name, O_RDONLY);
 	if (fd < 0)
 		ft_error("Error: can't find map\n");
 	while (get_next_line(fd, &line) > 0)
 	{
 		*width = get_wordcount(line, ' ');
+		if (w != 0 && w != *width)
+			ft_error("Error: Wrong map\n");
+		w = *width;
 		ret++;
 		free(line);
 	}
@@ -69,7 +74,7 @@ void	put_int_to_code(int *z, int* color, char *line, t_map *map)
 		col_val = ft_strchr_index(split[i], ',');
 		if (col_val == -1)
 		{
-			z[i] = ft_atoi(split[i]);
+			z[i] = ft_atoi_fdf(split[i]);
 			color[i] = WHITE;
 		}
 		else
@@ -118,5 +123,4 @@ void	read_map(t_map *map, char *map_name)
 	map->height = get_height(map_name, &width);
 	map->width = width;
 	get_map_z(map, map_name);
-	// get_depth(map);
 }

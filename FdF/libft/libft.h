@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 20:23:34 by jseol             #+#    #+#             */
-/*   Updated: 2021/10/23 15:56:08 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/03 16:37:21 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,7 @@ int					ft_strchr_index(char *s, char c);
 int					ft_newline_line(char **store, size_t index, char **line);
 int					ft_eof_line(char **store, char **line, int read_size);
 int					get_next_line(int fd, char **line);
+
+void				ft_error(char *s);
 
 #endif

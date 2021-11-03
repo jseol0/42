@@ -6,22 +6,22 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 20:01:13 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/02 17:29:31 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/03 17:32:58 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# define WIN_WIDTH		1440
-# define WIN_HEIGHT		840
+# define WIN_WIDTH		1920
+# define WIN_HEIGHT		1080
 # define WHITE			0xFFFFFF
 // # define RED			0xFF0000
-// # define ORANGE			0xFF6600
-// # define YELLOW			0xFFFF00
-// # define GREEN			0x00FF00
-// # define PURPLE			0xFF00FF
-// # define BLUE			0x0000FF
+// # define ORANGE		0xFF6600
+// # define YELLOW		0xFFFF00
+// # define GREEN		0x00FF00
+// # define PURPLE		0xFF00FF
+// # define BLUE		0x0000FF
 # define LINE_LEN		50
 # define ESC			53
 
@@ -80,11 +80,11 @@ typedef struct	s_mlx
 }				t_mlx;
 
 void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
-void	ft_error(char *s);
 void	*ft_malloc(size_t size, size_t count);
 int		get_height(char *map_name, int *width);
 int		get_wordcount(char *s, char c);
 void	put_int_to_code(int *z, int* color, char *line, t_map *map);
+int		ft_atoi_fdf(const char *str);
 void	get_map_z(t_map *map, char *map_name);
 void	read_map(t_map *map, char *map_name);
 t_image	*new_image(t_mlx *mlx);

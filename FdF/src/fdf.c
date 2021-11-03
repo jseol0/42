@@ -6,17 +6,11 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 20:00:39 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/02 16:17:30 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/03 16:38:07 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void	ft_error(char *s)
-{
-	ft_putstr_fd(s, 1);
-	exit(1);
-}
 
 void	*ft_malloc(size_t size, size_t count)
 {
