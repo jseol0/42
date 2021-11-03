@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/22 16:11:12 by jseol             #+#    #+#             */
-/*   Updated: 2021/10/28 18:20:15 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/02 18:36:36 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,8 @@ void	read_map(t_map *map, char *map_name)
 {
 	int	width;
 
-	map->default_x = (WIN_WIDTH / 2) - (map->width / 2);
-	map->default_y = (WIN_HEIGHT / 2) - (map->height / 2);
+	map->default_x = (WIN_WIDTH / 3);	//(WIN_WIDTH / 2) - (map->width / 2);
+	map->default_y = (WIN_HEIGHT / 3) * 2;	//(WIN_HEIGHT / 2) - (map->height / 2);
 	map->height = get_height(map_name, &width);
 	map->width = width;
 	get_map_z(map, map_name);

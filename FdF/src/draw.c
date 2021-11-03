@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 15:43:06 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/02 17:33:27 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/03 15:37:40 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,69 +26,47 @@ void	bresenham(t_mlx *mlx, t_bresenham *b, int x, int y)
 	int	dy;
 	int	p;
 
-	dx = (abs(b->x1) - abs(b->x));
-	dy = (abs(b->y1) - abs(b->y));
+	dx = abs(b->x1 - b->x);
+	dy = abs(b->y1 - b->y);
+
+	int yfactor = b->y1 < b->y ? -1 : 1;
+	int xfactor = b->x1 < b->x ? -1 : 1;
+
 	if (dx > dy)
 	{
 		p = (2 * dy) - dx;
-		while (b->x <= b->x1)
+		while (xfactor == 1 ? b->x <= b->x1 : b->x >= b->x1)
 		{
 			my_mlx_pixel_put(mlx->image, b->x + mlx->map->default_x,
 			 b->y + mlx->map->default_y, mlx->map->color[y][x]);
-			b->x++;
+			b->x += xfactor;
 			if (p < 0)
 				p += 2 * dy;
 			else
 			{
 				p += 2 * (dy - dx);
-				b->y++;
+				b->y += yfactor;
 			}
 		}
 	}
 	else
 	{
 		p = (2 * dx) - dy;
-		while (b->y <= b->y1)
+		while (yfactor == 1 ? b->y <= b->y1 : b->y >= b->y1)
 		{
 			my_mlx_pixel_put(mlx->image, b->x + mlx->map->default_x,
 				 b->y + mlx->map->default_y, mlx->map->color[y][x]);
-			b->y++;
+			b->y += yfactor;
 			if (p < 0)
 				p += 2 * dx;
 			else
 			{
 				p += 2 * (dx - dy);
-				b->x++;
+				b->x += xfactor;
 			}
 		}
 	}
 }
-
-// void	dda(t_mlx *mlx, t_bresenham *b, int x, int y)
-// {
-// 	float	dx;
-// 	float	dy;
-// 	float	step;
-
-// 	dx = (fabs(b->x1) - fabs(b->x));
-// 	dy = (fabs(b->y1) - fabs(b->y));
-// 	if (dx > dy)
-// 		step = dx;
-// 	else
-// 		step = dy;
-// 	float	xinc = dx / step;
-// 	float	yinc = dy / step;
-// 	int	i = 0;
-// 	while (i <= step)
-// 	{
-// 		if (b->x + mlx->map->default_x >= 0 && b->x + mlx->map->default_x <= WIN_WIDTH &&
-// 			b->y + mlx->map->default_y >= 0 && b->y + mlx->map->default_y <= WIN_HEIGHT)
-// 			my_mlx_pixel_put(mlx->image, b->x + mlx->map->default_x,
-// 				 b->y + mlx->map->default_y, mlx->map->color[y][x]);
-// 		b->x += xinc;
-// 		b->y += yinc;
-// 	}
-// }
 
 void	prepare_bresenham(t_bresenham *b, t_vector **v, int x, int y)
 {
@@ -138,4 +116,31 @@ void	draw(t_mlx *mlx)
 
 /*
 dda vs Bresenham
+
+// void	dda(t_mlx *mlx, t_bresenham *b, int x, int y)
+// {
+// 	float	dx;
+// 	float	dy;
+// 	float	step;
+
+// 	dx = (fabs(b->x1) - fabs(b->x));
+// 	dy = (fabs(b->y1) - fabs(b->y));
+// 	if (dx > dy)
+// 		step = dx;
+// 	else
+// 		step = dy;
+// 	float	xinc = dx / step;
+// 	float	yinc = dy / step;
+// 	int	i = 0;
+// 	while (i <= step)
+// 	{
+// 		if (b->x + mlx->map->default_x >= 0 && b->x + mlx->map->default_x <= WIN_WIDTH &&
+// 			b->y + mlx->map->default_y >= 0 && b->y + mlx->map->default_y <= WIN_HEIGHT)
+// 			my_mlx_pixel_put(mlx->image, b->x + mlx->map->default_x,
+// 				 b->y + mlx->map->default_y, mlx->map->color[y][x]);
+// 		b->x += xinc;
+// 		b->y += yinc;
+// 	}
+// }
+
 */
