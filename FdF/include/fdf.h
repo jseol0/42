@@ -13,8 +13,8 @@
 #ifndef FDF_H
 # define FDF_H
 
-# define WIN_WIDTH		1920
-# define WIN_HEIGHT		1080
+# define WIN_WIDTH		1280
+# define WIN_HEIGHT		800
 # define WHITE			0xFFFFFF
 // # define RED			0xFF0000
 // # define ORANGE		0xFF6600
