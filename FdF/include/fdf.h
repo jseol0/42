@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 20:01:13 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/05 21:20:44 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/05 23:53:01 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@
 # define WIN_WIDTH		1280
 # define WIN_HEIGHT		800
 # define WHITE			0xFFFFFF
-// # define RED			0xFF0000
-// # define ORANGE		0xFF6600
-// # define YELLOW		0xFFFF00
-// # define GREEN		0x00FF00
-// # define PURPLE		0xFF00FF
-// # define BLUE		0x0000FF
 # define LINE_LEN		50
 # define ESC			53
 

@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 18:00:06 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/05 23:19:12 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/05 23:26:05 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,5 @@ void	size_control(t_mlx *mlx, t_map *map)
 	if (map->min < 0)
 		dy = map->min + map->max;
 	map->default_y = (WIN_HEIGHT / 2) - (dy / 2);
-	printf("max: %d min: %d\n", map->max, map->min);
-	printf("before: %d de_y: %d\n", dy / 2, map->default_y);
 	adjust_default(mlx, map);
 }

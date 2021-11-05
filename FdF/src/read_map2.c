@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 21:10:08 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/05 20:13:19 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/05 23:52:36 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int		divide_col(char *split, int col_val)
 	len = ft_strlen(split);
 	col = (char *)ft_malloc(sizeof(char), len);
 	col = ft_strcpy(col, split + col_val + 3);
+	col = ft_strupcase(col);
 	ret = ft_atoi_base(col, "0123456789ABCDEF");
 	free(col);
 
