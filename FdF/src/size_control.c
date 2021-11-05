@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 18:00:06 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/05 22:24:00 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/05 23:19:12 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,29 @@ void	adjust_size(t_mlx *mlx, t_map *map)
 		while (x < map->width)
 		{
 			mlx->vectors[y][x].x = (x * map->size_x * cos(0.4636 * -1))
-			 - (y * map->size_x * sin(1.1071 * -1)) + map->default_x;
+			 - (y * map->size_x * sin(1.1071 * -1));
 			mlx->vectors[y][x].y = (x * map->size_y * sin(0.4636 * -1))
 			 + (y * map->size_y * cos(1.1071 * -1))
-			 - map->z[y][x] * map->size_y + map->default_y;
+			 - map->z[y][x] * map->size_y;
+			x++;
+		}
+		y++;
+	}
+}
+
+void	adjust_default(t_mlx *mlx, t_map *map)
+{
+	int x;
+	int	y;
+
+	y = 0;
+	while (y < map->height)
+	{
+		x = 0;
+		while (x < map->width)
+		{
+			mlx->vectors[y][x].x += map->default_x;
+			mlx->vectors[y][x].y += map->default_y;
 			x++;
 		}
 		y++;
@@ -87,11 +106,20 @@ void	size_control(t_mlx *mlx, t_map *map)
 
 	get_max_and_min_x(mlx, map);
 	dx = map->max - map->min;
-	map->default_x = (WIN_WIDTH / 2) - (dx / 2);
 	get_max_and_min_y(mlx, map);
 	dy = map->max - map->min;
-	map->default_y = (WIN_HEIGHT / 2) - (dy / 2);
 	map->size_x = (WIN_WIDTH * 0.8) / dx;
 	map->size_y = (WIN_HEIGHT * 0.8) / dy;
 	adjust_size(mlx, map);
+	get_max_and_min_x(mlx, map);
+	dx = map->max - map->min;
+	map->default_x = (WIN_WIDTH / 2) - (dx / 2);
+	get_max_and_min_y(mlx, map);
+	dy = map->max - map->min;
+	if (map->min < 0)
+		dy = map->min + map->max;
+	map->default_y = (WIN_HEIGHT / 2) - (dy / 2);
+	printf("max: %d min: %d\n", map->max, map->min);
+	printf("before: %d de_y: %d\n", dy / 2, map->default_y);
+	adjust_default(mlx, map);
 }
