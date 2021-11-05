@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 20:00:39 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/03 16:38:07 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/05 22:03:59 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	main(int argc, char **argv)
 	read_map(&map, argv[1]);
 	mlx->map = &map;
 	iso_projection(mlx, mlx->map);
+	size_control(mlx, mlx->map);
 	draw(mlx);
 
 	// int i = 0;

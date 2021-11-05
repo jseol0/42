@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 21:10:08 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/03 17:31:14 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/05 20:13:19 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,34 +41,6 @@ int	ft_atoi_fdf(const char *str)
 	return (ret);
 }
 
-void	get_depth(t_map *map)
-{
-	t_map	cur;
-	int	min;
-	int	max;
-	int	depth;
-
-	min = 2147483647;
-	max = -2147483648;
-	cur.height = 0;
-	while (cur.height < map->height)
-	{
-		cur.width = 0;
-		while (cur.width < map->width)
-		{
-			depth = map->z[cur.height][cur.width];
-			if (depth < min)
-				min = depth;
-			if (depth > max)
-				max = depth;
-			cur.width++;
-		}
-		cur.height++;
-	}
-	map->min_depth = min;
-	map->max_depth = max;
-}
-
 int		divide_z(char *split, int col_val)
 {
 	char	*z;
@@ -98,3 +70,33 @@ int		divide_col(char *split, int col_val)
 
 	return (ret);
 }
+
+/*
+void	get_depth(t_map *map)
+{
+	t_map	cur;
+	int	min;
+	int	max;
+	int	depth;
+
+	min = 2147483647;
+	max = -2147483648;
+	cur.height = 0;
+	while (cur.height < map->height)
+	{
+		cur.width = 0;
+		while (cur.width < map->width)
+		{
+			depth = map->z[cur.height][cur.width];
+			if (depth < min)
+				min = depth;
+			if (depth > max)
+				max = depth;
+			cur.width++;
+		}
+		cur.height++;
+	}
+	map->min_depth = min;
+	map->max_depth = max;
+}
+*/

@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 15:43:06 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/03 15:52:33 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/05 22:22:41 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,8 @@ void	bresenham(t_mlx *mlx, t_bresenham *b, int x, int y)
 		p = (2 * dy) - dx;
 		while (xfactor == 1 ? b->x <= b->x1 : b->x >= b->x1)
 		{
-			if (b->x + mlx->map->default_x > 0 && b->x + mlx->map->default_x < WIN_WIDTH
-				&& b->y + mlx->map->default_y > 0 && b->y + mlx->map->default_y < WIN_HEIGHT)
-				my_mlx_pixel_put(mlx->image, b->x + mlx->map->default_x,
-				 b->y + mlx->map->default_y, mlx->map->color[y][x]);
+			if (b->x> 0 && b->x < WIN_WIDTH && b->y > 0 && b->y < WIN_HEIGHT)
+				my_mlx_pixel_put(mlx->image, b->x, b->y, mlx->map->color[y][x]);
 			b->x += xfactor;
 			if (p < 0)
 				p += 2 * dy;
@@ -56,10 +54,8 @@ void	bresenham(t_mlx *mlx, t_bresenham *b, int x, int y)
 		p = (2 * dx) - dy;
 		while (yfactor == 1 ? b->y <= b->y1 : b->y >= b->y1)
 		{
-			if (b->x + mlx->map->default_x > 0 && b->x + mlx->map->default_x < WIN_WIDTH
-				&& b->y + mlx->map->default_y > 0 && b->y + mlx->map->default_y < WIN_HEIGHT)
-				my_mlx_pixel_put(mlx->image, b->x + mlx->map->default_x,
-					 b->y + mlx->map->default_y, mlx->map->color[y][x]);
+			if (b->x> 0 && b->x < WIN_WIDTH && b->y > 0 && b->y < WIN_HEIGHT)
+				my_mlx_pixel_put(mlx->image, b->x, b->y, mlx->map->color[y][x]);
 			b->y += yfactor;
 			if (p < 0)
 				p += 2 * dx;

@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 20:01:13 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/03 17:32:58 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/05 21:20:44 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,10 @@ typedef struct	s_map
 	int		height;
 	int		**z;
 	int		**color;
-	int		max_depth;
-	int		min_depth;
+	int		max;
+	int		min;
+	int		size_x;
+	int		size_y;
 	int		default_x;
 	int		default_y;
 }				t_map;
@@ -98,6 +100,6 @@ int		divide_col(char *split, int col_val);
 void	get_depth(t_map *map);
 void	rotate_map(t_map *map);
 void	iso_projection(t_mlx *mlx, t_map *map);
-
+void	size_control(t_mlx *mlx, t_map *map);
 
 #endif
