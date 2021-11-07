@@ -6,13 +6,13 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 16:35:18 by jseol             #+#    #+#             */
-/*   Updated: 2021/07/23 19:11:32 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/07 14:06:12 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_gnl_strlen(char *s)
+size_t	ft_gnl_strlen(char *s)
 {
 	size_t	i;
 
@@ -22,7 +22,7 @@ size_t		ft_gnl_strlen(char *s)
 	return (i);
 }
 
-size_t		ft_gnl_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t	ft_gnl_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	src_len;
 	size_t	i;
@@ -42,7 +42,7 @@ size_t		ft_gnl_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (src_len);
 }
 
-size_t		ft_gnl_strlcat(char *dst, const char *src, size_t dstsize)
+size_t	ft_gnl_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	char	*s;
 	size_t	i;
@@ -64,7 +64,7 @@ size_t		ft_gnl_strlcat(char *dst, const char *src, size_t dstsize)
 	return (dst_len + src_len);
 }
 
-char		*ft_gnl_strdup(char *s)
+char	*ft_gnl_strdup(char *s)
 {
 	char	*ret;
 	size_t	len;
@@ -84,7 +84,7 @@ char		*ft_gnl_strdup(char *s)
 	return (ret);
 }
 
-char		*ft_gnl_strjoin(char *s1, char *s2)
+char	*ft_gnl_strjoin(char *s1, char *s2)
 {
 	char	*ret;
 	size_t	s1_len;
@@ -93,7 +93,12 @@ char		*ft_gnl_strjoin(char *s1, char *s2)
 	if (s1 == NULL && s2 == NULL)
 		return (NULL);
 	else if (!(s1) || !(s2))
-		return (!(s1) ? ft_gnl_strdup(s2) : ft_gnl_strdup(s1));
+	{
+		if (!(s1))
+			return (ft_gnl_strdup(s2));
+		else
+			return (ft_gnl_strdup(s1));
+	}
 	s1_len = ft_gnl_strlen(s1);
 	s2_len = ft_gnl_strlen(s2);
 	ret = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));

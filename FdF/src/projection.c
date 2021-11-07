@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/22 16:59:40 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/05 22:00:37 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/07 17:31:46 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,12 @@ void	iso_projection(t_mlx *mlx, t_map *map)
 		x = 0;
 		while (x < map->width)
 		{
-			mlx->vectors[y][x].x = (x * cos(0.4636 * -1)) - (y * sin(1.1071 * -1));
-			mlx->vectors[y][x].y = (x * sin(0.4636 * -1)) + (y * cos(1.1071 * -1)) - map->z[y][x];
+			mlx->vectors[y][x].x = (x * cos(0.4636 * -1))
+				- (y * sin(1.1071 * -1));
+			mlx->vectors[y][x].y = (x * sin(0.4636 * -1))
+				+ (y * cos(1.1071 * -1)) - map->z[y][x];
 			x++;
 		}
 		y++;
 	}
 }
-
-/*
-
-사이즈 늘리기
-
-*/

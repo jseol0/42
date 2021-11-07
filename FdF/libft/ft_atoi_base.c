@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 15:51:21 by jseol             #+#    #+#             */
-/*   Updated: 2021/10/23 15:59:45 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/07 14:02:41 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_char_check(char str)
 {
 	if (str == ' ' || str == '\f' || str == '\n' || str == '\r'
-			|| str == '\t' || str == '\v' || str == '+')
+		|| str == '\t' || str == '\v' || str == '+')
 		return (1);
 	else if (str == '-')
 		return (-1);
@@ -25,8 +25,8 @@ int	ft_char_check(char str)
 
 int	ft_base_check(char *base, int base_size)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*tmp;
 
 	i = 0;
@@ -36,8 +36,8 @@ int	ft_base_check(char *base, int base_size)
 		if (tmp[0] == '\0' || base_size == 1)
 			return (0);
 		if (tmp[i] == '+' || tmp[i] == '-' || tmp[i] == ' ' || tmp[i] == '\f'
-				|| tmp[i] == '\n' || tmp[i] == '\r'
-				|| tmp[i] == '\t' || tmp[i] == '\v')
+			|| tmp[i] == '\n' || tmp[i] == '\r'
+			|| tmp[i] == '\t' || tmp[i] == '\v')
 			return (0);
 		j = i + 1;
 		while (tmp[j] != '\0')
@@ -53,7 +53,7 @@ int	ft_base_check(char *base, int base_size)
 
 int	find_index(char c, char *base, int base_size)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < base_size)
@@ -67,9 +67,9 @@ int	find_index(char c, char *base, int base_size)
 
 int	ft_putnbr_base(char *str, char *base, int base_size)
 {
-	int i;
-	int sign;
-	int ret;
+	int	i;
+	int	sign;
+	int	ret;
 
 	i = 0;
 	sign = 1;

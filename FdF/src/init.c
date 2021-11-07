@@ -6,20 +6,20 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:17:52 by jseol             #+#    #+#             */
-/*   Updated: 2021/10/01 13:12:11 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/07 17:55:09 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_image	*new_image(t_mlx *mlx)
+static t_image	*new_image(t_mlx *mlx)
 {
 	t_image	*img;
 
 	img = (t_image *)malloc(sizeof(t_image));
 	img->image = mlx_new_image(mlx->mlx, WIN_WIDTH, WIN_HEIGHT);
 	img->ptr = mlx_get_data_addr(img->image, &img->bpp, &img->size_line,
-			 &img->endian);
+			&img->endian);
 	return (img);
 }
 

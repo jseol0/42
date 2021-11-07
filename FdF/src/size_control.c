@@ -6,13 +6,13 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 18:00:06 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/05 23:26:05 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/07 18:00:02 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	get_max_and_min_y(t_mlx *mlx, t_map *map)
+static void	get_max_and_min_y(t_mlx *mlx, t_map *map)
 {
 	int	i;
 	int	j;
@@ -35,7 +35,7 @@ void	get_max_and_min_y(t_mlx *mlx, t_map *map)
 	}
 }
 
-void	get_max_and_min_x(t_mlx *mlx, t_map *map)
+static void	get_max_and_min_x(t_mlx *mlx, t_map *map)
 {
 	int	i;
 	int	j;
@@ -58,9 +58,9 @@ void	get_max_and_min_x(t_mlx *mlx, t_map *map)
 	}
 }
 
-void	adjust_size(t_mlx *mlx, t_map *map)
+static void	adjust_size(t_mlx *mlx, t_map *map)
 {
-	int x;
+	int	x;
 	int	y;
 
 	y = 0;
@@ -70,19 +70,19 @@ void	adjust_size(t_mlx *mlx, t_map *map)
 		while (x < map->width)
 		{
 			mlx->vectors[y][x].x = (x * map->size_x * cos(0.4636 * -1))
-			 - (y * map->size_x * sin(1.1071 * -1));
+				- (y * map->size_x * sin(1.1071 * -1));
 			mlx->vectors[y][x].y = (x * map->size_y * sin(0.4636 * -1))
-			 + (y * map->size_y * cos(1.1071 * -1))
-			 - map->z[y][x] * map->size_y;
+				+ (y * map->size_y * cos(1.1071 * -1))
+				- map->z[y][x] * map->size_y;
 			x++;
 		}
 		y++;
 	}
 }
 
-void	adjust_default(t_mlx *mlx, t_map *map)
+static void	adjust_default(t_mlx *mlx, t_map *map)
 {
-	int x;
+	int	x;
 	int	y;
 
 	y = 0;
@@ -102,7 +102,7 @@ void	adjust_default(t_mlx *mlx, t_map *map)
 void	size_control(t_mlx *mlx, t_map *map)
 {
 	int	dx;
-	int dy;
+	int	dy;
 
 	get_max_and_min_x(mlx, map);
 	dx = map->max - map->min;

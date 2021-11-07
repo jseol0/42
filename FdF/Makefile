@@ -6,7 +6,7 @@
 #    By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/20 19:21:52 by jseol             #+#    #+#              #
-#    Updated: 2021/11/05 18:00:37 by jseol            ###   ########.fr        #
+#    Updated: 2021/11/07 19:17:25 by jseol            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ NAME	= fdf
 # src / obj files
 SRC		=	fdf.c \
 			draw.c	\
+			draw2.c	\
+			draw3.c	\
 			init.c	\
 			read_map.c	\
 			read_map2.c	\
@@ -47,28 +49,31 @@ OBJDIR	= ./obj/
 all: obj $(FT_LIB) $(MLX_LIB) $(NAME)
 
 obj:
-	mkdir -p $(OBJDIR)
+	@mkdir -p $(OBJDIR)
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
-	$(CC) $(CFLAGS) $(MLX_INC) $(FT_INC) -I $(INCDIR) -o $@ -c $<
+	@$(CC) $(CFLAGS) $(MLX_INC) $(FT_INC) -I $(INCDIR) -o $@ -c $<
 
 $(FT_LIB):
-	make -C $(FT)
+	@make -C $(FT)
 
 $(MLX_LIB):
-	make -C $(MLX)
-	cp $(MLX)libmlx.dylib ./
+	@make -C $(MLX)
+	@cp $(MLX)libmlx.dylib ./
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) $(MLX_LNK) $(FT_LNK) -lm -o $(NAME)
+	@$(CC) $(OBJ) $(MLX_LNK) $(FT_LNK) -lm -o $(NAME)
 
 clean:
-	rm -rf $(OBJDIR)
-	make -C $(FT) clean
-	make -C $(MLX) clean
+	@rm -rf $(OBJDIR)
+	@make -C $(FT) clean
+	@make -C $(MLX) clean
 
 fclean: clean
-	rm -rf $(NAME)
-	make -C $(FT) fclean
+	@rm -rf $(NAME)
+	@make -C $(FT) fclean
+	@rm libmlx.dylib
 
 re: fclean all
+
+.PHONY: all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 21:10:08 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/05 23:52:36 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/07 15:16:42 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,10 @@ int	ft_atoi_fdf(const char *str)
 	}
 	if (str[i] && ft_isdigit(str[i]) == 0)
 		ft_error("Error: Wrong map\n");
-
 	return (ret);
 }
 
-int		divide_z(char *split, int col_val)
+int	divide_z(char *split, int col_val)
 {
 	char	*z;
 	int		ret;
@@ -52,11 +51,10 @@ int		divide_z(char *split, int col_val)
 	z = ft_strncpy(z, split, col_val);
 	ret = ft_atoi_fdf(z);
 	free(z);
-
 	return (ret);
 }
 
-int		divide_col(char *split, int col_val)
+int	divide_col(char *split, int col_val)
 {
 	char	*col;
 	int		ret;
@@ -68,36 +66,5 @@ int		divide_col(char *split, int col_val)
 	col = ft_strupcase(col);
 	ret = ft_atoi_base(col, "0123456789ABCDEF");
 	free(col);
-
 	return (ret);
 }
-
-/*
-void	get_depth(t_map *map)
-{
-	t_map	cur;
-	int	min;
-	int	max;
-	int	depth;
-
-	min = 2147483647;
-	max = -2147483648;
-	cur.height = 0;
-	while (cur.height < map->height)
-	{
-		cur.width = 0;
-		while (cur.width < map->width)
-		{
-			depth = map->z[cur.height][cur.width];
-			if (depth < min)
-				min = depth;
-			if (depth > max)
-				max = depth;
-			cur.width++;
-		}
-		cur.height++;
-	}
-	map->min_depth = min;
-	map->max_depth = max;
-}
-*/

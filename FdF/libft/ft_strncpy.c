@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 14:41:03 by jseol             #+#    #+#             */
-/*   Updated: 2021/10/23 15:55:54 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/07 14:00:51 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strncpy(char *dest, char *src, int n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < n && src[i] != '\0')

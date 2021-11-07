@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 20:00:39 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/05 22:03:59 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/07 17:55:50 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,38 @@ void	*ft_malloc(size_t size, size_t count)
 	return (ptr);
 }
 
-int	key_control(int keycode)
+int	key_control(int keycode, t_mlx *mlx)
 {
 	if (keycode == ESC)
+	{
+		mlxfree(mlx);
 		exit(0);
+	}
 	return (0);
+}
+
+static void	ft_free(t_mlx *mlx)
+{
+	int	i;
+
+	i = 0;
+	while (i < mlx->map->height)
+	{
+		free(mlx->vectors[i]);
+		free(mlx->map->z[i]);
+		free(mlx->map->color[i]);
+		i++;
+	}
+	free(mlx->vectors);
+	free(mlx->map->z);
+	free(mlx->map->color);
 }
 
 int	main(int argc, char **argv)
 {
-	t_mlx	*mlx;
-	t_map	map;
+	t_mlx		*mlx;
+	t_map		map;
+	t_bresenham	b;
 
 	if (argc == 1)
 		ft_error("Error: no input\n");
@@ -46,25 +67,10 @@ int	main(int argc, char **argv)
 	mlx->map = &map;
 	iso_projection(mlx, mlx->map);
 	size_control(mlx, mlx->map);
-	draw(mlx);
-
-	// int i = 0;
-	// while (i < mlx->map->height)
-	// {
-	// 	int j = 0;
-	// 	while (j < mlx->map->width)
-	// 	{
-	// 		printf("y: %d ", i);
-	// 		printf("%d %d\n", mlx->vectors[i][j].x, mlx->vectors[i][j].y);
-	// 		my_mlx_pixel_put(mlx->image, (mlx->vectors[i][j].x + mlx->map->default_x), (mlx->vectors[i][j].y + mlx->map->default_y), mlx->map->color[i][j]);
-	// 		j++;
-	// 	}
-	// 	i++;
-	// }
-
+	draw(mlx, &b);
 	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->image->image, 0, 0);
+	ft_free(mlx);
 	mlx_key_hook(mlx->window, key_control, mlx);
 	mlx_loop(mlx->mlx);
-
 	return (0);
 }

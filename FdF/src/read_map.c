@@ -6,13 +6,36 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/22 16:11:12 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/05 23:32:17 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/07 18:02:31 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	get_height(char *map_name, int *width)
+static int	get_wordcount(char *s, char c)
+{
+	int	i;
+	int	ret;
+
+	i = 0;
+	ret = 0;
+	if (!s)
+		return (0);
+	if (!c)
+		return ((int)ft_strlen(s));
+	while (s[i])
+	{
+		while (s[i] == c && s[i])
+			i++;
+		if (s[i])
+			ret++;
+		while (s[i] != c && s[i])
+			i++;
+	}
+	return (ret);
+}
+
+static int	get_height(char *map_name, int *width)
 {
 	char	*line;
 	int		ret;
@@ -38,30 +61,7 @@ int	get_height(char *map_name, int *width)
 	return (ret);
 }
 
-int	get_wordcount(char *s, char c)
-{
-	int	i;
-	int	ret;
-
-	i = 0;
-	ret = 0;
-	if (!s)
-		return (0);
-	if (!c)
-		return ((int)ft_strlen(s));
-	while (s[i])
-	{
-		while (s[i] == c && s[i])
-			i++;
-		if (s[i])
-			ret++;
-		while (s[i] != c && s[i])
-			i++;
-	}
-	return (ret);
-}
-
-void	put_int_to_code(int *z, int* color, char *line, t_map *map)
+static void	put_int_to_code(int *z, int *color, char *line, t_map *map)
 {
 	char	**split;
 	int		col_val;
@@ -88,7 +88,7 @@ void	put_int_to_code(int *z, int* color, char *line, t_map *map)
 	free(split);
 }
 
-void	get_map_z(t_map *map, char *map_name)
+static void	get_map_z(t_map *map, char *map_name)
 {
 	char	*line;
 	int		i;

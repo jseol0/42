@@ -6,16 +6,16 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 15:28:28 by jseol             #+#    #+#             */
-/*   Updated: 2021/10/23 15:55:06 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/07 14:03:13 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strcpy(char *dest, char *src)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(src[i] != '\0')
+	while (src[i] != '\0')
 	{
 		dest[i] = src[i];
 		i++;
