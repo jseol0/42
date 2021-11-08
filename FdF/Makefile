@@ -6,7 +6,7 @@
 #    By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/20 19:21:52 by jseol             #+#    #+#              #
-#    Updated: 2021/11/07 19:17:25 by jseol            ###   ########.fr        #
+#    Updated: 2021/11/08 15:40:32 by jseol            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ $(OBJDIR)%.o:$(SRCDIR)%.c
 	@$(CC) $(CFLAGS) $(MLX_INC) $(FT_INC) -I $(INCDIR) -o $@ -c $<
 
 $(FT_LIB):
-	@make -C $(FT)
+	make -sC $(FT)
 
 $(MLX_LIB):
 	@make -C $(MLX)
@@ -66,13 +66,13 @@ $(NAME): $(OBJ)
 
 clean:
 	@rm -rf $(OBJDIR)
-	@make -C $(FT) clean
-	@make -C $(MLX) clean
+	@make -sC $(FT) clean
+	@make -sC $(MLX) clean
 
 fclean: clean
 	@rm -rf $(NAME)
-	@make -C $(FT) fclean
-	@rm libmlx.dylib
+	@make -sC $(FT) fclean
+	@rm -rf libmlx.dylib
 
 re: fclean all
 
