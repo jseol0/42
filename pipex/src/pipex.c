@@ -6,13 +6,13 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 20:01:28 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/16 19:48:32 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/16 23:47:46 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-/*parse_input_value */
+/* parse_input_value */
 void	check_slash(t_cmd *cmd, const char *tmp)
 {
 	if (ft_strncmp(tmp, "/", 1) == 0
@@ -21,16 +21,16 @@ void	check_slash(t_cmd *cmd, const char *tmp)
 	else
 		cmd->slash = FALSE;
 }
-​
+
 char	*find_path(char **envp)
 {
 	int	i;
 	char	*ret;
-​
+
 	i = 0;
 	while (envp[i])
 	{
-		if (ft_strncmp(envp[i], "PATH=", 5) = 0)
+		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
 		{
 			ret = ft_strdup(envp[i] + 5);
 			return (ret);
@@ -39,11 +39,11 @@ char	*find_path(char **envp)
 	}
 	return (NULL);
 }
-​
+
 void	parse_input_value(t_tmp *tmp, char **argv, char **envp)
 {
 	char	*tmp_path;
-​
+
 	tmp->infile = ft_strdup(argv[1]);
 	tmp->cmd[0].cmd = ft_split(argv[2], ' ');	//	'ls -l', 'wc -l' 옵션 나누기
 	check_slash(&tmp->cmd[0], argv[2]);	//	./, ../, /
@@ -54,21 +54,21 @@ void	parse_input_value(t_tmp *tmp, char **argv, char **envp)
 	tmp->path = ft_split(tmp_path, ':');
 	free(tmp_path);
 }
-​
-​
+
+
 /* check_parsing */
 //set_cmd	만들기
-​
+
 void check_command(t_tmp *tmp)
 {
 	int	i;
-​
+
 	i = 0;
 	while (i < 2)
 	{
 		if (tmp->cmd[i].slash == FALSE)
 		{
-			if (set_cmd(tmp, &tmp->cmd[i]) == ERROR)
+			if (set_cmd(tmp, &tmp->cmd[i]) == FALSE)
 			{
 				ft_free(tmp);
 				ft_error("Command not found");
@@ -79,10 +79,10 @@ void check_command(t_tmp *tmp)
 		i++;
 	}
 }
-​
+
 void	check_parsing(t_tmp *tmp)
 {
-	tmp->infile_fd = open(tmp->infile, O_RDWR)
+	tmp->infile_fd = open(tmp->infile, O_RDWR);
 	if (tmp->infile_fd < 0)
 	{
 		ft_free(tmp);
@@ -101,14 +101,14 @@ void	check_parsing(t_tmp *tmp)
 	}
 	check_command(tmp);
 }
-​
-​
+
+
 /* main */
 int	main(int argc, char **argv, char **envp)
 {
 	t_tmp	tmp;
-​
-	if (argc === 5)
+
+	if (argc == 5)
 	{
 		ft_memset(&tmp, 0, sizeof(t_tmp));
 		//파싱함수
@@ -121,3 +121,11 @@ int	main(int argc, char **argv, char **envp)
 		ft_error("Wrong command count");
 	return (0);
 }
+
+/*
+
+	ft_free()
+	set_cmd()
+	만들기
+	pipex() 함수 구상
+*/

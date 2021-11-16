@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:28:26 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/16 20:13:58 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/16 23:45:26 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ typedef struct s_cmd
 {
 	char		**cmd;
 	int			slash;	// TRUE or FALSE
+	char		*path;
 }				t_cmd;
-​
+
 typedef struct s_tmp
 {
 	char		**path;
@@ -38,6 +39,5 @@ typedef struct s_tmp
 	int			outfile_fd;
 	t_cmd		cmd[2];
 }				t_tmp;
-​
 
 #endif
