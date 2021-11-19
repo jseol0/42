@@ -6,14 +6,16 @@
 #    By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/09 19:38:12 by jseol             #+#    #+#              #
-#    Updated: 2021/11/16 23:44:56 by jseol            ###   ########.fr        #
+#    Updated: 2021/11/19 16:14:46 by jseol            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= pipex
 
 # src / obj files
-SRC		=	pipex.c
+SRC		=	pipex.c	\
+			parse_input_value.c	\
+			check_parsing.c
 
 OBJ		=	$(addprefix $(OBJDIR),$(SRC:.c=.o))
 

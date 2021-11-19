@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:28:26 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/16 23:45:26 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/19 16:17:32 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,8 @@ typedef struct s_tmp
 	int			outfile_fd;
 	t_cmd		cmd[2];
 }				t_tmp;
+
+void	parse_input_value(t_tmp *tmp, char **argv, char **envp);
+void	check_parsing(t_tmp *tmp);
 
 #endif
