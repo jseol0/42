@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:13:03 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/19 17:02:49 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/20 17:41:03 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,18 @@ void	check_parsing(t_tmp *tmp)
 	if (tmp->infile_fd < 0)
 	{
 		// ft_free(tmp);
+		close(tmp->infile_fd);
 		ft_error("Not valid infile");
 	}
+	close(tmp->infile_fd);
 	tmp->outfile_fd = open(tmp->outfile, O_RDWR | O_CREAT | O_TRUNC, 0644);
 	if (tmp->outfile_fd < 0)
 	{
 		// ft_free(tmp);
+		close(tmp->outfile_fd);
 		ft_error("Not valid outfile");
 	}
+	close(tmp->outfile_fd);
 	if (tmp->path == NULL && (tmp->cmd[0].slash == FALSE || tmp->cmd[1].slash == FALSE))
 	{
 		// ft_free(tmp);

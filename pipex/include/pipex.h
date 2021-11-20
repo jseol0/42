@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:28:26 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/19 16:17:32 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/20 17:33:43 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include <fcntl.h>
 #define TRUE 0
 #define FALSE 1
+#define ERROR -1
 
 typedef struct s_cmd
 {
@@ -42,5 +43,6 @@ typedef struct s_tmp
 
 void	parse_input_value(t_tmp *tmp, char **argv, char **envp);
 void	check_parsing(t_tmp *tmp);
+void	pipex(t_tmp *tmp, int *fd, char **envp, pid_t pid);
 
 #endif

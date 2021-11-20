@@ -5,46 +5,66 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 20:01:28 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/19 18:09:40 by jseol            ###   ########.fr       */
+/*   Created: 2021/11/20 15:51:10 by jseol             #+#    #+#             */
+/*   Updated: 2021/11/20 17:25:12 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(int argc, char **argv, char **envp)
+static void	redirect_in(char *infile)
 {
-	t_tmp	tmp;
+	int	fd;
 
-	if (argc == 5)
+	fd = open(infile, O_RDONLY);
+	if (fd < 0)
 	{
-		ft_memset(&tmp, 0, sizeof(t_tmp));
-		//파싱함수
-		parse_input_value(&tmp, argv, envp);
-		//파싱체크함수
-		check_parsing(&tmp);
-		//pipex 주요기능 작동함수(pipe, fork, execve...)
-		printf("infile: %s\n", tmp.infile);
-		printf("outfile: %s\n", tmp.outfile);
-		printf("cmd1: %s\n", tmp.cmd[0].cmd[0]);
-		printf("cmd2: %s\n", tmp.cmd[1].cmd[0]);
-		printf("path1: %s\n", tmp.cmd[0].path);
-		printf("path2: %s\n", tmp.cmd[1].path);
+		perror("infile");
+		// return (-1);
 	}
-	else
-		ft_error("Wrong command count");
-	return (0);
+	dup2(fd, 0);
+	close(fd);
 }
 
-/*
-	ft_free()
-	만들기
-	pipex() 함수 구상
+static void	redirect_out(char *outfile)
+{
+	int fd;
 
-	****free()*****
-	tmp->infile
-	tmp->outfile
-	tmp->path
-	tmp->cmd->cmd
-	tmp->cmd->path
-*/
+	fd = open(outfile, O_RDWR | O_CREAT | O_TRUNC, 0644);
+	if (fd < 0)
+	{
+		perror("outfile");
+		// return (-1);
+	}
+	dup2(fd, 1);
+	close(fd);
+}
+
+static void	set_pipe_exit(int *fd)
+{
+	dup2(fd[0], 0);
+	close(fd[1]);
+}
+
+static void	set_pipe_entry(int *fd)
+{
+	dup2(fd[1], 1);
+	close(fd[0]);
+}
+
+void	pipex(t_tmp *tmp, int *fd, char **envp, pid_t pid)
+{
+	if (pid > 0)
+	{
+		waitpid(pid, NULL, WNOHANG);
+		redirect_out(tmp->outfile);
+		set_pipe_exit(fd);
+		execve(tmp->cmd[1].path, tmp->cmd[1].cmd, envp);
+	}
+	else if (pid == 0)
+	{
+		redirect_in(tmp->infile);
+		set_pipe_entry(fd);
+		execve(tmp->cmd[0].path, tmp->cmd[0].cmd, envp);
+	}
+}

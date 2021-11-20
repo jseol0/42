@@ -1,7 +1,0 @@
-total 8
--rw-r--r--   1 jseol  2021_seoul  1650 Nov 19 16:14 Makefile
--rw-r--r--   1 jseol  2021_seoul     0 Nov 19 18:11 file1
--rw-r--r--   1 jseol  2021_seoul     0 Nov 19 18:10 file2
-drwxr-xr-x   3 jseol  2021_seoul   102 Nov 19 15:13 include
-drwxr-xr-x  59 jseol  2021_seoul  2006 Nov 19 18:11 libft
-drwxr-xr-x   5 jseol  2021_seoul   170 Nov 19 16:13 src
