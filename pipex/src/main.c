@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 20:01:28 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/20 18:18:42 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/22 22:28:24 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int argc, char **argv, char **envp)
 {
 	t_tmp	tmp;
-	int	fd[2];
+	int		fd[2];
 	pid_t	pid;
 
 	if (argc == 5)

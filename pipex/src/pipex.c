@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 15:51:10 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/20 17:25:12 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/22 22:29:11 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	redirect_in(char *infile)
 
 static void	redirect_out(char *outfile)
 {
-	int fd;
+	int	fd;
 
 	fd = open(outfile, O_RDWR | O_CREAT | O_TRUNC, 0644);
 	if (fd < 0)

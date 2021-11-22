@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:12:06 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/19 17:01:41 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/22 22:28:42 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	check_slash(t_cmd *cmd, const char *tmp)
 
 static char	*find_path(char **envp)
 {
-	int	i;
+	int		i;
 	char	*ret;
 
 	i = 0;

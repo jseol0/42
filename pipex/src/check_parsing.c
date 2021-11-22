@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:13:03 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/20 17:41:03 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/22 22:29:39 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	set_cmd(t_tmp *tmp, t_cmd *cmd)
 {
-	int i;
+	int		i;
 	char	*tmp_path;
 	char	*path_cmd;
 
@@ -76,7 +76,8 @@ void	check_parsing(t_tmp *tmp)
 		ft_error("Not valid outfile");
 	}
 	close(tmp->outfile_fd);
-	if (tmp->path == NULL && (tmp->cmd[0].slash == FALSE || tmp->cmd[1].slash == FALSE))
+	if (tmp->path == NULL && (tmp->cmd[0].slash == FALSE
+	|| tmp->cmd[1].slash == FALSE))
 	{
 		// ft_free(tmp);
 		ft_error("Wrong path");
