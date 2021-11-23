@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 20:23:34 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/05 23:53:27 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/23 15:05:35 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ int					ft_newline_line(char **store, size_t index, char **line);
 int					ft_eof_line(char **store, char **line, int read_size);
 int					get_next_line(int fd, char **line);
 
-void				ft_error(char *s);
 char				*ft_strupcase(char *str);
 
 #endif

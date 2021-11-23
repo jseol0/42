@@ -6,11 +6,46 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 20:01:28 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/22 22:28:24 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/23 15:06:45 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	ft_error(char *s)
+{
+	perror(s);
+	exit(1);
+}
+
+void	ft_free(t_tmp *tmp)
+{
+	int	i;
+
+	if (tmp->infile != NULL)
+		free(tmp->infile);
+	if (tmp->outfile != NULL)
+		free(tmp->outfile);
+	i = 0;
+	while (i < 2)
+	{
+		if (tmp->cmd[i].cmd != NULL)
+			free(tmp->cmd[i].cmd);
+		if (tmp->cmd[i].path != NULL)
+			free(tmp->cmd[i].path);
+		i++;
+	}
+	i = 0;
+	if (tmp->path != NULL)
+	{
+		while (tmp->path[i] != NULL)
+		{
+			free(tmp->path[i]);
+			i++;
+		}
+		free(tmp->path);
+	}
+}
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -25,7 +60,7 @@ int	main(int argc, char **argv, char **envp)
 		check_parsing(&tmp);
 		if ((pipe(fd)) == -1)
 		{
-			//ft_free(tmp);
+			ft_free(&tmp);
 			ft_error("pipe");
 		}
 		pid = fork();
@@ -35,15 +70,3 @@ int	main(int argc, char **argv, char **envp)
 		ft_error("Wrong command count");
 	return (0);
 }
-
-/*
-	ft_free()
-	만들기
-
-	****free()*****
-	tmp->infile
-	tmp->outfile
-	tmp->path
-	tmp->cmd->cmd							-execve()
-	tmp->cmd->path		-check_parsing		-execve()
-*/

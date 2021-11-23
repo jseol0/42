@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:12:06 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/22 22:28:42 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/23 14:50:39 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ void	parse_input_value(t_tmp *tmp, char **argv, char **envp)
 	char	*tmp_path;
 
 	tmp->infile = ft_strdup(argv[1]);
-	tmp->cmd[0].cmd = ft_split(argv[2], ' ');	//	'ls -l', 'wc -l' 옵션 나누기
-	check_slash(&tmp->cmd[0], argv[2]);	//	./, ../, /
+	tmp->cmd[0].cmd = ft_split(argv[2], ' ');
+	check_slash(&tmp->cmd[0], argv[2]);
 	tmp->cmd[1].cmd = ft_split(argv[3], ' ');
 	check_slash(&tmp->cmd[1], argv[3]);
 	tmp->outfile = ft_strdup(argv[4]);
-	tmp_path = find_path(envp);			//	환경변수중에 PATH 만 가져오기
+	tmp_path = find_path(envp);
 	tmp->path = ft_split(tmp_path, ':');
 	free(tmp_path);
 }

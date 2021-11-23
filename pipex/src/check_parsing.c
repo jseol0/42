@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:13:03 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/22 22:29:39 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/23 15:41:11 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ static void	check_command(t_tmp *tmp)
 		{
 			if (set_cmd(tmp, &tmp->cmd[i]) == FALSE)
 			{
-				// ft_free(tmp);
-				ft_error("Command not found");
+				ft_free(tmp);
+				ft_error("command not found");
 			}
 		}
 		else
@@ -60,26 +60,24 @@ static void	check_command(t_tmp *tmp)
 
 void	check_parsing(t_tmp *tmp)
 {
-	tmp->infile_fd = open(tmp->infile, O_RDWR);
-	if (tmp->infile_fd < 0)
+
+	if (access(tmp->infile, F_OK) == ERROR)
 	{
-		// ft_free(tmp);
-		close(tmp->infile_fd);
+		ft_free(tmp);
 		ft_error("Not valid infile");
 	}
-	close(tmp->infile_fd);
 	tmp->outfile_fd = open(tmp->outfile, O_RDWR | O_CREAT | O_TRUNC, 0644);
 	if (tmp->outfile_fd < 0)
 	{
-		// ft_free(tmp);
+		ft_free(tmp);
 		close(tmp->outfile_fd);
 		ft_error("Not valid outfile");
 	}
 	close(tmp->outfile_fd);
 	if (tmp->path == NULL && (tmp->cmd[0].slash == FALSE
-	|| tmp->cmd[1].slash == FALSE))
+			|| tmp->cmd[1].slash == FALSE))
 	{
-		// ft_free(tmp);
+		ft_free(tmp);
 		ft_error("Wrong path");
 	}
 	check_command(tmp);

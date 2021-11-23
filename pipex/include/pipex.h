@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:28:26 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/22 22:26:24 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/23 15:40:03 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,13 @@ typedef struct s_tmp
 {
 	char		**path;
 	char		*infile;
-	int			infile_fd;
 	char		*outfile;
 	int			outfile_fd;
 	t_cmd		cmd[2];
 }				t_tmp;
 
+void	ft_error(char *s);
+void	ft_free(t_tmp *tmp);
 void	parse_input_value(t_tmp *tmp, char **argv, char **envp);
 void	check_parsing(t_tmp *tmp);
 void	pipex(t_tmp *tmp, int *fd, char **envp, pid_t pid);
