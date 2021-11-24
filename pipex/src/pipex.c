@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 15:51:10 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/23 16:49:05 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/24 15:45:59 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	redirect_in(t_tmp *tmp)
 	if (fd < 0)
 	{
 		ft_free(tmp);
-		ft_error("infile");
+		ft_error(tmp->infile);
 	}
 	dup2(fd, 0);
 	close(fd);
@@ -34,7 +34,7 @@ static void	redirect_out(t_tmp *tmp)
 	if (fd < 0)
 	{
 		ft_free(tmp);
-		ft_error("outfile");
+		ft_error(tmp->outfile);
 	}
 	dup2(fd, 1);
 	close(fd);
@@ -57,14 +57,17 @@ void	pipex(t_tmp *tmp, int *fd, char **envp, pid_t pid)
 	if (pid > 0)
 	{
 		waitpid(pid, NULL, WNOHANG);
-		redirect_out(tmp);
 		set_pipe_exit(fd);
+		redirect_out(tmp);
 		execve(tmp->cmd[1].path, tmp->cmd[1].cmd, envp);
+		ft_error("execve");
 	}
 	else if (pid == 0)
 	{
 		redirect_in(tmp);
 		set_pipe_entry(fd);
-		execve(tmp->cmd[0].path, tmp->cmd[0].cmd, envp);
+		if (tmp->cmd->error != 0)
+			execve(tmp->cmd[0].path, tmp->cmd[0].cmd, envp);
+		ft_error("execve");
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:28:26 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/23 15:40:03 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/24 14:58:27 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_cmd
 	char		**cmd;
 	int			slash;
 	char		*path;
+	int			error;
 }				t_cmd;
 
 typedef struct s_tmp

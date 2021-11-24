@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 20:01:28 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/23 15:06:45 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/24 15:28:09 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	main(int argc, char **argv, char **envp)
 		ft_memset(&tmp, 0, sizeof(t_tmp));
 		parse_input_value(&tmp, argv, envp);
 		check_parsing(&tmp);
-		if ((pipe(fd)) == -1)
+		if ((pipe(fd)) == ERROR)
 		{
 			ft_free(&tmp);
 			ft_error("pipe");

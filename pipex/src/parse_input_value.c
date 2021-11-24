@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:12:06 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/23 14:50:39 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/24 15:26:42 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static void	check_slash(t_cmd *cmd, const char *tmp)
 {
 	if (ft_strncmp(tmp, "/", 1) == 0
 		|| ft_strncmp(tmp, "./", 2) == 0 || ft_strncmp(tmp, "../", 3) == 0)
-		cmd->slash = TRUE;
+		cmd->slash = 0;
 	else
-		cmd->slash = FALSE;
+		cmd->slash = 1;
 }
 
 static char	*find_path(char **envp)
