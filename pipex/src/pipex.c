@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 15:51:10 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/24 15:45:59 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/25 16:50:36 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,23 @@ void	pipex(t_tmp *tmp, int *fd, char **envp, pid_t pid)
 		waitpid(pid, NULL, WNOHANG);
 		set_pipe_exit(fd);
 		redirect_out(tmp);
-		execve(tmp->cmd[1].path, tmp->cmd[1].cmd, envp);
-		ft_error("execve");
+		if (execve(tmp->cmd[1].path, tmp->cmd[1].cmd, envp) == -1)
+		{
+			ft_free(tmp);
+			ft_error("execve");
+		}
 	}
 	else if (pid == 0)
 	{
 		redirect_in(tmp);
 		set_pipe_entry(fd);
 		if (tmp->cmd->error != 0)
-			execve(tmp->cmd[0].path, tmp->cmd[0].cmd, envp);
-		ft_error("execve");
+		{
+			if (execve(tmp->cmd[0].path, tmp->cmd[0].cmd, envp) == -1)
+			{
+				ft_free(tmp);
+				ft_error("execve");
+			}
+		}
 	}
 }

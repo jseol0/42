@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 20:01:28 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/24 15:28:09 by jseol            ###   ########.fr       */
+/*   Updated: 2021/11/25 23:03:35 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,19 @@ void	ft_error(char *s)
 {
 	perror(s);
 	exit(1);
+}
+
+void	split_free(char **ptr)
+{
+	int	i;
+
+	i = 0;
+	while (ptr[i])
+	{
+		free(ptr[i]);
+		i++;
+	}
+	free(ptr);
 }
 
 void	ft_free(t_tmp *tmp)
@@ -30,21 +43,14 @@ void	ft_free(t_tmp *tmp)
 	while (i < 2)
 	{
 		if (tmp->cmd[i].cmd != NULL)
-			free(tmp->cmd[i].cmd);
+			split_free(tmp->cmd[i].cmd);
 		if (tmp->cmd[i].path != NULL)
 			free(tmp->cmd[i].path);
 		i++;
 	}
 	i = 0;
 	if (tmp->path != NULL)
-	{
-		while (tmp->path[i] != NULL)
-		{
-			free(tmp->path[i]);
-			i++;
-		}
-		free(tmp->path);
-	}
+		split_free(tmp->path);
 }
 
 int	main(int argc, char **argv, char **envp)
