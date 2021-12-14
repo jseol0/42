@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:28:26 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/25 23:03:25 by jseol            ###   ########.fr       */
+/*   Updated: 2021/12/01 16:36:41 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_tmp
 	char		**path;
 	char		*infile;
 	char		*outfile;
+	int			infile_fd;
 	int			outfile_fd;
 	t_cmd		cmd[2];
 }				t_tmp;

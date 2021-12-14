@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input_value.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jaeyu <jaeyu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:12:06 by jseol             #+#    #+#             */
-/*   Updated: 2021/11/24 15:26:42 by jseol            ###   ########.fr       */
+/*   Updated: 2021/12/14 15:00:41 by jaeyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static void	check_slash(t_cmd *cmd, const char *tmp)
 {
 	if (ft_strncmp(tmp, "/", 1) == 0
 		|| ft_strncmp(tmp, "./", 2) == 0 || ft_strncmp(tmp, "../", 3) == 0)
-		cmd->slash = 0;
+		cmd->slash = TRUE;
 	else
-		cmd->slash = 1;
+		cmd->slash = FALSE;
 }
 
 static char	*find_path(char **envp)
