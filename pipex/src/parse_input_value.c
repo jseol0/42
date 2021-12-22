@@ -6,7 +6,7 @@
 /*   By: jaeyu <jaeyu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:12:06 by jseol             #+#    #+#             */
-/*   Updated: 2021/12/14 15:00:41 by jaeyu            ###   ########.fr       */
+/*   Updated: 2021/12/22 15:40:21 by jaeyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,17 @@ static char	*find_path(char **envp)
 	return (NULL);
 }
 
-void	parse_input_value(t_tmp *tmp, char **argv, char **envp)
+void	parse_input_value(t_pipe *pipe_x, char **argv, char **envp)
 {
-	char	*tmp_path;
+	char	*pipe_path;
 
-	tmp->infile = ft_strdup(argv[1]);
-	tmp->cmd[0].cmd = ft_split(argv[2], ' ');
-	check_slash(&tmp->cmd[0], argv[2]);
-	tmp->cmd[1].cmd = ft_split(argv[3], ' ');
-	check_slash(&tmp->cmd[1], argv[3]);
-	tmp->outfile = ft_strdup(argv[4]);
-	tmp_path = find_path(envp);
-	tmp->path = ft_split(tmp_path, ':');
-	free(tmp_path);
+	pipe_x->infile = ft_strdup(argv[1]);
+	pipe_x->cmd[0].cmd = ft_split(argv[2], ' ');
+	check_slash(&pipe_x->cmd[0], argv[2]);
+	pipe_x->cmd[1].cmd = ft_split(argv[3], ' ');
+	check_slash(&pipe_x->cmd[1], argv[3]);
+	pipe_x->outfile = ft_strdup(argv[4]);
+	pipe_path = find_path(envp);
+	pipe_x->path = ft_split(pipe_path, ':');
+	free(pipe_path);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jaeyu <jaeyu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 20:01:28 by jseol             #+#    #+#             */
-/*   Updated: 2021/12/01 16:46:58 by jseol            ###   ########.fr       */
+/*   Updated: 2021/12/22 15:40:24 by jaeyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,46 +31,46 @@ void	split_free(char **ptr)
 	free(ptr);
 }
 
-void	ft_free(t_tmp *tmp)
+void	ft_free(t_pipe *pipe_x)
 {
 	int	i;
 
-	if (tmp->infile != NULL)
-		free(tmp->infile);
-	if (tmp->outfile != NULL)
-		free(tmp->outfile);
+	if (pipe_x->infile != NULL)
+		free(pipe_x->infile);
+	if (pipe_x->outfile != NULL)
+		free(pipe_x->outfile);
 	i = 0;
 	while (i < 2)
 	{
-		if (tmp->cmd[i].cmd != NULL)
-			split_free(tmp->cmd[i].cmd);
-		if (tmp->cmd[i].path != NULL)
-			free(tmp->cmd[i].path);
+		if (pipe_x->cmd[i].cmd != NULL)
+			split_free(pipe_x->cmd[i].cmd);
+		if (pipe_x->cmd[i].path != NULL)
+			free(pipe_x->cmd[i].path);
 		i++;
 	}
 	i = 0;
-	if (tmp->path != NULL)
-		split_free(tmp->path);
+	if (pipe_x->path != NULL)
+		split_free(pipe_x->path);
 }
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_tmp	tmp;
+	t_pipe	pipe_x;
 	int		fd[2];
 	pid_t	pid;
 
 	if (argc == 5)
 	{
-		ft_memset(&tmp, 0, sizeof(t_tmp));
-		parse_input_value(&tmp, argv, envp);
-		check_parsing(&tmp);
+		ft_memset(&pipe_x, 0, sizeof(t_pipe));
+		parse_input_value(&pipe_x, argv, envp);
+		check_parsing(&pipe_x);
 		if ((pipe(fd)) == ERROR)
 		{
-			ft_free(&tmp);
-			ft_error("pipe");
+			ft_free(&pipe_x);
+			ft_error("pipe_x");
 		}
 		pid = fork();
-		pipex(&tmp, fd, envp, pid);
+		pipex(&pipe_x, fd, envp, pid);
 	}
 	else
 		ft_error("Wrong command count");

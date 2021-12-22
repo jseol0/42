@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jaeyu <jaeyu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:28:26 by jseol             #+#    #+#             */
-/*   Updated: 2021/12/01 16:36:41 by jseol            ###   ########.fr       */
+/*   Updated: 2021/12/22 15:43:11 by jaeyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_cmd
 	int			error;
 }				t_cmd;
 
-typedef struct s_tmp
+typedef struct s_pipe
 {
 	char		**path;
 	char		*infile;
@@ -40,13 +40,13 @@ typedef struct s_tmp
 	int			infile_fd;
 	int			outfile_fd;
 	t_cmd		cmd[2];
-}				t_tmp;
+}				t_pipe;
 
 void	ft_error(char *s);
 void	split_free(char **ptr);
-void	ft_free(t_tmp *tmp);
-void	parse_input_value(t_tmp *tmp, char **argv, char **envp);
-void	check_parsing(t_tmp *tmp);
-void	pipex(t_tmp *tmp, int *fd, char **envp, pid_t pid);
+void	ft_free(t_pipe *pipe_x);
+void	parse_input_value(t_pipe *pipe_x, char **argv, char **envp);
+void	check_parsing(t_pipe *pipe_x);
+void	pipex(t_pipe *pipe_x, int *fd, char **envp, pid_t pid);
 
 #endif
