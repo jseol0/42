@@ -6,7 +6,7 @@
 /*   By: jaeyu <jaeyu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:28:26 by jseol             #+#    #+#             */
-/*   Updated: 2021/12/22 15:43:11 by jaeyu            ###   ########.fr       */
+/*   Updated: 2022/01/04 16:47:12 by jaeyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "libft.h"
 # include <unistd.h>
 # include <stdio.h>
-# include <string.h>
 # include <stdlib.h>
 # include <sys/wait.h>
 # include <fcntl.h>
