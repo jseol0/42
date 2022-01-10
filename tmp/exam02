@@ -1,0 +1,57 @@
+******************************
+kinit jseol
+비밀번호
+examshell
+*******************************
+
+inter	-- 교집합
+#include <unistd.h>
+
+while
+{
+	while
+	{
+		if (1 == 2)
+		{
+			write
+			dup[(unsigned char)argv[1][i]]++;
+			break;
+		}
+		j++;
+	}
+	i++;
+}
+write(\n)
+
+
+union	-- 합집합
+#include <unistd.h>
+
+while
+{
+	if (dup[(unsigned char)argv[1][i]] == 0)
+	{
+		write
+		dup[(unsigned char)argv[1][i]]++;
+	}
+	i++;
+}
+while
+{
+	if (dup[(unsigned char)argv[2][j]] == 0)
+	{
+		write
+		dup[(unsigned char)argv[2][j]]++;
+	}
+	j++;
+}
+write(\n)
+
+
+gnl
+#include <unistd.h>
+#include <stdlib.h>
+
+static char	*ft_strdup(char *s)
+
+char	*get_next_line(int  fd)

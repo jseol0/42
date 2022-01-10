@@ -1,0 +1,6 @@
+total 8
+-rw-r--r--   1 jaeyu  staff  1662  1  4 23:31 Makefile
+drwxr-xr-x   3 jaeyu  staff    96 11 23 18:45 include
+-rw-r--r--   1 jaeyu  staff     0  1  6 18:07 infile
+drwxr-xr-x  58 jaeyu  staff  1856  1  6 17:34 libft
+drwxr-xr-x   6 jaeyu  staff   192 12 21 22:41 src
