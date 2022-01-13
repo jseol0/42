@@ -12,6 +12,8 @@
 
 #include "minishell.h"
 
+int	non_bulitin_exec(t_cmd *cmd, char **env, int, pipe_fd);
+
 int	non_bulitin(t_cmd *cmd, char **env, int pipe_fd[])
 {
 	if (경로 포함된 명령어)
