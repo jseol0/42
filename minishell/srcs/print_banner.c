@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   print_banner.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeyu <jaeyu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/17 20:03:44 by elim              #+#    #+#             */
-/*   Updated: 2022/01/16 21:13:17 by jaeyu            ###   ########.fr       */
+/*   Created: 2022/01/23 20:15:29 by elim              #+#    #+#             */
+/*   Updated: 2022/01/23 21:41:22 by jaeyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line.h"
+#include <fcntl.h>
+#include <stdio.h>
 
-char	*ft_strjoin(char const *s1, char const *s2)
+#define PATH "/Users/jaeyu/tmp/42_bigshell/banner"
+
+void	print_banner(void)
 {
-	size_t	size;
-	char	*str;
+	int		fd;
+	char	*line;
 
-	if (!s1)
-		return (0);
-	size = ft_strlen(s1) + ft_strlen(s2);
-	str = (char *)malloc(sizeof(char) * (size + 1));
-	if (!str)
-		return (0);
-	ft_memcpy(str, s1, ft_strlen(s1));
-	ft_memcpy(str + ft_strlen(s1), s2, ft_strlen(s2));
-	str[size] = 0;
-	return (str);
+	fd = open(PATH, O_RDONLY);
+	while (get_next_line(fd, &line) > 0)
+	{
+		printf("%s\n", line);
+		free(line);
+	}
+	free(line);
 }

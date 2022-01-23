@@ -6,7 +6,7 @@
 /*   By: elim <elim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 09:03:43 by elim              #+#    #+#             */
-/*   Updated: 2022/01/11 19:33:15 by elim             ###   ########.fr       */
+/*   Updated: 2022/01/20 17:44:55 by elim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_cmd	*parse_line(char **env_dup, char *line)
 			handle_pipe_null(&line[i], &flag.pipe);
 			new = ft_cmdnew(line + start, env_dup, start, flag.pipe);
 			if (!new)
-				return (NULL); // handle error
+				return (NULL);
 			ft_cmdadd_back(&head, new);
 			if (!flag.pipe)
 				break ;

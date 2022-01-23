@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaeyu <jaeyu@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/15 17:23:35 by elim              #+#    #+#             */
-/*   Updated: 2022/01/20 21:46:45 by jaeyu            ###   ########.fr       */
+/*   Created: 2022/01/15 00:33:44 by jaeyu             #+#    #+#             */
+/*   Updated: 2022/01/20 17:05:55 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "minishell.h"
+
+int	ft_pwd(int fd)
 {
-	if (48 <= c && c <= 57)
-		return (1);
+	char	*str;
+
+	str = getcwd(NULL, 0);
+	ft_putstr_fd(str, fd);
+	write(fd, "\n", 1);
+	free(str);
 	return (0);
 }

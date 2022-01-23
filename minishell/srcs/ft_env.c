@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeyu <jaeyu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/17 20:03:44 by elim              #+#    #+#             */
-/*   Updated: 2022/01/16 21:13:17 by jaeyu            ###   ########.fr       */
+/*   Created: 2022/01/15 19:43:23 by jaeyu             #+#    #+#             */
+/*   Updated: 2022/01/23 04:35:04 by jaeyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+int	ft_env(char **env, int fd)
 {
-	size_t	size;
-	char	*str;
+	int	i;
 
-	if (!s1)
-		return (0);
-	size = ft_strlen(s1) + ft_strlen(s2);
-	str = (char *)malloc(sizeof(char) * (size + 1));
-	if (!str)
-		return (0);
-	ft_memcpy(str, s1, ft_strlen(s1));
-	ft_memcpy(str + ft_strlen(s1), s2, ft_strlen(s2));
-	str[size] = 0;
-	return (str);
+	i = 0;
+	while (env[i])
+	{
+		ft_putendl_fd(env[i], fd);
+		i++;
+	}
+	return (0);
 }

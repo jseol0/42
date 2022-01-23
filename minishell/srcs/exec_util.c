@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   exec_util.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeyu <jaeyu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/17 20:03:44 by elim              #+#    #+#             */
-/*   Updated: 2022/01/16 21:13:17 by jaeyu            ###   ########.fr       */
+/*   Created: 2022/01/23 03:33:34 by jaeyu             #+#    #+#             */
+/*   Updated: 2022/01/23 04:55:50 by jaeyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	exec_child(t_cmd *cmd, char **env, int fd[])
 {
-	size_t	size;
-	char	*str;
+	dup2(fd[0], 0);
+	close(fd[0]);
+	close(fd[1]);
+	g_exit_status = exec(cmd->next, &env);
+	exit(g_exit_status);
+}
 
-	if (!s1)
-		return (0);
-	size = ft_strlen(s1) + ft_strlen(s2);
-	str = (char *)malloc(sizeof(char) * (size + 1));
-	if (!str)
-		return (0);
-	ft_memcpy(str, s1, ft_strlen(s1));
-	ft_memcpy(str + ft_strlen(s1), s2, ft_strlen(s2));
-	str[size] = 0;
-	return (str);
+void	exec_parents(pid_t pid, int fd[])
+{
+	int		status;
+
+	close(fd[1]);
+	close(fd[0]);
+	waitpid(pid, &status, 0);
+	g_exit_status = status >> 8;
 }

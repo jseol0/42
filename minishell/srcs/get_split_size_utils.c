@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_token_size_utils.c                             :+:      :+:    :+:   */
+/*   get_split_size_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elim <elim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 20:54:01 by elim              #+#    #+#             */
-/*   Updated: 2022/01/10 03:50:33 by elim             ###   ########.fr       */
+/*   Updated: 2022/01/20 00:50:39 by elim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	case_space_out_quote(t_flag *flag, int *cnt)
 	return ;
 }
 
-static void	case_redir_out_qoute(t_flag *flag, char *line, int i, int *cnt)
+static void	case_redir_out_quote(t_flag *flag, char *line, int i, int *cnt)
 {
 	if (!flag->redir && line[i - 1] != ' ')
 		(*cnt)++;
@@ -49,7 +49,7 @@ void	handle_flag_up(t_flag *flag, char *line, int i, int *cnt)
 	else if (line[i - 1] == '<' || line[i - 1] == '>')
 	{
 		if (c != ' ' && c != S_QUOTE && !flag->in_quote
-			&& !(c != '<' || c != '>'))
+			&& !(c == '<' || c == '>'))
 			handle_cnt_redir(flag, cnt);
 		else if ((c == S_QUOTE && flag->in_quote == S_QUOTE)
 			|| (c == D_QUOTE && flag->in_quote == D_QUOTE))

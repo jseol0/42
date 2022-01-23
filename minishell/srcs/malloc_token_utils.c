@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   malloc_token_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaeyu <jaeyu@student.42.fr>                +#+  +:+       +#+        */
+/*   By: elim <elim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/15 17:23:35 by elim              #+#    #+#             */
-/*   Updated: 2022/01/20 21:46:45 by jaeyu            ###   ########.fr       */
+/*   Created: 2022/01/15 21:17:22 by elim              #+#    #+#             */
+/*   Updated: 2022/01/15 21:18:30 by elim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "minishell.h"
+
+size_t	case_redir(char *line)
 {
-	if (48 <= c && c <= 57)
-		return (1);
-	return (0);
+	size_t	size;
+	int		i;
+
+	size = 0;
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == '<' || line[i] == '>')
+			size++;
+		else
+			break ;
+		i++;
+	}
+	return (size);
 }

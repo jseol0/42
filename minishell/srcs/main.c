@@ -6,18 +6,23 @@
 /*   By: elim <elim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 06:50:42 by elim              #+#    #+#             */
-/*   Updated: 2022/01/11 17:03:25 by elim             ###   ########.fr       */
+/*   Updated: 2022/01/23 20:20:01 by elim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	init_minishell(int ac, char **av)
+static void	exit_minishell(char **env_dup)
 {
-	(void)ac;
-	(void)av;
-	init_sig();
-	return ;
+	int	i;
+
+	i = 0;
+	while (env_dup[i])
+		free(env_dup[i++]);
+	free(env_dup);
+	ft_putstr_fd("\x1b[1A", STDOUT_FILENO);
+	ft_putstr_fd("\033[12C", STDOUT_FILENO);
+	ft_putstr_fd("exit\n", STDOUT_FILENO);
 }
 
 static int	is_empty_line(char *line)
@@ -33,7 +38,7 @@ static int	is_empty_line(char *line)
 	return (1);
 }
 
-static char	**cpy_envp(char **envp)
+char	**cpy_envp(char **envp)
 {
 	char	**ret;
 	int		i;
@@ -54,6 +59,19 @@ static char	**cpy_envp(char **envp)
 	return (ret);
 }
 
+static void	init_minishell(int ac, char **av, char ***env_dup, char **envp)
+{
+	print_banner();
+	(void)ac;
+	(void)av;
+	init_sig();
+	*env_dup = cpy_envp(envp);
+	handle_envp(env_dup);
+	dup2(STDIN_FILENO, STDIN_BACKUP);
+	dup2(STDOUT_FILENO, STDOUT_BACKUP);
+	return ;
+}
+
 int	main(int ac, char **av, char **envp)
 {
 	char	*line;
@@ -61,10 +79,10 @@ int	main(int ac, char **av, char **envp)
 	t_cmd	*cmd;
 	int		ret;
 
-	init_minishell(ac, av);
-	env_dup = cpy_envp(envp);
+	init_minishell(ac, av, &env_dup, envp);
 	while (1)
 	{
+		envp = env_dup;
 		line = readline("minishell $ ");
 		if (!line)
 			break ;
@@ -72,12 +90,12 @@ int	main(int ac, char **av, char **envp)
 		if (!ret)
 		{
 			add_history(line);
-			// cmd = parse_line(env_dup, line);
-			// g_exit_status = exec(cmd, env_dup);
-			// free cmd
+			cmd = parse_line(env_dup, line);
+			g_exit_status = exec(cmd, &env_dup);
+			ft_free_cmd(cmd);
 		}
 		free(line);
 	}
-	ft_putstr_fd("exit\n", STDOUT_FILENO);
+	exit_minishell(env_dup);
 	return (0);
 }

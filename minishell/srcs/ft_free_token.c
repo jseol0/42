@@ -1,32 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   ft_free_token.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elim <elim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/20 08:36:29 by elim              #+#    #+#             */
-/*   Updated: 2022/01/08 20:04:56 by elim             ###   ########.fr       */
+/*   Created: 2022/01/15 21:19:07 by elim              #+#    #+#             */
+/*   Updated: 2022/01/22 03:09:44 by elim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_env	*get_envp(char **envp)
+size_t	ft_tokensize(t_token *token)
 {
-	t_env	*head;
-	t_env	*new;
-	int		i;
+	size_t	i;
 
-	head = NULL;
 	i = 0;
-	while (envp[i])
+	if (token)
 	{
-		new = ft_envnew(envp[i]);
-		if (!new)
-			return (NULL); // handle error
-		ft_envadd_back(&head, new);
-		i++;
+		while (token[i].cmd)
+			i++;
 	}
-	return (head);
+	return (i);
+}
+
+void	*ft_free_token(t_token *token, int size)
+{
+	int	i;
+
+	i = 0;
+	if (token)
+	{
+		while (i < size && token[i].cmd)
+		{
+			free(token[i].cmd);
+			token[i].cmd = NULL;
+			i++;
+		}
+		free(token);
+		token = NULL;
+	}
+	return (NULL);
 }

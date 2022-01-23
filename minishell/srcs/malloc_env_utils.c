@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   malloc_env_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaeyu <jaeyu@student.42.fr>                +#+  +:+       +#+        */
+/*   By: elim <elim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/15 17:23:35 by elim              #+#    #+#             */
-/*   Updated: 2022/01/20 21:46:45 by jaeyu            ###   ########.fr       */
+/*   Created: 2022/01/15 21:32:03 by elim              #+#    #+#             */
+/*   Updated: 2022/01/15 21:34:44 by elim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "minishell.h"
+
+size_t	malloc_env_case_exit_status(char **cmd)
 {
-	if (48 <= c && c <= 57)
-		return (1);
-	return (0);
+	char	*status;
+
+	status = ft_itoa(g_exit_status);
+	ft_memcpy(*cmd, status, ft_strlen(status));
+	*cmd += ft_strlen(status);
+	free(status);
+	return (1);
 }
