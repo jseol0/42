@@ -6,7 +6,7 @@
 /*   By: elim <elim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 21:24:34 by elim              #+#    #+#             */
-/*   Updated: 2022/01/16 16:07:43 by elim             ###   ########.fr       */
+/*   Updated: 2022/01/24 14:57:37 by elim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,21 @@ char	*get_env_key(char *src)
 char	*get_env_value(char *key, char **env_dup)
 {
 	size_t	i;
-	int		ret;
+	size_t	key_len;
 	char	is_equal;
 
 	i = 0;
+	key_len = ft_strlen(key);
 	while (env_dup[i])
 	{
-		ret = ft_strncmp(key, env_dup[i], ft_strlen(key));
-		is_equal = env_dup[i][ft_strlen(key)];
-		if (is_equal != '=')
-			is_equal = 0;
-		if (!ret && is_equal)
-			return (env_dup[i] + ft_strlen(key) + 1);
+		if (!ft_strncmp(key, env_dup[i], key_len))
+		{
+			is_equal = env_dup[i][key_len];
+			if (is_equal != '=')
+				is_equal = 0;
+			if (is_equal)
+				return (env_dup[i] + key_len + 1);
+		}
 		i++;
 	}
 	return ("");

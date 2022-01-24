@@ -6,7 +6,7 @@
 /*   By: elim <elim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 23:29:03 by jaeyu             #+#    #+#             */
-/*   Updated: 2022/01/23 19:32:28 by elim             ###   ########.fr       */
+/*   Updated: 2022/01/23 22:32:39 by elim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,29 @@ static void	renew_env(char ***env, char *src, char *flag)
 	}
 }
 
-static int	chdir_renew_env(char ***env, char *path)
+static int	chdir_renew_env(char ***env, char *path, int flag)
 {
 	char	*tmp;
+	char	*home_path;
 
 	tmp = getcwd(NULL, 0);
-	if (chdir(getenv(path)) != -1)
+	if (flag)
+		home_path = getenv(path);
+	else
+		home_path = get_env_value("HOME", *env);
+	if (chdir(home_path) == -1)
+	{
+		free(tmp);
+		return (-1);
+	}
+	else
 	{
 		renew_env(env, tmp, "OLDPWD=");
 		free(tmp);
 		tmp = getcwd(NULL, 0);
 		renew_env(env, tmp, "PWD=");
+		free(tmp);
 	}
-	free(tmp);
 	return (0);
 }
 
@@ -71,6 +81,12 @@ static int	cd_error_check(t_cmd *cmd, char ***env)
 	return (0);
 }
 
+static int	cd_no_env_home(t_cmd *cmd)
+{
+	cmd->err.code = ERR_NO_ENV_HOME;
+	return (1);
+}
+
 int	ft_cd(t_cmd *cmd, char ***env)
 {
 	char	*tmp_path;
@@ -78,11 +94,15 @@ int	ft_cd(t_cmd *cmd, char ***env)
 
 	ret = 0;
 	if (!cmd->token[1].cmd)
-		return (chdir_renew_env(env, "HOME"));
+	{
+		if (chdir_renew_env(env, "HOME", 0) == -1)
+			return (cd_no_env_home(cmd));
+		return (0);
+	}
 	if (cmd->token[1].cmd[0] == '~')
 	{
 		if (cmd->token[1].cmd[1] == 0)
-			return (chdir_renew_env(env, "HOME"));
+			return (chdir_renew_env(env, "HOME", 1));
 		else if (cmd->token[1].cmd[1] == '/')
 		{
 			tmp_path = cmd->token[1].cmd;

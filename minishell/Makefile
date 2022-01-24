@@ -3,21 +3,21 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jaeyu <jaeyu@student.42.fr>                +#+  +:+       +#+         #
+#    By: elim <elim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 22:22:50 by elim              #+#    #+#              #
-#    Updated: 2022/01/23 21:42:03 by jaeyu            ###   ########.fr        #
+#    Updated: 2022/01/24 16:28:03 by elim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc -g
+CC = gcc
 CFLAGS = -Wall -Wextra -Wall
 
 NAME = minishell
 TEST = test
 
 SRCS_DIR = ./srcs
-SRCS_NAME = main.c handle_envp.c print_banner.c \
+SRCS_NAME = main.c handle_envp.c print_banner.c is_valid_pipe.c \
 			get_next_line.c get_next_line_utils.c \
 			cmd.c cmd_utils.c \
 			ft_free_cmd.c ft_free_token.c ft_free_split.c \
@@ -39,15 +39,15 @@ OBJS = $(SRCS:.c=.o)
 FT_DIR = ./libft
 FT = ft
 
-#USER = elim
-USER = jseol
+USER = elim
+#USER = jseol
 
-INCS = -I./includes -I./libft -I/usr/local/opt/readline/include
-#INCS = -I./includes -I./libft -I/Users/$(USER)/.brew/opt/readline/include
+#INCS = -I./includes -I./libft -I/usr/local/opt/readline/include
+INCS = -I./includes -I./libft -I/Users/$(USER)/.brew/opt/readline/include
 #INCS = -I./includes -I./libft -I/opt/homebrew/opt/readline/include
 
-READLINE_LIB = -lreadline -L/usr/local/opt/readline/lib
-#READLINE_LIB = -lreadline -L/Users/$(USER)/.brew/opt/readline/lib
+#READLINE_LIB = -lreadline -L/usr/local/opt/readline/lib
+READLINE_LIB = -lreadline -L/Users/$(USER)/.brew/opt/readline/lib
 #READLINE_LIB = -lreadline -L/opt/homebrew/opt/readline/lib
 
 .c.o:

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_banner.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaeyu <jaeyu@student.42.fr>                +#+  +:+       +#+        */
+/*   By: elim <elim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 20:15:29 by elim              #+#    #+#             */
-/*   Updated: 2022/01/23 21:41:22 by jaeyu            ###   ########.fr       */
+/*   Updated: 2022/01/24 16:26:43 by elim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-#define PATH "/Users/jaeyu/tmp/42_bigshell/banner"
+#define PATH "/Users/elim/eval/banner"
 
 void	print_banner(void)
 {

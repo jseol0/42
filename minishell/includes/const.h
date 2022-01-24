@@ -6,7 +6,7 @@
 /*   By: elim <elim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 17:31:39 by elim              #+#    #+#             */
-/*   Updated: 2022/01/23 06:18:47 by elim             ###   ########.fr       */
+/*   Updated: 2022/01/23 22:24:24 by elim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define ERR_NUM_ARG_REQUIRED 5
 # define ERR_EXPORT 6
 # define ERR_UNSET 7
+# define ERR_NO_ENV_HOME 8
 
 # define STR_CMD_NOT_FOUND ": command not found\n"
 # define STR_NO_SUCH_FILE ": No such file or directory\n"

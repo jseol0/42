@@ -6,7 +6,7 @@
 /*   By: elim <elim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 06:33:11 by elim              #+#    #+#             */
-/*   Updated: 2022/01/23 20:19:39 by elim             ###   ########.fr       */
+/*   Updated: 2022/01/24 16:23:15 by elim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ main
 */
 void		handle_envp(char ***env);
 void		print_banner(void);
+int			is_valid_pipe(char *line);
+void		parse_and_exec(t_cmd **cmd, char ***env_dup, char *line);
 
 /*
 signal

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaeyu <jaeyu@student.42.fr>                +#+  +:+       +#+        */
+/*   By: elim <elim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 01:05:12 by elim              #+#    #+#             */
-/*   Updated: 2022/01/23 04:16:54 by jaeyu            ###   ########.fr       */
+/*   Updated: 2022/01/23 22:29:50 by elim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,10 @@ int	ft_error(t_cmd *cmd)
 		ft_print_err_num_args(cmd);
 	else if (cmd->err.code == ERR_EXPORT)
 		ft_print_err_export(cmd);
-	else
+	else if (cmd->err.code == ERR_UNSET)
 		ft_print_err_unset(cmd);
+	else
+		write(STDERR_FILENO, "minishell: cd: HOME not set\n", 29);
 	get_exit_status(cmd->err.code);
 	return (0);
 }

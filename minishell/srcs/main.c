@@ -6,7 +6,7 @@
 /*   By: elim <elim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 06:50:42 by elim              #+#    #+#             */
-/*   Updated: 2022/01/23 20:20:01 by elim             ###   ########.fr       */
+/*   Updated: 2022/01/24 16:23:45 by elim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,8 @@ int	main(int ac, char **av, char **envp)
 		if (!ret)
 		{
 			add_history(line);
-			cmd = parse_line(env_dup, line);
-			g_exit_status = exec(cmd, &env_dup);
-			ft_free_cmd(cmd);
+			if (is_valid_pipe(line))
+				parse_and_exec(&cmd, &env_dup, line);
 		}
 		free(line);
 	}
