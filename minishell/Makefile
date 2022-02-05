@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: elim <elim@student.42seoul.kr>             +#+  +:+       +#+         #
+#    By: jaeyu <jaeyu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 22:22:50 by elim              #+#    #+#              #
-#    Updated: 2022/01/24 16:28:03 by elim             ###   ########.fr        #
+#    Updated: 2022/02/05 10:20:46 by jaeyu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Wall
+CFLAGS = -Wall -Wextra -Werror
 
 NAME = minishell
 TEST = test
@@ -39,15 +39,15 @@ OBJS = $(SRCS:.c=.o)
 FT_DIR = ./libft
 FT = ft
 
-USER = elim
-#USER = jseol
+#USER = elim
+USER = jseol
 
-#INCS = -I./includes -I./libft -I/usr/local/opt/readline/include
-INCS = -I./includes -I./libft -I/Users/$(USER)/.brew/opt/readline/include
+INCS = -I./includes -I./libft -I/usr/local/opt/readline/include
+#INCS = -I./includes -I./libft -I/Users/$(USER)/.brew/opt/readline/include
 #INCS = -I./includes -I./libft -I/opt/homebrew/opt/readline/include
 
-#READLINE_LIB = -lreadline -L/usr/local/opt/readline/lib
-READLINE_LIB = -lreadline -L/Users/$(USER)/.brew/opt/readline/lib
+READLINE_LIB = -lreadline -L/usr/local/opt/readline/lib
+#READLINE_LIB = -lreadline -L/Users/$(USER)/.brew/opt/readline/lib
 #READLINE_LIB = -lreadline -L/opt/homebrew/opt/readline/lib
 
 .c.o:
