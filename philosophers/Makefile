@@ -6,7 +6,7 @@
 #    By: jaeyu <jaeyu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/27 16:07:49 by jaeyu             #+#    #+#              #
-#    Updated: 2022/01/28 00:03:46 by jaeyu            ###   ########.fr        #
+#    Updated: 2022/01/30 22:46:28 by jaeyu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ CFLAGS = -Wall -Wextra -Werror
 INCDIR = ./includes/
 SRCDIR = ./srcs/
 
-SRC = main.c \
+SRC =	main.c \
+		utils.c	\
 
 
 

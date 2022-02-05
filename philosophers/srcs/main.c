@@ -6,26 +6,11 @@
 /*   By: jaeyu <jaeyu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 00:01:22 by jaeyu             #+#    #+#             */
-/*   Updated: 2022/01/28 00:03:42 by jaeyu            ###   ########.fr       */
+/*   Updated: 2022/01/30 23:26:49 by jaeyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	int i;
-
-	if (s == NULL)
-		return ;
-	i = 0;
-	while (s[i])
-	{
-		write(fd, &s[i], 1);
-		i++;
-	}
-	write(fd, "\n", 1);
-}
 
 int	ft_error(char *s)
 {
@@ -33,11 +18,29 @@ int	ft_error(char *s)
 	exit(1);
 }
 
+void	init_philo(int	argc, char ** argv, t_philo *p)
+{
+	if (argc != 5 && argc != 6)
+		ft_error("Too many input");
+	if (!check_numeric(argv))
+		ft_error("Numeric argument require");
+	p->philo = ft_atoi(argv[1]);
+	p->die = ft_atoi(argv[2]);
+	p->eat = ft_atoi(argv[3]);
+	p->sleep = ft_atoi(argv[4]);
+	p->must_eat = -1;
+	if (argc == 6)
+		p->must_eat = ft_atoi(argv[5]);
+	if (p->philo <= 0 || p->die <= 0 || p->eat <= 0 \
+			|| p->sleep <= 0)
+		ft_error("Invalid argument");
+}
+
 int main(int argc, char **argv)
 {
-	(void)argv;
+	t_philo	p;
 
-	if (argc != 4 && argc != 5)
-		ft_error("Too many input");
+	init_philo(argc, argv, &p);
+
 	return (0);
 }
