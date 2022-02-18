@@ -6,7 +6,7 @@
 #    By: jaeyu <jaeyu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/27 16:07:49 by jaeyu             #+#    #+#              #
-#    Updated: 2022/01/30 22:46:28 by jaeyu            ###   ########.fr        #
+#    Updated: 2022/02/11 19:55:25 by jaeyu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,9 @@ SRCDIR = ./srcs/
 
 SRC =	main.c \
 		utils.c	\
-
-
+		clear.c	\
+		init.c	\
+		state.c
 
 SRCS = $(addprefix $(SRCDIR), $(SRC))
 

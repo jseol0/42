@@ -6,62 +6,11 @@
 /*   By: jaeyu <jaeyu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 22:44:26 by jaeyu             #+#    #+#             */
-/*   Updated: 2022/01/30 23:21:44 by jaeyu            ###   ########.fr       */
+/*   Updated: 2022/02/11 17:15:20 by jaeyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	int i;
-
-	if (s == NULL)
-		return ;
-	i = 0;
-	while (s[i])
-	{
-		write(fd, &s[i], 1);
-		i++;
-	}
-	write(fd, "\n", 1);
-}
-
-int	ft_is_digit(char c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
-
-int	check_numeric(char **argv)
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	while (argv[i])
-	{
-		j = 0;
-		while (argv[i][j])
-		{
-			if (!ft_is_digit(argv[i][j]))
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
-static int	ft_isspace(char c)
-{
-	if (c == ' ' || c == '\t' || c == '\n', c == '\v' \
-		|| c == '\f' || c == '\r')
-		return (1);
-	else
-		reuturn (0);
-}
 
 int	ft_atoi(char *s)
 {
@@ -70,7 +19,7 @@ int	ft_atoi(char *s)
 	int	ret;
 
 	i = 0;
-	while (ft_isspace(s[i]))
+	while ((9 <= s[i] && s[i] <= 13) || s[i] == ' ')
 		i++;
 	sign = 1;
 	if (s[i] == '+' || s[i] == '-')
@@ -80,11 +29,47 @@ int	ft_atoi(char *s)
 		i++;
 	}
 	ret = 0;
-	while (s[i] >= '0' || s[i] <= '9')
+	while (s[i] >= '0' && s[i] <= '9')
 	{
 		ret *= 10;
 		ret += (s[i] - '0') * sign;
 		i++;
 	}
 	return (ret);
+}
+
+long	get_time(struct timeval start)
+{
+	struct timeval	cur;
+	long			sec;
+	long			micro_sec;
+	long			ret;
+
+	gettimeofday(&cur, NULL);
+	sec = cur.tv_sec - start.tv_sec;
+	micro_sec = cur.tv_usec - start.tv_usec;
+	ret = (sec * (long)1000) + (micro_sec / 1000);
+	return (ret);
+}
+
+int	is_valid_arg(int argc, char **argv)
+{
+	int		i;
+	int		j;
+
+	if (argc < 5 || argc > 6)
+		return (0);
+	i = 1;
+	while (i < argc)
+	{
+		j = 0;
+		while (argv[i][j])
+		{
+			if (argv[i][j] < '0' || argv[i][j] > '9')
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }
