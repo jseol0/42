@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jaeyu <jaeyu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 21:01:34 by jaeyu             #+#    #+#             */
-/*   Updated: 2022/03/02 16:33:49 by jseol            ###   ########.fr       */
+/*   Updated: 2022/03/02 18:16:56 by jaeyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,9 @@ int	init_rule(t_rule *rule, int argc, char **argv)
 	rule->time_eat = ft_atoi(argv[3]);
 	rule->time_sleep = ft_atoi(argv[4]);
 	if (argc == 6)
-	{
 		rule->must_eat = ft_atoi(argv[5]);
-		if (rule->must_eat < 0)
-			return (1);
-	}
 	else
-		rule->must_eat = -1;
-	if (rule->philo_num < 0 || rule->time_die < 0 || rule->time_eat < 0
-		|| rule->time_sleep < 0)
-		return (1);
+		rule->must_eat = -1;;
 	return (0);
 }
 
