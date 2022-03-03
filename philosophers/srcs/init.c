@@ -6,7 +6,7 @@
 /*   By: jaeyu <jaeyu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 21:01:34 by jaeyu             #+#    #+#             */
-/*   Updated: 2022/03/02 18:16:56 by jaeyu            ###   ########.fr       */
+/*   Updated: 2022/03/03 14:08:23 by jaeyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	init_rule(t_rule *rule, int argc, char **argv)
 	if (argc == 6)
 		rule->must_eat = ft_atoi(argv[5]);
 	else
-		rule->must_eat = -1;;
+		rule->must_eat = -1;
 	return (0);
 }
 
