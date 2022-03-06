@@ -6,7 +6,7 @@
 /*   By: jaeyu <jaeyu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 00:01:22 by jaeyu             #+#    #+#             */
-/*   Updated: 2022/03/02 19:40:01 by jaeyu            ###   ########.fr       */
+/*   Updated: 2022/03/06 21:58:12 by jaeyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,7 @@ int	main(int argc, char **argv)
 		printf("Error: arguments\n");
 		return (1);
 	}
-	if (init_rule(&rule, argc, argv))
-	{
-		printf("Error: rule\n");
-		return (1);
-	}
+	init_rule(&rule, argc, argv);
 	if (init_mutex(&rule, &mutex) == 1)
 		return (1);
 	if (init_philo(&philos, &rule, &mutex) == 1)
