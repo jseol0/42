@@ -3,69 +3,111 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jaeyu <jaeyu@student.42.fr>                +#+  +:+       +#+         #
+#    By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/03/06 23:30:59 by jaeyu             #+#    #+#              #
-#    Updated: 2022/03/08 13:59:54 by jaeyu            ###   ########.fr        #
+#    Created: 2021/05/14 13:30:16 by bahn              #+#    #+#              #
+#    Updated: 2022/05/09 20:35:37 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= miniRT
+NAME		=	miniRT
 
-# src / obj files
-SRC		=	test.c
+OS			=	$(shell uname -s)
 
-OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
+ifeq ($(OS), Linux)
+	MLX_PATH	= ./minilibx-linux
+	MLX_FLAGS	= -Lminilibx-linux/ -lmlx -lX11 -lXext -lm -lbsd -O3
+else
+	MLX_PATH	= ./minilibx_opengl_20191021
+	MLX_FLAGS	= -Lminilibx_opengl_20191021/ -lmlx -lm -framework OpenGL -framework AppKit -O3
 
-# compiler
-CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
+# MLX_PATH	= ./minilibx_mms_20200219
+# MLX_FLAGS	= -Lminilibx_mms_20200219/ -lmlx -lm -framework OpenGL -framework AppKit -O3
+endif
 
-# mlx library
-MLX		= ./miniLibx/
-MLX_LIB	= $(addprefix $(MLX),mlx.a)
-MLX_INC	= -I ./miniLibx
-MLX_LNK	= -L ./miniLibx -lmlx -framework OpenGL -framework AppKit
+LIBFT_PATH		= ./libft/
+LIBFT_LINK		= -Llibft -lft
 
-# ft library
-FT		= ./libft/
-FT_LIB	= $(addprefix $(FT),libft.a)
-FT_INC	= -I ./libft
-FT_LNK	= -L ./libft -lft
+CC			=	gcc
+CFLAGS		=	-Wall -Wextra -Werror -g
+# CFLAGS		=	-Wall -Wextra -Werror -g3 -fsanitize=address
 
-# directories
-SRCDIR	= ./src/
-INCDIR	= ./include/
-OBJDIR	= ./obj/
+INCFLAGS	=	-I./includes -I./libft
 
-all: obj $(FT_LIB) $(MLX_LIB) $(NAME)
+ifeq ($(OS), Linux)
+INCFLAGS	+=	-I./minilibx-linux
+else
+INCFLAGS	+=	-I./minilibx_opengl_20191021
+#INCFLAGS	+=	-I./minilibx_mms_20200219
+endif
 
-obj:
-	@mkdir -p $(OBJDIR)
+SRCS_DIR	=	./srcs/
+OBJS_DIR	=	./objs/
+SRCS_FNAME	=	parse/get_next_line_utils.c \
+				parse/get_next_line.c \
+				parse/parse_color3.c \
+				parse/parse_file.c \
+				parse/parse_objects.c \
+				parse/parse_scene.c \
+				parse/split_utils.c \
+				parse/ft_atod.c \
+				parse/ft_isspace.c \
+				hooks/minirt_close.c \
+				hooks/minirt_esc.c \
+				hooks/camera_movement.c \
+				color/color.c \
+				vector/vector.c \
+				vector/vector_operation.c \
+				vector/vector_operation2.c \
+				vector/vector_operation3.c \
+				ray/ray.c \
+				camera/camera.c \
+				canvas/canvas.c \
+				object/object.c \
+				object/hit.c \
+				object/set_face_normal.c \
+				object/sphere/sphere.c \
+				object/plane/plane.c \
+				object/cylinder/cylinder.c \
+				light/light.c \
+				light/light_util.c \
+				shadow/shadow.c \
+				scene/output_scene.c \
+				utils/minirt_free.c \
+				main.c
+SRCS		=	$(addprefix $(SRCS_DIR), $(SRCS_FNAME))
+OBJS		=	$(SRCS:.c=.o)
 
-$(OBJDIR)%.o:$(SRCDIR)%.c
-	$(CC) $(CFLAGS) $(MLX_INC) $(FT_INC) -I $(INCDIR) -o $@ -c $<
+ifeq ($(OS), Linux)
+.c.o : $(SRCS)
+	$(CC) $(CFLAGS) -c $< $(INCFLAGS) $(MLX_FLAGS) $(LIBFT_LINK) -o $@
+else
+.c.o : $(SRCS)
+	$(CC) $(CFLAGS) $(INCFLAGS) -c $< -o $@
+endif
 
-$(FT_LIB):
-	@make -C $(FT)
+$(NAME)		:	$(OBJS)
+			$(MAKE) all -C $(MLX_PATH)
+			$(MAKE) all -C $(LIBFT_PATH)
+			$(MAKE) bonus -C $(LIBFT_PATH)
+ifeq ($(OS), Linux)
+			$(CC) $(CFLAGS) $^ $(INCFLAGS) $(LIBFT_LINK) $(MLX_FLAGS) -o $@
+else
+			$(CC) $(CFLAGS) $(INCFLAGS) $(LIBFT_LINK) $(MLX_FLAGS) -o $@ $^
+endif
 
-$(MLX_LIB):
-	@make -C $(MLX)
-	@cp $(MLX)libmlx.dylib ./
+all			:	$(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(OBJ) $(MLX_LNK) $(FT_LNK) -lm -o $(NAME)
+clean		:
+				$(RM) $(OBJS)
+				$(MAKE) clean -C $(LIBFT_PATH)
 
-clean:
-	rm -rf $(OBJDIR)
-	make -C $(FT) clean
-	make -C $(MLX) clean
+fclean		:	clean
+				$(RM)
+				$(RM) $(NAME)
+				$(MAKE) clean -C $(MLX_PATH)
+				$(MAKE) fclean -C $(LIBFT_PATH)
 
-fclean: clean
-	rm -rf $(NAME)
-	make -C $(FT) fclean
-	rm -rf libmlx.dylib
+re			:	fclean all
 
-re: fclean all
-
-.PHONY: all clean fclean re
+.PHONY		:	all clean fclean re
