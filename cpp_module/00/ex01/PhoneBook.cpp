@@ -6,14 +6,14 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:57:24 by jseol             #+#    #+#             */
-/*   Updated: 2022/05/27 12:09:05 by jseol            ###   ########.fr       */
+/*   Updated: 2022/05/28 11:44:24 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook()
-	: mCapacity(0)
+	: mCapacity(0), mCurrentIndex(0)
 {
 
 }
@@ -25,16 +25,17 @@ PhoneBook::~PhoneBook()
 
 void	PhoneBook::AddContact(void)
 {
-	if (mCapacity < MAX)
+	if (mCurrentIndex < MAX)
 	{
-		mContact[mCapacity].SetContact();
+		mContact[mCurrentIndex].SetContact();
 		mCapacity++;
+		mCurrentIndex++;
 	}
 	else
 	{
-		for (unsigned int i = 0; i < MAX; i++)
-			mContact[i] = mContact[i + 1];
-		mContact[0].SetContact();
+		unsigned int	index = mCurrentIndex % 8;
+		mContact[index].SetContact();
+		mCurrentIndex++;
 	}
 }
 
@@ -77,13 +78,13 @@ void	PhoneBook::SearchIndexContact(void)
 
 		int	index = index_string[0] - '0';
 		if (index_string.size() > 1)
-			std::cout << "invalid index..." << std::endl;
+			std::cout << "invalid index" << std::endl;
 		else if (index_string == "q")
 		{
 			std::cout << "\033[33m" << "quit search index" << "\033[0m" << std::endl;
 			break ;
 		}
-		else if (0 <= index && index < mCapacity)
+		else if (0 <= index && index < (int)mCapacity)
 				mContact[index].DisplayAllInfo();
 		else
 			std::cout << "invalid index" << std::endl;

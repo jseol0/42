@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 15:57:42 by jseol             #+#    #+#             */
-/*   Updated: 2022/05/27 12:09:02 by jseol            ###   ########.fr       */
+/*   Updated: 2022/05/28 11:10:32 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,13 @@ void	Contact::DisplayBasicInfo(const unsigned int index)
 
 void	Contact::DisplayAllInfo(void)
 {
-	
+	std::cout << std::right << "\033[32m";
+	std::cout << "=======================================================" << std::endl;
+	std::cout << "first name: " << mFirstName << std::endl;
+	std::cout << "last name: " << mLastName << std::endl;
+	std::cout << "nick name: " << mNickName << std::endl;
+	std::cout << "phone number: " << mPhoneNumber << std::endl;
+	std::cout << "darkest secret: " << mDarkestSecret << std::endl;
+	std::cout << "=======================================================" << std::endl;
+	std::cout << std::right << "\033[0m";
 }
