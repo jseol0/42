@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 22:58:32 by jseol             #+#    #+#             */
-/*   Updated: 2022/07/04 22:17:02 by jseol            ###   ########.fr       */
+/*   Updated: 2022/07/05 23:33:35 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,20 @@
 
 Zombie::Zombie()
 {
-	std::cout << "someone appeared!" << std::endl;
+	std::cout << "someone appeared" << std::endl;
 }
 
 Zombie::Zombie( std::string name ) : mName(name)
 {
 	std::cout << mName;
-	std::cout << " has appeared!" << std::endl;
+	std::cout << " has appeared" << std::endl;
 }
 
 Zombie::~Zombie()
 {
 	mName.empty() ?
-		std::cout << "someone disappeared." << std::endl:
-		std::cout << mName << " has disappeared." << std::endl;
+		std::cout << "someone disappeared" << std::endl:
+		std::cout << mName << " has disappeared" << std::endl;
 	
 }
 
