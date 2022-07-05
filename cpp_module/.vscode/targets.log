@@ -10,7 +10,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Sat Jun 11 16:13:53 2022
+# Make data base, printed on Mon Jul  4 22:09:03 2022
 
 # Variables
 
@@ -31,7 +31,7 @@ CURDIR := /Users/jaeyu/42/cpp_module
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{"*":"ko"},"_languagePackId":"738ac08552cca045871a73764b8c446f.ko","_translationsConfigFile":"/Users/jaeyu/Library/Application Support/Code/clp/738ac08552cca045871a73764b8c446f.ko/tcf.json","_cacheRoot":"/Users/jaeyu/Library/Application Support/Code/clp/738ac08552cca045871a73764b8c446f.ko","_resolvedLanguagePackCoreLocation":"/Users/jaeyu/Library/Application Support/Code/clp/738ac08552cca045871a73764b8c446f.ko/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5","_corruptedFile":"/Users/jaeyu/Library/Application Support/Code/clp/738ac08552cca045871a73764b8c446f.ko/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{"*":"ko"},"_languagePackId":"26f3b44ea4f1e942cca002e9545643cc.ko","_translationsConfigFile":"/Users/jaeyu/Library/Application Support/Code/clp/26f3b44ea4f1e942cca002e9545643cc.ko/tcf.json","_cacheRoot":"/Users/jaeyu/Library/Application Support/Code/clp/26f3b44ea4f1e942cca002e9545643cc.ko","_resolvedLanguagePackCoreLocation":"/Users/jaeyu/Library/Application Support/Code/clp/26f3b44ea4f1e942cca002e9545643cc.ko/30d9c6cd9483b2cc586687151bcbcd635f373630","_corruptedFile":"/Users/jaeyu/Library/Application Support/Code/clp/26f3b44ea4f1e942cca002e9545643cc.ko/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
 # makefile
@@ -43,7 +43,7 @@ __CFBundleIdentifier = com.microsoft.VSCode
 # environment
 P9K_SSH = 0
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/yl/cx0lq5855q710xwcm7jvq3lh0000gn/T/vscode-ipc-6ebd7dee-2038-48c9-b8d6-b9e3af0942ac.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/yl/cx0lq5855q710xwcm7jvq3lh0000gn/T/vscode-ipc-8a99ba7b-59ed-4452-a5d6-2cf4e90c1aaa.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -70,10 +70,11 @@ ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /Users/jaeyu
+ 
 # default
 MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/jaeyu/Library/Application Support/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+VSCODE_CODE_CACHE_PATH = /Users/jaeyu/Library/Application Support/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
 # environment
 LOGNAME = jaeyu
 # environment
@@ -111,7 +112,7 @@ TMPDIR = /var/folders/yl/cx0lq5855q710xwcm7jvq3lh0000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/jaeyu/Library/Application Support/Code/1.67.2-main.sock
+VSCODE_IPC_HOOK = /Users/jaeyu/Library/Application Support/Code/1.68.1-main.sock
 # makefile
 MAKEFLAGS = Rrqp
 # environment
@@ -121,7 +122,7 @@ MFLAGS = -Rrqp
 # environment
 MAIL = jseol@student.42seoul.kr
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.14085654.14085660
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.15172435.15172441
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -149,7 +150,7 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 14347
+VSCODE_PID = 55275
 # variable set hash-table stats:
 # Load=68/1024=7%, Rehash=0, Collisions=1/89=1%
 
@@ -166,7 +167,6 @@ VSCODE_PID = 14347
 # Implicit Rules
 
 # No implicit rules.
- 
 
 # Files
 
@@ -176,6 +176,7 @@ all:
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has not been updated.
+ 
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
@@ -234,6 +235,6 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Sat Jun 11 16:13:53 2022
+# Finished Make data base on Mon Jul  4 22:09:03 2022
 
  
