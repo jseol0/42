@@ -6,31 +6,11 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 22:58:32 by jseol             #+#    #+#             */
-/*   Updated: 2022/07/05 23:33:35 by jseol            ###   ########.fr       */
+/*   Updated: 2022/07/10 00:47:16 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
-
-// Zombie::Zombie()
-// {
-
-// }
-
-// Zombie::Zombie(std::string name) : mName(name)
-// {
-
-// }
-
-// Zombie::~Zombie()
-// {
-	
-// }
-
-// void	Zombie::announce(void)
-// {
-// 	 std::cout << mName << ": BraiiiiiiinnnzzzZ..." << std::endl;
-// }
 
 Zombie::Zombie()
 {
@@ -55,6 +35,6 @@ void	Zombie::announce(void)
 {
 	mName.empty() ?
 		std::cout << "Unknown" :
-		std::cout << mName;
+		std::cout <<  mName;
 	std::cout << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
