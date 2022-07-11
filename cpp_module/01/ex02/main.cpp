@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 13:33:33 by jseol             #+#    #+#             */
-/*   Updated: 2022/07/11 14:19:31 by jseol            ###   ########.fr       */
+/*   Updated: 2022/07/11 14:56:30 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(void)
 	std::cout << stringPTR << std::endl;
 	std::cout << &stringREF << std::endl;
 
+	std::cout << str << std::endl;
 	std::cout << *stringPTR << std::endl;
 	std::cout << stringREF << std::endl;
 
