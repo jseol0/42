@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 16:35:54 by jseol             #+#    #+#             */
-/*   Updated: 2022/07/12 22:53:21 by jseol            ###   ########.fr       */
+/*   Updated: 2022/07/15 13:40:18 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ int main(int argc, char const *argv[])
 		}
 
 		std::ofstream output_fstrm;
-		output_fstrm.open(std::string(argv[1])+".replace"/*.append(".replace").c_str()*/);
-		
+		output_fstrm.open(std::string(argv[1])+".replace");
+
 		std::string	line;
-		do
+		while (!input_fstrm.eof())
 		{
 			std::getline(input_fstrm, line);
 			std::size_t find_str = line.find(argv[2]);
@@ -50,9 +50,9 @@ int main(int argc, char const *argv[])
 				output_fstrm << line;
 			if (!input_fstrm.eof())
 				output_fstrm << std::endl;
-		} while (!input_fstrm.eof());
+		}
 		input_fstrm.close();
 		output_fstrm.close();
-	}	
+	}
 	return (0);
 }
