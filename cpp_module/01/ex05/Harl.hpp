@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 23:38:23 by jseol             #+#    #+#             */
-/*   Updated: 2022/07/13 00:23:03 by jseol            ###   ########.fr       */
+/*   Updated: 2022/07/19 22:59:11 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Harl
 	typedef struct s_complain
 	{
 		std::string level;
-		void(Harl::*ptr)(void);
+		void	(Harl::*ptr)(void);
 	}	t_complain;
 
 	public:
