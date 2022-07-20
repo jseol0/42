@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 11:20:03 by jseol             #+#    #+#             */
-/*   Updated: 2022/07/12 12:55:04 by jseol            ###   ########.fr       */
+/*   Updated: 2022/07/20 12:40:02 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		Weapon::setType(std::string type)
 	mType = type;
 }
 
-std::string	Weapon::getType(void)
+const & std::string	Weapon::getType(void)
 {
 	return (mType);
 }
