@@ -1,0 +1,3 @@
+멤버 연산자 작성법
+<return-type> <class-name>::operator<operator-symbol>(argument-list);
+	ex> Fixed& Fixed::operaor=(const Fixed& rhs);

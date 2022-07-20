@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 14:34:01 by jseol             #+#    #+#             */
-/*   Updated: 2022/07/15 15:46:10 by jseol            ###   ########.fr       */
+/*   Updated: 2022/07/20 15:04:47 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ class Fixed
 {
 	public:
 		Fixed();
-		Fixed(const Fixed& fixed);
-		Fixed& operator=(const Fixed& fixed);
+		Fixed(const Fixed& other);
+		Fixed& operator=(const Fixed& rhs);
 		~Fixed();
 
 		int		getRawBits(void) const;
@@ -28,7 +28,7 @@ class Fixed
 
 	private:
 		int					mValue;
-		static const int	mBits;
+		static const int	mFractionBits;
 };
 
 #endif
