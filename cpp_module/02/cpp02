@@ -1,3 +1,56 @@
-멤버 연산자 작성법
-<return-type> <class-name>::operator<operator-symbol>(argument-list);
-	ex> Fixed& Fixed::operaor=(const Fixed& rhs);
+ex00
+	Orthodox Canonical Form
+	-Default constructor
+	-Copy constructor
+		ClassName (const ClassName& old_object);
+		-원본 객체의 값이 변하면 안되므로 const
+		-원본 객체 메모리 주소의 데이터가 필요하므로 참조자로 받음
+	-Copy assignment operator
+		className& ClassName::operator=(const ClassName src);
+		-해당 데이터 유형(클래스)에 대한 특별한 동작을 수행하는 연산자를 생성
+	-Destructor
+
+
+
+	멤버 연산자 작성법
+	return-type> <class-name>::operator<operator-symbol>(argument-list);
+		ex) Fixed& Fixed::operaor=(const Fixed& rhs);
+
+
+ex01
+	부동소수 vs 고정소수
+	부동소수: 부호비트(1bit) 지수부(8bit) 가수부(나머지)
+		ex) 17을 부동소수로 표현하기
+		1.정규화를 진행한다.
+		17을 2진수로 변환하면 10001이며, 이를 정규화 하면 1.0001 * 2^4가 된다.
+		2.부호 비트를 결정한다.
+		-17이기 때문에, 부호 비트는 1이 된다.
+		3.지수부에 저장할 bias를 계산한다.
+		17을 2진수로 변환한 뒤 이를 정규화한 값은 1.0001 * 2^4이므로, 지수는 4이며 bias는 127이므로 127 + 4 = 131을 지수부에 저장하게 되며,
+		이를 2진수로 변환하면 10000011 이다.
+		4.가수부에 저장할 값을 계산한다.
+		정규화한 값중 허수부를 넣으면 되기 때문에, 남은 자리인 23칸에 0001을 적절하게 저장한다. 즉 00010000000000000000000이 될 것이다.
+
+		그러므로 -17을 부동 소수점으로 표현하면 11000001100010000000000000000000 가 된다.
+
+	고정소수: 소수 부분을 표현할 비트의 수를 미리 정해둔 뒤에 10진수를 2진수로 변환한 값을 그대로 비트에 넣은 것이다.
+		ex)16비트를 사용하고, 7.625라는 실수를 고정 소수점(소수를 표현할 비트는 8)을 통해 저장하고자 한다면,
+		7.625를 2진수로 변환하면 111.101이 되기 때문에
+		00000111.10100000
+
+		정수를 고정소수점으로
+		mValue = n << fractionbits
+
+		실수를 고정소수점으로 변환
+		mValue 는 int형
+		mValue = roundf(n * (1 << Fractionbits))
+
+		고정소수점을 정수로
+		n >> fractionbits
+
+		고정소수점을 실수로
+		float(n) / (1 << Fractionbits)
+
+		<<연산자 오버로딩
+		고정소수점을 부동소수점으로 출력하기
+		ostream을 사용하기 때문에 멤버함수가 아님

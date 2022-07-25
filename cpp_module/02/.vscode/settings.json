@@ -1,0 +1,11 @@
+{
+	"makefile.extensionOutputFolder": "./.vscode",
+	"files.associations": {
+		"typeinfo": "cpp",
+		"algorithm": "cpp",
+		"bitset": "cpp",
+		"ios": "cpp",
+		"locale": "cpp",
+		"type_traits": "cpp"
+	}
+}

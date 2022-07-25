@@ -5,22 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 23:38:20 by jseol             #+#    #+#             */
-/*   Updated: 2022/07/19 22:59:47 by jseol            ###   ########.fr       */
+/*   Created: 2022/07/20 17:57:13 by jseol             #+#    #+#             */
+/*   Updated: 2022/07/21 18:43:21 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#include "Fixed.hpp"
 
-int	main(void)
+int	main( void )
 {
-	Harl	Harl;
-	
-	Harl.complain("debug");
-	Harl.complain("info");
-	Harl.complain("warning");
-	Harl.complain("error");
-	Harl.complain("Thank you!!");
+	Fixed a;
+	Fixed const b( 10 ); Fixed const c( 42.42f ); Fixed const d( b );
+	a = Fixed( 1234.4321f );
+
+	std::cout << "a is " << a << std::endl;
+	std::cout << "b is " << b << std::endl;
+	std::cout << "c is " << c << std::endl;
+	std::cout << "d is " << d << std::endl;
+	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
+	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
+	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
 
 	return (0);
 }

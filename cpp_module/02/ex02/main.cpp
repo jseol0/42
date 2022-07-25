@@ -1,41 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 23:38:23 by jseol             #+#    #+#             */
-/*   Updated: 2022/07/19 22:59:48 by jseol            ###   ########.fr       */
+/*   Created: 2022/07/22 00:11:31 by jseol             #+#    #+#             */
+/*   Updated: 2022/07/22 02:40:23 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-# define HARL_HPP
+#include "Fixed.hpp"
 
-# include <iostream>
-# include <string>
-
-class Harl
+int	main(void)
 {
-	typedef struct s_complain
-	{
-		std::string level;
-		void	(Harl::*ptr)(void);
-	}	t_complain;
+	Fixed a;
+	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 
-	public:
-		Harl();
-
-		void	complain(std::string level);
-
-	private:
-		t_complain	stat[4];
-
-		void	debug(void);
-		void	info(void);
-		void	warning(void);
-		void	error(void);
-};
-
-#endif
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	std::cout << Fixed::max( a, b ) << std::endl;
+	
+	return (0);
+}

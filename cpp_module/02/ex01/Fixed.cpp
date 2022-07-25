@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/15 14:33:59 by jseol             #+#    #+#             */
-/*   Updated: 2022/07/22 00:52:23 by jseol            ###   ########.fr       */
+/*   Created: 2022/07/20 17:57:25 by jseol             #+#    #+#             */
+/*   Updated: 2022/07/21 19:11:34 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,18 @@ Fixed::Fixed()
 	: mValue(0)
 {
 	std::cout << "Default constructor called" << std::endl;
+}
+
+Fixed::Fixed(const int i)
+{
+	std::cout << "Int constructor called" << std::endl;
+	mValue = (i << mFractionBits);
+}
+
+Fixed::Fixed(const float f)
+{
+	std::cout << "Float constructor called" << std::endl;
+	mValue = roundf(f * (1 << mFractionBits));
 }
 
 Fixed::Fixed(const Fixed& other)
@@ -40,11 +52,26 @@ Fixed::~Fixed()
 
 int		Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (mValue);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
 	mValue = raw;
+}
+
+float	Fixed::toFloat(void) const
+{
+	return (float(mValue) / (1 << mFractionBits));
+}
+
+int		Fixed::toInt(void) const
+{
+	return (mValue >> mFractionBits);
+}
+
+std::ostream&	operator<<(std::ostream& os, const Fixed& rhs)
+{
+	os << rhs.toFloat();
+	return (os);
 }
