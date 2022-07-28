@@ -6,14 +6,14 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 15:46:48 by jseol             #+#    #+#             */
-/*   Updated: 2022/07/27 23:57:46 by jseol            ###   ########.fr       */
+/*   Updated: 2022/07/29 00:26:12 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CLAPTRAP_HPP
 # define CLAPTRAP_HPP
 
-#include <iostream>
+# include <iostream>
 
 class ClapTrap
 {

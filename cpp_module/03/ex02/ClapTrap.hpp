@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 15:46:48 by jseol             #+#    #+#             */
-/*   Updated: 2022/07/29 00:27:51 by jseol            ###   ########.fr       */
+/*   Updated: 2022/07/29 00:25:57 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class ClapTrap
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 
-	private:
+	protected:
 		std::string	mName;
 		unsigned int	mHitPoints;
 		unsigned int	mEnergyPoints;

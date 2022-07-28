@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/27 12:20:39 by jseol             #+#    #+#             */
-/*   Updated: 2022/07/29 00:34:00 by jseol            ###   ########.fr       */
+/*   Created: 2022/07/26 15:46:14 by jseol             #+#    #+#             */
+/*   Updated: 2022/07/29 00:50:45 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#include "FragTrap.hpp"
+#include "ScavTrap.hpp"
 
-# include "ClapTrap.hpp"
-
-class ScavTrap : public ClapTrap
+int main( void )
 {
-	public:
-		ScavTrap();
-		ScavTrap(std::string name);
-		ScavTrap(const ScavTrap& other);
-		~ScavTrap();
+	FragTrap	frag("FRAG");
+	ScavTrap	scav("SCAV");
 
-		ScavTrap&	operator=(const ScavTrap& rhs);
+	std::cout << std::endl;
 
-		void	attack(const std::string& target);
-		void	guardGate();
-};
+	frag.attack("SCAV");
+	scav.takeDamage(0);
+	scav.beRepaired(10);
+	scav.guardGate();
+	
+	std::cout << std::endl;
 
-#endif
+	scav.attack("FRAG");
+	frag.takeDamage(20);
+	frag.beRepaired(20);
+	frag.highFivesGuys();
+
+	std::cout << std::endl;
+
+	return 0;
+}
