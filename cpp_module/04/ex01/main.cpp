@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:28:45 by jseol             #+#    #+#             */
-/*   Updated: 2022/08/03 15:02:34 by jseol            ###   ########.fr       */
+/*   Updated: 2022/08/04 12:46:56 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,14 @@ int main()
 	std::cout << "( Cat의 깊은 복사본이므로, 1번째 Idea도 'I love fishes' 으로 기대함. ) " << std::endl;
 	std::cout << animals[3]->getBrain()->getIdea(1) << std::endl;
 	std::cout << std::endl;
+
+/*
+	std::cout << "----------------------------------------" << std::endl;
+	cat->getBrain()->putIdea(0, "CATTTTTT");
+	std::cout << animals[2]->getBrain()->getIdea(0) << std::endl;
+	std::cout << animals[3]->getBrain()->getIdea(0) << std::endl;
+	std::cout << std::endl;
+*/
 
 	for (int i = 0; i < 4; i++)
 		delete animals[i];
