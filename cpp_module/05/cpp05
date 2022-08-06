@@ -1,0 +1,22 @@
+예외처리
+
+ex00
+
+Bureaucrat 클래스
+
+const name
+grade (1 ~ 150) 1이 제일 높음
+
+GradeTooHighException
+GradeTooLowException
+getName
+getGrade
+increment
+decrement
+
+overload of the insertion («) operator       -> <name>, bureaucrat grade <grade>.
+
+try
+{}
+catch
+{}
