@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 19:32:21 by jseol             #+#    #+#             */
-/*   Updated: 2022/08/05 19:37:03 by jseol            ###   ########.fr       */
+/*   Updated: 2022/08/06 23:57:58 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ Form *Intern::makeForm(const std::string formName, const std::string target) con
 	{
 		if (formName == targets[i])
 		{
-			std::cout << "Intern creates " << formName << " form." << '\n';
+			std::cout << "Intern creates " << formName << '\n';
 			result = forms[i];
 			continue;
 		}
