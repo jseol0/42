@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 13:22:11 by jseol             #+#    #+#             */
-/*   Updated: 2022/08/05 13:29:05 by jseol            ###   ########.fr       */
+/*   Updated: 2022/08/07 23:16:59 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ Form::Form(const Form& other)
 
 }
 
-Form::Form(std::string name, int signGrade, int executeGrade) : mName(name), isSigned(false), mSignGrade(signGrade), mExecuteGrade(executeGrade)
+Form::Form(std::string name, int signGrade, int executeGrade)
+	: mName(name), isSigned(false), mSignGrade(signGrade), mExecuteGrade(executeGrade)
 {
 	if (mSignGrade < 1 || mExecuteGrade < 1)
 		throw Form::GradeTooHighException();

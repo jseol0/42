@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 19:32:19 by jseol             #+#    #+#             */
-/*   Updated: 2022/08/05 19:34:17 by jseol            ###   ########.fr       */
+/*   Updated: 2022/08/07 23:36:09 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class Intern
 		class InvalidFormNameException : public std::exception
 		{
 			public:
-			virtual const char* what() const throw();
+				virtual const char* what() const throw();
 		};
 };
 
