@@ -1,0 +1,12 @@
+{
+	"files.associations": {
+		"exception": "cpp",
+		"__locale": "cpp",
+		"ios": "cpp",
+		"istream": "cpp",
+		"locale": "cpp",
+		"ostream": "cpp",
+		"streambuf": "cpp",
+		"iosfwd": "cpp"
+	}
+}
