@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 21:09:35 by jseol             #+#    #+#             */
-/*   Updated: 2022/08/08 23:03:53 by jseol            ###   ########.fr       */
+/*   Updated: 2022/08/09 21:32:11 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,16 @@ int main(int argc, char **argv)
 	}
 
 	double value;
+	char *ptr;
 	Converter converter;
 	
 	try
 	{
-		value = std::stod(argv[1]);
+		value = std::strtod(argv[1], &ptr);
+		
+		if (value == 0.0 && argv[1][0] != '-' &&
+		argv[1][0] != '+' && !std::isdigit(argv[1][0]))
+			throw Converter::CantConvert();
 	}
 	catch (std::exception &e)
 	{
@@ -45,11 +50,12 @@ int main(int argc, char **argv)
 
 	try
 	{
-		std::cout << "int : " << converter.toInt(value) << std::endl;
+		int i = converter.toInt(value);
+		std::cout << "int : " << i << std::endl;
 	}
 	catch (std::string &e)
 	{
-		std::cout << e << std::endl;
+		std::cout << "int : " << e << std::endl;
 	}
 
 	float f = converter.toFloat(value);

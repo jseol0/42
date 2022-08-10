@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 21:09:38 by jseol             #+#    #+#             */
-/*   Updated: 2022/08/08 22:53:26 by jseol            ###   ########.fr       */
+/*   Updated: 2022/08/09 19:40:44 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 # define CONVERTER_HPP
 
 # include <iostream>
+# include <string>
 # include <cmath>
-# include <limits>
+# include <cstdlib>
+# include <climits>
 
 class Converter
 {
@@ -26,10 +28,10 @@ class Converter
 
 		Converter& operator=(const Converter& rhs);
 
-		char toChar(double);
-		int toInt(double);
-		float toFloat(double);
-		double toDouble(double);
+		char toChar(double d);
+		int toInt(double d);
+		float toFloat(double d);
+		double toDouble(double d);
 
 		class CantConvert : public std::exception
 		{

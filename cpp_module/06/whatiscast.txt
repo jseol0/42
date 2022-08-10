@@ -1,0 +1,44 @@
+(int *)ptr;
+
+1. static_cast
+ -> 값 변환
+	float floatNumber = 10.4f;
+	(int)floatNumber; // c style
+	static_cast<int>(floatNumber); // c++ style
+
+ -> 객체 포인터 변환
+	Animal *cat = new Cat();
+	Cat *tmp = (Cat *)cat; // c style
+	Cat *tmp = static_cast<Cat *>(cat); // c++ style
+
+	Dog *tmp = static_cast<Dog *>(cat);
+	-> 변환이 가능함(상속관계만 파악, Animal * -> Dog * 이므로 Animal의 자식인 Dog라서 사용가능)
+	-> 하지만 문제가 있음
+	-> dynamic_cast에서는 이를 null 반환 (런타임중에 실제의 타입을 검사하기 때문)
+
+
+2. reinterpret_cast
+ -> 재해석 캐스트
+ -> 연관 없는 두 포인터나, 포인터와 정수사이의 캐스팅 허용
+	int *ptr = &a;
+	(unsigned long)ptr; // c style
+	reinterpret_cast<unsigned long>(ptr); // c++ style
+
+
+3. const_cast
+ -> const 떼기
+	const int *a = 10;
+	int *b = (int *)a; // c style
+	int *b = const_cast<int *>(a); // c++ style
+
+4. dynamic_cast
+ -> 상속 계층 관계를 가로지르거나 다운캐스팅시 사용되는 캐스팅 연산자
+ -> static_cast와 기본적으로 동일하나, 런타임때 실제 데이터 타입을 조회 (런타임 타입 판단)
+ -> RTTI (실시간 타입 정보)를 켜야하기 때문에 안쓴다고 함 (오버헤드)
+	Animal *cat = new Cat();
+	Dog *dog = dynamic_cast<Dog*>(cat);
+	if (dog == NULL)
+	{
+		std::cout << "cat is not dog" << std::endl;
+		return ;
+	}
