@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 21:09:35 by jseol             #+#    #+#             */
-/*   Updated: 2022/08/09 21:32:11 by jseol            ###   ########.fr       */
+/*   Updated: 2022/08/11 00:29:11 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,13 @@ int main(int argc, char **argv)
 	
 	try
 	{
-		value = std::strtod(argv[1], &ptr);
+		if (checkChar(argv[1]))
+		{
+			cast_char(argv[1]);
+			return (0);
+		}
+		else
+			value = std::strtod(argv[1], &ptr);
 		
 		if (value == 0.0 && argv[1][0] != '-' &&
 		argv[1][0] != '+' && !std::isdigit(argv[1][0]))

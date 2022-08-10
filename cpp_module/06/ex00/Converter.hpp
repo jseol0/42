@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 21:09:38 by jseol             #+#    #+#             */
-/*   Updated: 2022/08/09 19:40:44 by jseol            ###   ########.fr       */
+/*   Updated: 2022/08/11 00:23:02 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,8 @@ class Converter
 				virtual const char *what() const throw();
 		};
 };
+
+bool	checkChar(const std::string& str);
+void	cast_char(char *str);
 
 #endif
