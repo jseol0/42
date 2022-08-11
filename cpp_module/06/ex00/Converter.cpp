@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 21:09:41 by jseol             #+#    #+#             */
-/*   Updated: 2022/08/11 13:37:49 by jseol            ###   ########.fr       */
+/*   Updated: 2022/08/11 16:39:21 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ Converter &Converter::operator=(const Converter &rhs)
 char Converter::toChar(double d)
 {
 	char value = static_cast<char>(d);
-	if (std::isinf(d) || std::isnan(d))
+	if (std::isinf(d) || std::isnan(d) || d > CHAR_MAX || d < CHAR_MIN)
 		throw std::string("impossible");
 	else if (value < 32 || value > 126)
 		throw std::string("Non displayable");
