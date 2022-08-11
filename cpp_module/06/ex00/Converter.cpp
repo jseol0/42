@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Converter.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 21:09:41 by jseol             #+#    #+#             */
-/*   Updated: 2022/08/11 00:31:00 by jseol            ###   ########.fr       */
+/*   Updated: 2022/08/11 13:37:49 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,12 @@ int Converter::toInt(double d)
 float Converter::toFloat(double d)
 {
 	float value = static_cast<float>(d);
-	if (d > __FLT_MAX__ || d < -__FLT_MAX__)
-		throw std::string("impossible");
 	return (value);
 }
 
 double Converter::toDouble(double d)
 {
 	double value = static_cast<double>(d);
-	if (d > __DBL_MAX__ || d < -__DBL_MAX__)
-		throw std::string("impossible");
 	return (value);
 }
 
@@ -86,7 +82,7 @@ bool	checkChar(const std::string& str)
 	return (false);
 }
 
-void	cast_char(char *str)
+void	castChar(char *str)
 {
 	char c = static_cast<char>(str[0]);
 	std::cout << "char : '" << c << "'" << std::endl;

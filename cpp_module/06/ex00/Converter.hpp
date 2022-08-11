@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Converter.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 21:09:38 by jseol             #+#    #+#             */
-/*   Updated: 2022/08/11 00:23:02 by jseol            ###   ########.fr       */
+/*   Updated: 2022/08/11 13:32:42 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ class Converter
 };
 
 bool	checkChar(const std::string& str);
-void	cast_char(char *str);
+void	castChar(char *str);
 
 #endif
