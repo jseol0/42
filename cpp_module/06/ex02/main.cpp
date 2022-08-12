@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 18:37:27 by jseol             #+#    #+#             */
-/*   Updated: 2022/08/10 18:56:56 by jseol            ###   ########.fr       */
+/*   Updated: 2022/08/12 13:40:14 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int main(void)
 		identify(p);
 		identify(*p);
 		std::cout << std::endl;
+		delete p;
 	}
 	return (0);
 }
