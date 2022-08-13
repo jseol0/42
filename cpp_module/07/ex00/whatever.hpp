@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 19:26:16 by jseol             #+#    #+#             */
-/*   Updated: 2022/08/11 20:08:20 by jseol            ###   ########.fr       */
+/*   Updated: 2022/08/12 22:22:15 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ T& min(T& a, T& b)
 {
 	if (a < b)
 		return (a);
+	else if (a == b)
+		return (b);
 	else
 		return (b);
 }
@@ -35,6 +37,8 @@ T& max(T& a, T& b)
 {
 	if (a > b)
 		return (a);
+	else if (a == b)
+		return (b);
 	else
 		return (b);
 }
