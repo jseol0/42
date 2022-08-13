@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 20:28:35 by jseol             #+#    #+#             */
-/*   Updated: 2022/08/13 12:08:16 by jseol            ###   ########.fr       */
+/*   Updated: 2022/08/13 22:59:58 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(void)
 	Array<int> intArr(10);
 
 	for (unsigned i = 0; i < intArr.size(); i++)
-		std::cout << intArr[i] << " "; // []연산자 오버로딩 테스트
+		std::cout << intArr[i] << " ";
 
 	std::cout << std::endl;
 
@@ -34,7 +34,7 @@ int main(void)
 
 	for (unsigned int i = 0; i < constArr.size(); i++)
 	{
-		std::cout << constArr[i] << " "; // const 배열 [] 연산자 오버로딩 테스트
+		std::cout << constArr[i] << " ";
 	}
 
 	std::cout << "\n\n============= copy test =============" << std::endl;
@@ -46,7 +46,7 @@ int main(void)
 	for (unsigned int i = 0; i < list.size(); i++)
 		std::cout << "list[" << i << "] = " << list[i] << std::endl;
 
-	Array<std::string> copyList(list); // 복사 생성자로 copyList 배열 생성
+	Array<std::string> copyList(list);
 
 	copyList[1] = "paris";
 
@@ -64,5 +64,5 @@ int main(void)
 		std::cout << e.what() << std::endl;
 	}
 
-	return 0;
+	return (0);
 }

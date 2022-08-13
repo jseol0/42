@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 20:28:01 by jseol             #+#    #+#             */
-/*   Updated: 2022/08/12 22:43:54 by jseol            ###   ########.fr       */
+/*   Updated: 2022/08/13 22:59:56 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ template <typename T>
 class Array
 {
 	public:
-		Array() : mArray(new T[0]), mSize(0) {};
-		Array(unsigned int n) : mArray(new T[n]()), mSize(n) {};
+		Array() : mArray(new T[0]()), mSize(0) {};
+		Array(unsigned int n) : mArray(new T[n]), mSize(n) {};
 		Array(const Array& other)
 		{
 			*this = other;
