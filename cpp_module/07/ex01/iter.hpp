@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 20:02:55 by jseol             #+#    #+#             */
-/*   Updated: 2022/08/13 12:08:33 by jseol            ###   ########.fr       */
+/*   Updated: 2022/08/13 23:56:29 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	print(T const &data)
 template <typename T>
 void	iter(T* array, unsigned int len, void(*func)(T const &ref))
 {
-	for (int i = 0; i < len; i++)
+	for (unsigned int i = 0; i < len; i++)
 		func(array[i]);
 }
 
