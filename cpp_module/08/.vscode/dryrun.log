@@ -1,0 +1,7 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/jaeyu/42/cpp_module/08'
+ 
+make: Leaving directory `/Users/jaeyu/42/cpp_module/08'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+

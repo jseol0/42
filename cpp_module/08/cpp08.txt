@@ -1,0 +1,18 @@
+STL(Standard Template Library)		-- C++ 표준 템플릿 라이브러리, 일반화 프로그래밍
+	-Container
+	-Iterator
+	-Algorithm
+
+
+Container:
+	같은 타입의 여러 객체를 저장하는 일종의 집합, 클래스 탬플릿
+	1.시퀸스 컨테이너 : vector, deque, list ...
+	2.연관 컨테이너 : set, map ...
+	3.컨테이너 어댑터 : stack, queue
+
+Iterator:
+	컨테이너에 저장된 요소를 반복적으로 순회화여, 요소에 대한 접근을 제공하는 객체
+	일종의 포인터
+
+typename -- 중첩의존타입 ex) typedef typename std::stack<T>::container_type::iterator			iterator;
+						iterator 는 std::stack<T>::container_type 에 중첩되어있다
