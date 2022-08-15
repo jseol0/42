@@ -16,3 +16,10 @@ Iterator:
 
 typename -- 중첩의존타입 ex) typedef typename std::stack<T>::container_type::iterator			iterator;
 						iterator 는 std::stack<T>::container_type 에 중첩되어있다
+
+ex02) stack 에 iterator 만들기
+ex00과 마찬가지로 의존타입네임, typename 사용
+stack, queue는 다른 종류의 컨테이너를 내부적으로 사용함, this->c (protected)
+내부적으로 무엇을 사용할지도 template으로 받을 수 있음 -> template <typename T, typename _Container = std::deque<T> >
+명시하지 않아도 디폴트 컨테이너로 됨 (stack은 덱)
+_Container가 container_type으로 typedef 됨
