@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 13:37:41 by jseol             #+#    #+#             */
-/*   Updated: 2022/08/15 23:17:10 by jseol            ###   ########.fr       */
+/*   Updated: 2022/08/16 11:10:05 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ int	main(void)
 	try
 	{
 		easyfind(vec, 4);
-		std::cout << "easy find!" << std::endl;
+		std::cout << "easy find" << std::endl;
 		easyfind(vec, 8);
-		std::cout << "easy find!" << std::endl;
+		std::cout << "easy find" << std::endl;
 		easyfind(vec, 12);
-		std::cout << "easy find!" << std::endl;
+		std::cout << "easy find" << std::endl;
 	}
 	catch (std::exception & e)
 	{
