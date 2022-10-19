@@ -2,61 +2,58 @@
 #include <sys/wait.h>
 #include <string.h>
 
-void	ft_putstr_fd2(char *str)
+void ft_putstr_err(char *str)
 {
-	int	i = 0;
-	while (str[i])
+	int i = 0;
+	while(str[i])
 		i++;
 	write(2, str, i);
 }
 
-int ft_execute(char **argv, int i, int tmp_fd, char **env)
+int ft_execute(char **argv, int i, int tmp_fd, char **envp)
 {
 	argv[i] = NULL;
 	close(tmp_fd);
-	execve(argv[0], argv, env);
-	ft_putstr_fd2("error: cannot execute ");
-	ft_putstr_fd2(argv[0]);
-	write(2, "\n", 1);
-	return (1);
+	execve(argv[0], argv, envp);
+	ft_putstr_err("error: cannot execute ");
+	ft_putstr_err(argv[0]);
+	ft_putstr_err("\n");
+	return 1;
 }
 
-int	main(int argc, char **argv, char **env)
+int main(int argc, char **argv, char **envp)
 {
 	(void)argc;
-	int	i;
-	int	pid;
-	int	fd[2];
-	int	tmp_fd;
+	int i = 0;
+	int pid = 0;
+	int tmp_fd = dup(0);		// 표준입력 복사
+	int fd[2];
 
-	pid = 0;
-	i = 0;
-	tmp_fd = dup(0);
-	while (argv[i] && argv[i + 1])
+	while(argv[i] && argv[i + 1])
 	{
-		argv = &argv[i + 1];
+		argv = &argv[i + 1];		//	처음이면 앞으로 한칸 or ';' , '|' 로
 		i = 0;
-		while (argv[i] && strcmp(argv[i], ";") && strcmp(argv[i], "|"))
+		while(argv[i] && strcmp(argv[i], ";") && strcmp(argv[i], "|"))	// ';' , '|' or 끝까지 i++
 			i++;
-		if (strcmp(argv[0], "cd") == 0)
+		if(strcmp(argv[0], "cd") == 0)
 		{
-			if (i != 2)
-				ft_putstr_fd2("error: cd: bad arguments\n");
-			else if (chdir(argv[1]) != 0)
+			if(i != 2)
+				ft_putstr_err("error: cd: bad arguments\n");
+			else if(chdir(argv[1]) != 0)
 			{
-				ft_putstr_fd2("error: cd: cannot change directory to ");
-				ft_putstr_fd2(argv[1]);
-				ft_putstr_fd2("\n");
+				ft_putstr_err("error: cd: cannot change directory to ");
+				ft_putstr_err(argv[1]);
+				ft_putstr_err("\n");
 			}
 		}
-		else if (argv != &argv[i] && (argv[i] == NULL || strcmp(argv[i], ";") == 0))
+		else if(argv != &argv[i] && (argv[i] == NULL || strcmp(argv[i], ";") == 0))
 		{
 			pid = fork();
-			if (pid == 0)
+			if(pid == 0)
 			{
-				dup2(tmp_fd, 0);
-				if (ft_execute(argv, i , tmp_fd, env))
-					return (1);
+				dup2(tmp_fd, 0);		//	표준입력을 tmp_fd로
+				if(ft_execute(argv, i, tmp_fd, envp))
+					return 1;
 			}
 			else
 			{
@@ -69,14 +66,14 @@ int	main(int argc, char **argv, char **env)
 		{
 			pipe(fd);
 			pid = fork();
-			if (pid == 0)
+			if(pid == 0)
 			{
 				dup2(tmp_fd, 0);
-				dup2(fd[1], 1);
+				dup2(fd[1], 1);		// 표준출력을 파이브 입력으로
 				close(fd[0]);
 				close(fd[1]);
-				if (ft_execute(argv, i , tmp_fd, env))
-					return (1);
+				if(ft_execute(argv, i, tmp_fd, envp))
+					return 1;
 			}
 			else
 			{
@@ -89,5 +86,5 @@ int	main(int argc, char **argv, char **env)
 		}
 	}
 	close(tmp_fd);
-	return (0);
+	return 0;
 }
