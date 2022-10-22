@@ -77,10 +77,10 @@ int main(int argc, char **argv, char **envp)
 			}
 			else
 			{
-				close(fd[1]);
+				close(fd[1]);	// 파이프 입력 닫기
 				close(tmp_fd);
 				waitpid(-1, 0, 0);
-				tmp_fd = dup(fd[0]);
+				tmp_fd = dup(fd[0]);	// 파이프출력 복사
 				close(fd[0]);
 			}
 		}

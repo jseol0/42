@@ -1,10 +1,10 @@
 #include <unistd.h>
-#include <string.h>
 #include <sys/wait.h>
+#include <string.h>
 
 void	ft_putstr_err(char *s)
 {
-	int	i = 0;
+	int i = 0;
 	while (s[i])
 		i++;
 	write(2, s, i);
@@ -27,29 +27,33 @@ int	main(int argc, char **argv, char **envp)
 	int	i = 0;
 	int	pid = 0;
 	int	tmp_fd = dup(0);
-	int fd[2];
+	int	fd[2];
 
 	while (argv[i] && argv[i + 1])
 	{
 		argv = &argv[i + 1];
 		i = 0;
-		while (argv[i] && strcmp(argv[i], ";") && strcmp(argv[i], "|"))
+		while (argv[i] && (strcmp(argv[i], ";") || strcmp(argv[i], "|")))
 			i++;
 		if (strcmp(argv[0], "cd") == 0)
 		{
 			if (i != 2)
+			{
 				ft_putstr_err("error: cd: bad arguments\n");
+				return (1);
+			}
 			else if (chdir(argv[1]) != 0)
 			{
 				ft_putstr_err("error: cd: cannot change directory to ");
 				ft_putstr_err(argv[1]);
 				ft_putstr_err("\n");
+				return (1);
 			}
 		}
 		else if (argv != &argv[i] && (argv[i] == NULL || strcmp(argv[i], ";") == 0))
 		{
 			pid = fork();
-			if (pid == 0)
+			if (pid = 0)
 			{
 				dup2(tmp_fd, 0);
 				if (ft_execute(argv, i, tmp_fd, envp))
@@ -66,7 +70,7 @@ int	main(int argc, char **argv, char **envp)
 		{
 			pipe(fd);
 			pid = fork();
-			if (pid == 0)
+			if (pid = 0)
 			{
 				dup2(tmp_fd, 0);
 				dup2(fd[1], 1);
@@ -80,7 +84,7 @@ int	main(int argc, char **argv, char **envp)
 				close(fd[1]);
 				close(tmp_fd);
 				waitpid(-1, 0, 0);
-				tmp_fd = dup(fd[0]);
+				tmp_fd = (fd[0]);
 				close(fd[0]);
 			}
 		}
