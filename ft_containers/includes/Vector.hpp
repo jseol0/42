@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:59:18 by jseol             #+#    #+#             */
-/*   Updated: 2022/11/04 11:10:43 by jseol            ###   ########.fr       */
+/*   Updated: 2022/11/04 13:39:50 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -489,6 +489,12 @@ namespace ft
 		{
 			while (!empty())
 				pop_back();
+		}
+
+		// allocator
+		allocator_type	get_allocator()
+		{
+			return (mAlloc);
 		}
 	};
 
