@@ -3,7 +3,10 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = a.out
 
-SRCS =	
+SRCS =	./main.cpp	\
+		./test_vector.cpp	\
+		./test_map.cpp	\
+		./test_stack.cpp
 
 
 OBJS = $(SRCS:.cpp=.o)
