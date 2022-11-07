@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 14:35:19 by jseol             #+#    #+#             */
-/*   Updated: 2022/11/03 16:48:32 by jseol            ###   ########.fr       */
+/*   Updated: 2022/11/06 19:46:42 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,29 +81,6 @@ namespace ft
 	template <>
 	struct is_iterator<int> { typedef __false val; };
 
-
-/*
-	// node for list
-	template <typename T>
-	struct node
-	{
-		T			val;
-		node		*prev;
-		node		*next;
-
-		node() : val(), prev(0), next(0) {}
-		node(const T& t) : val(t), prev(0), next(0) {}
-		node(const node& other) : val(other.val), prev(other.prev), next(other.next) {}
-		node&	operator=(const node& rhs)
-		{
-			val = rhs.val;
-			prev = rhs.prev;
-			next = rhs.next;
-			return (*this);
-		}
-		~node() {}
-	};
-*/
 
 
 	// node for map
