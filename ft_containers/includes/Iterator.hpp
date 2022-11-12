@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 19:12:14 by jseol             #+#    #+#             */
-/*   Updated: 2022/11/12 19:45:36 by jseol            ###   ########.fr       */
+/*   Updated: 2022/11/12 21:09:22 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,7 +189,7 @@ namespace ft
 
 		private:
 			pointer _base;
-	}; //class Vector_iterator
+	};
 
 	template<typename Iterator1, typename Iterator2>
 	bool	operator==(const Vector_iterator<Iterator1> lhs,

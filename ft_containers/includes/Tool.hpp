@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 19:12:51 by jseol             #+#    #+#             */
-/*   Updated: 2022/11/12 19:26:17 by jseol            ###   ########.fr       */
+/*   Updated: 2022/11/12 21:29:00 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,6 @@ namespace ft
 
 		~pair() {}
 
-		// note: implicitly declared ???
 		pair& operator=(const pair& rhs)
 		{
 			this->first = rhs.first;
@@ -192,18 +191,6 @@ namespace ft
 		}
 		return true;
 	}	
-
-	template <class InputIterator1, class InputIterator2, class BinaryPredicate>
-	bool equal (InputIterator1 first1, InputIterator1 last1,
-				InputIterator2 first2, BinaryPredicate pred)
-	{
-		while (first1 != last1)
-		{
-			if (!pred(*first1, *first2))
-				return false;
-		}
-		return true;
-	}
 
 
 	// swap

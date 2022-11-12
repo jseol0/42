@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:59:18 by jseol             #+#    #+#             */
-/*   Updated: 2022/11/12 19:40:20 by jseol            ###   ########.fr       */
+/*   Updated: 2022/11/12 21:49:33 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ namespace ft
 		}
 
 		template <class InputIterator>
-		vector(InputIterator first, typename ft::enable_if
+		vector(InputIterator first, typename ft::enable_if		//range constructor
 					<!ft::is_integral<InputIterator>::value,
 					InputIterator>::type last,
 				const allocator_type& alloc = allocator_type())
