@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 19:11:50 by jseol             #+#    #+#             */
-/*   Updated: 2022/11/12 19:28:30 by jseol            ###   ########.fr       */
+/*   Updated: 2022/11/13 00:38:09 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -614,27 +614,6 @@ namespace ft
 			}
 			return root;
 		}
-
-		// void _printNodeRecu(node * n)
-		// {
-		// 	if (!n)
-		// 		return ;
-		// 	std::cout << "///////////"  << std::endl;
-		// 	std::cout << "n->val:" << n->val.first << std::endl;	
-		// 	std::cout << "n->color:" << n->color << std::endl;	
-		// 	if (n->left)
-		// 	{
-		// 		std::cout << "n-left->val:" << n->left->val.first << std::endl;	
-		// 		std::cout << "n-left->color:" << n->left->color << std::endl;
-		// 	}	
-		// 	if (n->right)
-		// 	{
-		// 		std::cout << "n-right->val:" << n->right->val.first << std::endl;	
-		// 		std::cout << "n-right->color:" << n->right->color << std::endl;	
-		// 	}
-		// 	_printNodeRecu(n->left);
-		// 	_printNodeRecu(n->right);
-		// }
 
 		/*	
 		**	Let y the erased node
