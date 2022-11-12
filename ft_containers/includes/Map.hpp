@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 15:18:25 by jseol             #+#    #+#             */
-/*   Updated: 2022/11/12 19:44:56 by jseol            ###   ########.fr       */
+/*   Updated: 2022/11/12 23:20:25 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ namespace ft
 		typedef ptrdiff_t									difference_type;
 
 
-	//nested class
 		class value_compare
 		{
 			friend class map;
