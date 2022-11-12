@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 08:31:37 by heryu             #+#    #+#             */
-/*   Updated: 2022/11/04 20:12:28 by jseol            ###   ########.fr       */
+/*   Updated: 2022/11/12 18:39:36 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ static bool	construct_test(void)
 	}
 	std::cout << std::endl;
 	{
-		print_interface("Vector& operator=(const Vector& rhs)");
+		print_interface("Vector& operator=(const Vector& rhs)");		// 시간 측정
 		std::vector<int> tmp1;
 		ft::Vector<int> tmp2;
 		for (int i = 0; i < 5; ++i)

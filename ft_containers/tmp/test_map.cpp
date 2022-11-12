@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 15:14:49 by heryu             #+#    #+#             */
-/*   Updated: 2022/11/04 20:11:35 by jseol            ###   ########.fr       */
+/*   Updated: 2022/11/12 18:39:07 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -419,9 +419,9 @@ static bool insert_test(void)
 	ft::Map<std::string, int> m2;
 	std::cout << "map.insert(std::make_pair(\"duplicated_key\", 777)) * 3 times;" << std::endl;
 	m1.insert(std::make_pair("duplicated_key", 777));
-	m2.insert(std::make_pair("duplicated_key", 777));
+	m2.insert(ft::make_pair("duplicated_key", 777));
 	m1.insert(std::make_pair("duplicated_key", 777));
-	m2.insert(std::make_pair("duplicated_key", 777));
+	m2.insert(ft::make_pair("duplicated_key", 777));
 	print_map(m1);
 	print_map(m2);
 	if (m1 != m2)
@@ -429,7 +429,7 @@ static bool insert_test(void)
 	std::cout << std::endl;
 
 	std::pair<std::map<std::string, int>::iterator, bool> ret1 = m1.insert(std::make_pair("duplicated_key", 777));
-	std::pair<ft::Map<std::string, int>::iterator, bool> ret2 = m2.insert(std::make_pair("duplicated_key", 777));
+	ft::pair<ft::Map<std::string, int>::iterator, bool> ret2 = m2.insert(ft::make_pair("duplicated_key", 777));
 	std::cout << "... last return value ..." << std::endl;
 	std::cout << "std: " << ret1.first->first << ", " << ret1.first->second << ", " << ret1.second << std::endl;
 	std::cout << "ft: " << ret2.first->first << ", " << ret2.first->second << ", " << ret2.second << std::endl;
@@ -443,11 +443,11 @@ static bool insert_test(void)
 
 	std::cout << "... insert normal values ..." << std::endl;
 	m1.insert(std::make_pair("normal1_key", 1));
-	m2.insert(std::make_pair("normal1_key", 1));
+	m2.insert(ft::make_pair("normal1_key", 1));
 	m1.insert(std::make_pair("normal2_key", 2));
-	m2.insert(std::make_pair("normal2_key", 2));
+	m2.insert(ft::make_pair("normal2_key", 2));
 	m1.insert(std::make_pair("normal3_key", 3));
-	m2.insert(std::make_pair("normal3_key", 3));
+	m2.insert(ft::make_pair("normal3_key", 3));
 	print_map(m1);
 	print_map(m2);
 	if (m1 != m2)
@@ -459,7 +459,7 @@ static bool insert_test(void)
 	print_interface("iterator insert(iterator hint, const value_type& val)");
 	std::cout << "... insert(map.begin(), pair(hint, 333)) ..." << std::endl;
 	std::map<std::string, int>::iterator iter1 = m1.insert(m1.begin(), std::make_pair<std::string, int>("hint", 333));
-	ft::Map<std::string, int>::iterator iter2 = m2.insert(m2.begin(), std::make_pair<std::string, int>("hint", 333));
+	ft::Map<std::string, int>::iterator iter2 = m2.insert(m2.begin(), ft::make_pair<std::string, int>("hint", 333));
 	std::cout << "... return value ..." << std::endl;
 	std::cout << "std: " << iter1->first << ":" << iter1->second << std::endl;
 	std::cout << "ft: " << iter2->first << ":" << iter2->second << std::endl;
@@ -646,18 +646,18 @@ static bool cmp_func_test(void)
 	std::cout << "std vcmp(pair(1, 1), pair(2, 0)): " << vcmp1(std::make_pair(1, 1), std::make_pair(2, 0)) << std::endl;
 	std::cout << "std vcmp(pair(2, 1), pair(2, 0)): " << vcmp1(std::make_pair(2, 1), std::make_pair(2, 0)) << std::endl;
 	std::cout << "\n";
-	std::cout << "ft  vcmp(pair(1, 1), pair(2, 2)): " << vcmp2(std::make_pair(1, 1), std::make_pair(2, 2)) << std::endl;
-	std::cout << "ft  vcmp(pair(1, 1), pair(1, 2)): " << vcmp2(std::make_pair(1, 1), std::make_pair(1, 2)) << std::endl;
-	std::cout << "ft  vcmp(pair(1, 1), pair(2, 0)): " << vcmp2(std::make_pair(1, 1), std::make_pair(2, 0)) << std::endl;
-	std::cout << "ft  vcmp(pair(2, 1), pair(2, 0)): " << vcmp2(std::make_pair(2, 1), std::make_pair(2, 0)) << std::endl;
+	std::cout << "ft  vcmp(pair(1, 1), pair(2, 2)): " << vcmp2(ft::make_pair(1, 1), ft::make_pair(2, 2)) << std::endl;
+	std::cout << "ft  vcmp(pair(1, 1), pair(1, 2)): " << vcmp2(ft::make_pair(1, 1), ft::make_pair(1, 2)) << std::endl;
+	std::cout << "ft  vcmp(pair(1, 1), pair(2, 0)): " << vcmp2(ft::make_pair(1, 1), ft::make_pair(2, 0)) << std::endl;
+	std::cout << "ft  vcmp(pair(2, 1), pair(2, 0)): " << vcmp2(ft::make_pair(2, 1), ft::make_pair(2, 0)) << std::endl;
 	std::cout << "\n";
-	if (vcmp1(std::make_pair(1, 1), std::make_pair(2, 2)) != vcmp2(std::make_pair(1, 1), std::make_pair(2, 2)))
+	if (vcmp1(std::make_pair(1, 1), std::make_pair(2, 2)) != vcmp2(ft::make_pair(1, 1), ft::make_pair(2, 2)))
 		return (FAIL);
-	if (vcmp1(std::make_pair(1, 1), std::make_pair(1, 2)) != vcmp2(std::make_pair(1, 1), std::make_pair(1, 2)))
+	if (vcmp1(std::make_pair(1, 1), std::make_pair(1, 2)) != vcmp2(ft::make_pair(1, 1), ft::make_pair(1, 2)))
 		return (FAIL);
-	if (vcmp1(std::make_pair(1, 1), std::make_pair(2, 0)) != vcmp2(std::make_pair(1, 1), std::make_pair(2, 0)))
+	if (vcmp1(std::make_pair(1, 1), std::make_pair(2, 0)) != vcmp2(ft::make_pair(1, 1), ft::make_pair(2, 0)))
 		return (FAIL);
-	if (vcmp1(std::make_pair(2, 1), std::make_pair(2, 0)) != vcmp2(std::make_pair(2, 1), std::make_pair(2, 0)))
+	if (vcmp1(std::make_pair(2, 1), std::make_pair(2, 0)) != vcmp2(ft::make_pair(2, 1), ft::make_pair(2, 0)))
 		return (FAIL);
 	std::cout << "... cplusplus test ... " << std::endl;
 	ft::Map<char,int> mymap2;

@@ -1,0 +1,21 @@
+STL: 자료구조와 알고리즘을 사용할수 있도록 제공되는 라이브러리,
+	컨테이너 + 이터레이터 + 알고리즘
+
+1. Vector
+	: 자동으로 메모리가 할당되는 배열
+	-size: 할당된 메모리 안에 들어있는 요소의 갯수
+	-capacity: 할당된 메모리 크키
+	-재할당 할때는 (기본 메모리 크기 * 2)
+
+	* iterator.end() 는 마지막의 "다음"을 가르킴. (rend()도 마찬가지)
+2. Stack	-vector 기반으로 만듬
+	: LIFO(후입선출)
+	-stack의 push, pop은 vector의 pushback, popback	-즉 stack의 top에서만 이루어짐
+
+3. Map
+	: key와 value가 pair 객체로 저장
+	 노드 기반으로 만들어진 이진검색트리
+	- m.upper_bound(k) : 보다 큰 첫번째 값
+	- m.lower_bound(k) : 보다 크거나 같은 첫번째 값
+
+iterators_traits: 반복자의 속성을 정의하는 클래스
