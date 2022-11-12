@@ -6,7 +6,7 @@
 /*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 19:11:50 by jseol             #+#    #+#             */
-/*   Updated: 2022/11/13 00:38:09 by jseol            ###   ########.fr       */
+/*   Updated: 2022/11/13 01:07:05 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -588,13 +588,6 @@ namespace ft
 				tmp->parent = root->parent;
 				tmp->color = root->color;
 
-				// node * replace = _createNode(tmp->val, root->parent,
-				// 							root->left, root->right, root->color);
-				// _size++;
-				// root->left->parent = replace;
-				// root->right->parent = replace;
-				// _parentUpdateChild(root, replace);
-				// replace->right = _erase(root->right, tmp->val);
 				_clearNode(root);
 			}
 			else
