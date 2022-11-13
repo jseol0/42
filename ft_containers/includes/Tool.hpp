@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Tool.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 19:12:51 by jseol             #+#    #+#             */
-/*   Updated: 2022/11/12 21:29:00 by jseol            ###   ########.fr       */
+/*   Updated: 2022/11/13 13:16:21 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ namespace ft
 	//	enable_if
 	template<bool Cond, class T = void>
 	struct enable_if {};
- 
+
 	template<class T>
 	struct enable_if<true, T>
 	{
@@ -69,8 +69,8 @@ namespace ft
 
 		typedef T	value_type;
 		typedef integral_constant<T, v>		type;
-	
-		operator value_type() const {return v;}; //noexcept, constexpr
+
+		operator value_type() const {return v;};
 	};
 
 	typedef integral_constant<bool, false>	false_type;
@@ -190,7 +190,7 @@ namespace ft
 				return false;
 		}
 		return true;
-	}	
+	}
 
 
 	// swap

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 19:57:42 by jseol             #+#    #+#             */
-/*   Updated: 2022/11/12 23:17:25 by jseol            ###   ########.fr       */
+/*   Updated: 2022/11/13 13:11:16 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	printVec(VECTYPE const &s)
 int main()
 {
 	std::cout << "====================== Vec/Stack ==========================="<< std::endl;
-	
+
 	ft::vector<float> vec;
 	printVec(vec);
 	vec.resize(9, 2.9);
@@ -125,7 +125,7 @@ int main()
 	myMap0.insert(ft::make_pair(-1, -10));
 	printMap(myMap0);
 
-	std::cout << "myMap0.find(7)->second: " << myMap0.find(7)->second << std::endl;	
+	std::cout << "myMap0.find(7)->second: " << myMap0.find(7)->second << std::endl;
 	std::cout << "(myMap0.find(4) == myMap0.end()): " << (myMap0.find(4) == myMap0.end()) << std::endl;
 
 	myMap0[5] = 50;
@@ -150,4 +150,5 @@ int main()
 
 	std::cout << std::endl;
 	std::cout << "TEST END" << std::endl;
+
 }

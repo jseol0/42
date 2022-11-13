@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RBtree.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jseol <jseol@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jseol <jseol@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 19:11:50 by jseol             #+#    #+#             */
-/*   Updated: 2022/11/13 01:07:05 by jseol            ###   ########.fr       */
+/*   Updated: 2022/11/13 13:35:37 by jseol            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ namespace ft
 				Color color = Red)
 			: val(val), parent(parent), left(left), right(right), color(color)
 		{}
-		
+
 		Node(const Node& rhs) : val(rhs.val), parent(rhs.parent),
 								left(rhs.left), right(rhs.right), color(rhs.color)
 		{}
@@ -247,7 +247,7 @@ namespace ft
 			return (Tree_iterator<const Ty, true>(this->_base));
 		}
 
-		Node *	base() const 
+		Node *	base() const
 		{
 			return (this->_base);
 		}
@@ -320,7 +320,7 @@ namespace ft
 			}
 			return (*this);
 		}
-	
+
 	//iterators
 		iterator 		begin()
 		{
@@ -335,7 +335,7 @@ namespace ft
 				return (_end);
 			return const_iterator(this->_leftmost());
 		}
-	
+
 		iterator		end()
 		{
 			return iterator(_end);
@@ -346,15 +346,15 @@ namespace ft
 			return const_iterator(_end);
 		}
 
-		reverse_iterator		rbegin() { return reverse_iterator(this->end()); }	
+		reverse_iterator		rbegin() { return reverse_iterator(this->end()); }
 		const_reverse_iterator	rbegin() const { return const_reverse_iterator(this->end()); }
 		reverse_iterator		rend() { return reverse_iterator(this->begin()); }
 		const_reverse_iterator	rend() const { return const_reverse_iterator(this->begin()); }
-	
+
 	//capacity
 		size_type size() const { return (this->_size); }
 		size_type max_size() const { return (this->_nodeAlloc.max_size()); }
-	
+
 	//insertion
 		ft::pair<iterator, bool> insert(const value_type& x)
 		{
@@ -389,7 +389,7 @@ namespace ft
 		size_type erase(const value_type& x)
 		{
 			size_type	tmp = _size;
-	
+
 			_erase(_root, x);
 			return (tmp - _size);
 		}
@@ -434,7 +434,7 @@ namespace ft
 		const_iterator	find(const value_type& x) const
 		{
 			node * ret = _find(_root, x);
-	
+
 			if (!ret)
 				return (this->end());
 			return (const_iterator(ret));
@@ -582,7 +582,7 @@ namespace ft
 				if (root->right)
 					root->right->parent = tmp;
 				_parentUpdateChild(root, tmp);
-	
+
 				tmp->left = root->left;
 				tmp->right = root->right;
 				tmp->parent = root->parent;
@@ -608,15 +608,8 @@ namespace ft
 			return root;
 		}
 
-		/*	
-		**	Let y the erased node
-		**	x is the node that replaced y
-		**	If x != null, x is y's only child, x's color is definitely Red
-		**	Since y needs to be Black to launch this function, y must had a sibling
-		**	The (x->color == Black) condition is usefull only starting from the 2nd round of while loop
-		*/
 		void	_eraseFix(node *x, node * parent)
-		{	
+		{
 			while (x != _root && (x == 0 || x->color == Black))
 			{
 				if (x == parent->left)
@@ -627,9 +620,9 @@ namespace ft
 					{
 						sibling->color = Black;
 						parent->color = Red;
-						_leftRotate(parent);	
+						_leftRotate(parent);
 						sibling = parent->right;
-					}	
+					}
 					if ((!sibling->left || sibling->left->color == Black)
 						&& (!sibling->right || sibling->right->color == Black))
 					{
