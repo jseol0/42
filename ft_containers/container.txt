@@ -30,4 +30,44 @@ STL: 자료구조와 알고리즘을 사용할수 있도록 제공되는 라이�
 	1. 삽입할 노드의 삼촌노드가 red 일 경우 -> 부모노드 라인을 black으로
 	2. 삽입할 노듸의 삼촌노드가 black 일 경우 -> 오름차순 정렬후 중간 노드를 부모노드로 작은노드를 left 큰노드를 right 삼촌노드는 자식노드의 자식노드로
 
+std::allocator
+	allocator.allocate 객체를 초기화 하지 않고메모리를 할당
+	allocator.construct 초기화되지 않은 공간에 요소를 저장
+
+iterator:  컨테이너에 저장되어 있는 모든 원소들을 전체적으로 훑어 나갈 때 사용하는, 일종의 포인터와 비슷한 객체
 iterators_traits: 반복자의 속성을 정의하는 클래스
+
+typedef typename Allocator::reference			reference;
+-> Allocator::reference 를 reference라고 별칭할건데 Allocator::reference는 Allocator 클래스 내부의 변수나 함수가 아니라
+	 Allocator::reference라는 type이다
+
+explicit
+
+ex)
+#include <iostream>
+class A{
+public:
+   int num;
+   A(int n) : num(n){};
+};
+void printA(A a){
+   std::cout << a.num << std::endl;
+}
+int main(){
+   int n = 26;
+   printA(n);
+}
+
+#include <iostream>
+class A{
+public:
+   int num;
+   explicit A(int n) : num(n){};
+};
+void printA(A a){
+   std::cout << a.num << std::endl;
+}
+int main(){
+   int n = 26;
+   printA(n); //Error!
+}
